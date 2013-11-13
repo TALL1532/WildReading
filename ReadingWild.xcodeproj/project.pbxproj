@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
+		4B06FF0B182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
+		4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */; };
+		4B06FF0F182B4D6E0025E854 /* AnagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */; };
+		4B06FF12182B57700025E854 /* WordSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF11182B57700025E854 /* WordSearchViewController.m */; };
+		4B06FF13182B57700025E854 /* WordSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF11182B57700025E854 /* WordSearchViewController.m */; };
+		4B06FF1C182B66940025E854 /* wordList1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF14182B66930025E854 /* wordList1.txt */; };
+		4B06FF1D182B66940025E854 /* wordList1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF14182B66930025E854 /* wordList1.txt */; };
+		4B06FF1E182B66940025E854 /* wordList2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF15182B66930025E854 /* wordList2.txt */; };
+		4B06FF1F182B66940025E854 /* wordList2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF15182B66930025E854 /* wordList2.txt */; };
+		4B06FF20182B66940025E854 /* wordList3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF16182B66930025E854 /* wordList3.txt */; };
+		4B06FF21182B66940025E854 /* wordList3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF16182B66930025E854 /* wordList3.txt */; };
+		4B06FF22182B66940025E854 /* wordList4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF17182B66930025E854 /* wordList4.txt */; };
+		4B06FF23182B66940025E854 /* wordList4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF17182B66930025E854 /* wordList4.txt */; };
+		4B06FF24182B66940025E854 /* wordGrid1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF18182B66930025E854 /* wordGrid1.txt */; };
+		4B06FF25182B66940025E854 /* wordGrid1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF18182B66930025E854 /* wordGrid1.txt */; };
+		4B06FF26182B66940025E854 /* wordGrid2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF19182B66930025E854 /* wordGrid2.txt */; };
+		4B06FF27182B66940025E854 /* wordGrid2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF19182B66930025E854 /* wordGrid2.txt */; };
+		4B06FF28182B66940025E854 /* wordGrid3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF1A182B66940025E854 /* wordGrid3.txt */; };
+		4B06FF29182B66940025E854 /* wordGrid3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF1A182B66940025E854 /* wordGrid3.txt */; };
+		4B06FF2A182B66940025E854 /* wordGrid4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF1B182B66940025E854 /* wordGrid4.txt */; };
+		4B06FF2B182B66940025E854 /* wordGrid4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B06FF1B182B66940025E854 /* wordGrid4.txt */; };
 		4B1365871826BA2400C54EC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365861826BA2400C54EC2 /* UIKit.framework */; };
 		4B1365891826BA2400C54EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365881826BA2400C54EC2 /* Foundation.framework */; };
 		4B13658B1826BA2400C54EC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B13658A1826BA2400C54EC2 /* CoreGraphics.framework */; };
@@ -36,6 +58,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleWindow.h; sourceTree = "<group>"; };
+		4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleWindow.m; sourceTree = "<group>"; };
+		4B06FF0C182B4D6E0025E854 /* AnagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnagramViewController.h; sourceTree = "<group>"; };
+		4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnagramViewController.m; sourceTree = "<group>"; };
+		4B06FF10182B57700025E854 /* WordSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSearchViewController.h; sourceTree = "<group>"; };
+		4B06FF11182B57700025E854 /* WordSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSearchViewController.m; sourceTree = "<group>"; };
+		4B06FF14182B66930025E854 /* wordList1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordList1.txt; sourceTree = "<group>"; };
+		4B06FF15182B66930025E854 /* wordList2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordList2.txt; sourceTree = "<group>"; };
+		4B06FF16182B66930025E854 /* wordList3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordList3.txt; sourceTree = "<group>"; };
+		4B06FF17182B66930025E854 /* wordList4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordList4.txt; sourceTree = "<group>"; };
+		4B06FF18182B66930025E854 /* wordGrid1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordGrid1.txt; sourceTree = "<group>"; };
+		4B06FF19182B66930025E854 /* wordGrid2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordGrid2.txt; sourceTree = "<group>"; };
+		4B06FF1A182B66940025E854 /* wordGrid3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordGrid3.txt; sourceTree = "<group>"; };
+		4B06FF1B182B66940025E854 /* wordGrid4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordGrid4.txt; sourceTree = "<group>"; };
 		4B1365831826BA2400C54EC2 /* ReadingWild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingWild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1365861826BA2400C54EC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4B1365881826BA2400C54EC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +158,20 @@
 				4B13659E1826BA2500C54EC2 /* MainStoryboard.storyboard */,
 				4B1365A11826BA2500C54EC2 /* ViewController.h */,
 				4B1365A21826BA2500C54EC2 /* ViewController.m */,
+				4B06FF0C182B4D6E0025E854 /* AnagramViewController.h */,
+				4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */,
+				4B06FF10182B57700025E854 /* WordSearchViewController.h */,
+				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
+				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
+				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
+				4B06FF14182B66930025E854 /* wordList1.txt */,
+				4B06FF15182B66930025E854 /* wordList2.txt */,
+				4B06FF16182B66930025E854 /* wordList3.txt */,
+				4B06FF17182B66930025E854 /* wordList4.txt */,
+				4B06FF18182B66930025E854 /* wordGrid1.txt */,
+				4B06FF19182B66930025E854 /* wordGrid2.txt */,
+				4B06FF1A182B66940025E854 /* wordGrid3.txt */,
+				4B06FF1B182B66940025E854 /* wordGrid4.txt */,
 				4B13658D1826BA2400C54EC2 /* Supporting Files */,
 			);
 			path = ReadingWild;
@@ -236,6 +286,14 @@
 				4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */,
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
+				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
+				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
+				4B06FF20182B66940025E854 /* wordList3.txt in Resources */,
+				4B06FF22182B66940025E854 /* wordList4.txt in Resources */,
+				4B06FF24182B66940025E854 /* wordGrid1.txt in Resources */,
+				4B06FF26182B66940025E854 /* wordGrid2.txt in Resources */,
+				4B06FF28182B66940025E854 /* wordGrid3.txt in Resources */,
+				4B06FF2A182B66940025E854 /* wordGrid4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +302,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1365B51826BA2900C54EC2 /* InfoPlist.strings in Resources */,
+				4B06FF1D182B66940025E854 /* wordList1.txt in Resources */,
+				4B06FF1F182B66940025E854 /* wordList2.txt in Resources */,
+				4B06FF21182B66940025E854 /* wordList3.txt in Resources */,
+				4B06FF23182B66940025E854 /* wordList4.txt in Resources */,
+				4B06FF25182B66940025E854 /* wordGrid1.txt in Resources */,
+				4B06FF27182B66940025E854 /* wordGrid2.txt in Resources */,
+				4B06FF29182B66940025E854 /* wordGrid3.txt in Resources */,
+				4B06FF2B182B66940025E854 /* wordGrid4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +339,9 @@
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
+				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
+				4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */,
+				4B06FF12182B57700025E854 /* WordSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +350,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1365B81826BA2900C54EC2 /* ReadingWildTests.m in Sources */,
+				4B06FF0B182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
+				4B06FF0F182B4D6E0025E854 /* AnagramViewController.m in Sources */,
+				4B06FF13182B57700025E854 /* WordSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +527,7 @@
 				4B1365BD1826BA2900C54EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4B1365BE1826BA2900C54EC2 /* Build configuration list for PBXNativeTarget "ReadingWildTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +536,7 @@
 				4B1365C01826BA2900C54EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
