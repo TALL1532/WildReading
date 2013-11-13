@@ -55,12 +55,12 @@
     NSInteger _numRow;
     
     CGFloat _colWidth;
-    char ** _grid;
+    NSArray * _words;
 }
 
 @property (retain) id delegate;
 
-- (id)initWithFrame:(CGRect)frame puzzleName:(NSString*)filename;
+- (id)initWithFrame:(CGRect)frame puzzleName:(NSString*)filename answerName:(NSString *)answerfilename;
 - (float)getHypotenuse;
 - (float)getAngle:(float)hypo;
 - (BOOL)getAngleColoring:(float)angle;
@@ -69,6 +69,6 @@
 - (void)addRectangle:(int)xOrigin yOrigin:(int)yOrigin length:(float)length angle:(float)angle;
 
 - (NSMutableString *)getLetters:(int)angle hypo:(float)hypotenuse;
-
+- (BOOL)isAnswer:(NSString *)word;
 
 @end

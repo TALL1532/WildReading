@@ -84,60 +84,9 @@
                     <view key="view" contentMode="scaleToFill" id="OKK-UW-AEP" userLabel="Anagrams">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;Category>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUW-sO-H61">
-                                <rect key="frame" x="0.0" y="92" width="768" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="IL2-Rn-jr8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ETU-4a-qXv">
-                                <rect key="frame" x="294" y="135" width="181" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="KjI-SH-YCi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghb-Na-LkP">
-                                <rect key="frame" x="516" y="152" width="5" height="7"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="5" id="FPC-bw-Wz3"/>
-                                    <constraint firstAttribute="height" constant="7" id="uht-mN-89M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0DE-aB-Xer">
-                                <rect key="frame" x="224" y="270" width="320" height="266"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Xkh-br-Beh"/>
-                                    <constraint firstAttribute="height" constant="266" id="e8s-MD-LqD"/>
-                                </constraints>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MUW-sO-H61" secondAttribute="trailing" id="CCf-IT-DdA"/>
-                            <constraint firstItem="MUW-sO-H61" firstAttribute="leading" secondItem="OKK-UW-AEP" secondAttribute="leading" id="EO8-Bq-thR"/>
-                            <constraint firstItem="ETU-4a-qXv" firstAttribute="centerX" secondItem="MUW-sO-H61" secondAttribute="centerX" id="ZfG-6l-GXr"/>
-                            <constraint firstItem="dLG-2M-FeQ" firstAttribute="top" secondItem="0DE-aB-Xer" secondAttribute="bottom" constant="488" id="cxw-lh-0Os"/>
-                            <constraint firstItem="MUW-sO-H61" firstAttribute="centerX" secondItem="0DE-aB-Xer" secondAttribute="centerX" id="jGa-CQ-ceH"/>
-                            <constraint firstItem="Ghb-Na-LkP" firstAttribute="leading" secondItem="ETU-4a-qXv" secondAttribute="trailing" constant="41" id="oHa-if-AZr"/>
-                            <constraint firstItem="MUW-sO-H61" firstAttribute="top" secondItem="arC-SR-FAu" secondAttribute="bottom" constant="28" id="pL0-U9-pIZ"/>
-                            <constraint firstItem="Ghb-Na-LkP" firstAttribute="top" secondItem="MUW-sO-H61" secondAttribute="bottom" constant="10" id="uFD-f4-7co"/>
-                            <constraint firstItem="Ghb-Na-LkP" firstAttribute="baseline" secondItem="ETU-4a-qXv" secondAttribute="baseline" id="yYA-Ff-3FK"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Anagrams" id="3ue-yg-i2q"/>
-                    <connections>
-                        <outlet property="_entryField" destination="ETU-4a-qXv" id="eYW-dh-qai"/>
-                        <outlet property="_mainWordlabel" destination="MUW-sO-H61" id="cVz-Qi-Jv6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ew-2G-klV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,7 +103,50 @@
                     <view key="view" contentMode="scaleToFill" id="fIk-fX-zk8">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="&lt;Category>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfd-Bb-V06">
+                                <rect key="frame" x="0.0" y="85" width="768" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Xwk-8j-TJA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FfV-gb-NZm">
+                                <rect key="frame" x="294" y="128" width="181" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="ZCF-tT-jJp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVH-B2-SCE">
+                                <rect key="frame" x="516" y="145" width="5" height="7"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="w4J-bb-6VV"/>
+                                    <constraint firstAttribute="height" constant="7" id="zEY-wR-cBp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="viJ-ss-5uE">
+                                <rect key="frame" x="224" y="263" width="320" height="266"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="390-h4-DxE"/>
+                                    <constraint firstAttribute="height" constant="266" id="JZT-J8-XZa"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FfV-gb-NZm" firstAttribute="centerX" secondItem="pfd-Bb-V06" secondAttribute="centerX" id="R5S-nc-zdF"/>
+                            <constraint firstItem="sVH-B2-SCE" firstAttribute="top" secondItem="pfd-Bb-V06" secondAttribute="bottom" constant="10" id="T7h-QE-IQl"/>
+                            <constraint firstItem="pfd-Bb-V06" firstAttribute="centerX" secondItem="viJ-ss-5uE" secondAttribute="centerX" id="amw-uu-ZGZ"/>
+                            <constraint firstItem="sVH-B2-SCE" firstAttribute="leading" secondItem="FfV-gb-NZm" secondAttribute="trailing" constant="41" id="eyC-qL-00g"/>
+                            <constraint firstItem="sVH-B2-SCE" firstAttribute="baseline" secondItem="FfV-gb-NZm" secondAttribute="baseline" id="j1u-cu-Zy2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fluency" id="U18-ls-QBb"/>
                 </viewController>

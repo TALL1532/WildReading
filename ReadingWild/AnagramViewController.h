@@ -11,6 +11,8 @@
 @interface AnagramViewController : UIViewController {
     IBOutlet UILabel * _mainWordlabel;
     IBOutlet UITextField * _entryField;
+    
+    NSString * _currentWord;
 }
 
 //@property (nonatomic, retain) UILabel * mainWordLabel;

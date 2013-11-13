@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	_puzzleView = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - 20, 500, 500) puzzleName:@"wordGrid1"];
+	_puzzleView = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - 20, 500, 500) puzzleName:@"wordGrid1" answerName:@"wordList1"];
     [self.view addSubview:_puzzleView];
 }
 
