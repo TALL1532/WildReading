@@ -13,7 +13,8 @@
     IBOutlet UILabel * _mainWordlabel;
     
     NSString * _currentWord;
-    
+    NSString * _constructedWord;
+    NSMutableArray * _buttons;
 }
 
 @property (nonatomic, retain) NSString * currentWord;

@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>Name</key>
-		<string>wordList1</string>
+		<string>Birds</string>
 		<key>gridfilename</key>
 		<string>wordGrid1.txt</string>
 		<key>listfilename</key>
@@ -12,7 +12,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>wordList2</string>
+		<string>Insects</string>
 		<key>gridfilename</key>
 		<string>wordGrid2.txt</string>
 		<key>listfilename</key>
@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>wordList1</string>
+		<string>Fish</string>
 		<key>gridfilename</key>
 		<string>wordGrid3.txt</string>
 		<key>listfilename</key>
@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>wordList1</string>
+		<string>Weapons</string>
 		<key>gridfilename</key>
 		<string>wordGrid4.txt</string>
 		<key>listfilename</key>

@@ -7,7 +7,8 @@
 //
 
 #import "AnagramViewController.h"
-#define BUTTON_WIDTH 50.0
+#import <RubyCocoaString/NSString+RubyCocoaString.h>
+#define BUTTON_WIDTH 65.0
 #define FINAL_INDEX -1
 @interface AnagramViewController ()
 
@@ -39,7 +40,7 @@
         tempButton.shadowColor = [UIColor greenSeaColor];
         tempButton.shadowHeight = 3.0f;
         tempButton.cornerRadius = 6.0f;
-        tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+        tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:26];
         [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
         [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
         
@@ -72,22 +73,44 @@
         button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 200, button.frame.size.width, button.frame.size.height);
         [self.view addSubview:button];
     }
+    _constructedWord = @"";
+    _buttons = buttons;
 }
 
 - (void) buttonPressed:(id)caller{
-    NSLog(@"%c", (char)[(FUIButton*)caller tag]);
+    if([(FUIButton*)caller tag] != -1){
+        NSLog(@"yo %@", [NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]]);
+        _constructedWord = [_constructedWord concat:[NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]]];
+        [self disableButton:caller];
+        _mainWordlabel.text = _constructedWord;
+        NSLog(@"asd %@",_constructedWord);
+    }
+    else{
+        _mainWordlabel.text = self.currentWord;
+        _constructedWord = @"";
+        for(int i = 0; i< _buttons.count-1; i++){
+            FUIButton * b = [_buttons objectAtIndex:i];
+            [b setEnabled:YES];
+            b.buttonColor = [UIColor turquoiseColor];
+            b.shadowColor = [UIColor greenSeaColor];
+        }
+    }
 }
 
-
+- (void) disableButton:(FUIButton*)button {
+    button.enabled = NO;
+    button.buttonColor = [UIColor cloudsColor];
+    button.shadowColor = [UIColor grayColor];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [_mainWordlabel setFont:[UIFont flatFontOfSize:40]];
-	[self setup:@"HelloWorld"];
+	[self setup:@"magical"];
     
-    self.currentWord = @"HelloWorld";
+    self.currentWord = @"magical";
 }
 
 - (void)didReceiveMemoryWarning
