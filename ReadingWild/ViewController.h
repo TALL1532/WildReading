@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import <FlatUIKit.h>
+@interface ViewController : UIViewController {
+    FUIButton * fluencyButton;
+    FUIButton * anagramButton;
+    FUIButton * wordSearchButton;
+}
 
 @end

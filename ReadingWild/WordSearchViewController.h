@@ -11,7 +11,11 @@
 
 @interface WordSearchViewController : UIViewController {
     IBOutlet UILabel * category;
-    PuzzleWindow * _puzzleView;
+    PuzzleWindow * _currentPuzzleView;
+    NSMutableArray * _puzzleViews;
+    NSMutableArray * _buttons;
 }
+
+- (void)setup:(NSInteger)numPuzzles;
 
 @end

@@ -11,6 +11,7 @@
 
 #define FONT_SIZE 30.0f
 #define PADDING 5.0f
+
 @implementation PuzzleWindow
 
 @synthesize delegate;												//---comm
@@ -25,16 +26,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code.
+        
+        self.title = filename;
+        
         _width = frame.size.width;
         _height = frame.size.height;
 		
-		NSString * gridPath = [[NSBundle mainBundle] pathForResource:filename ofType:@"txt"];
+		NSString * gridPath = [[NSBundle mainBundle] pathForResource:filename ofType:@""];
         
 		NSString * gridContents = [NSString stringWithContentsOfFile:gridPath
 															  encoding:NSUTF8StringEncoding
 																 error:nil];	
 
-        NSString *wordlistPath = [[NSBundle mainBundle] pathForResource:answerfilename ofType:@"txt"];
+        NSString *wordlistPath = [[NSBundle mainBundle] pathForResource:answerfilename ofType:@""];
         
 		NSString *wordlistContent = [NSString stringWithContentsOfFile:wordlistPath
 															  encoding:NSUTF8StringEncoding

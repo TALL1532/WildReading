@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E8EEFA94A1497EA51F5C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6A77E962E54896A7A0D11E /* libPods.a */; };
 		4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
 		4B06FF0B182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
 		4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */; };
@@ -45,6 +46,7 @@
 		4B1365AD1826BA2800C54EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365881826BA2400C54EC2 /* Foundation.framework */; };
 		4B1365B51826BA2900C54EC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B1365B31826BA2900C54EC2 /* InfoPlist.strings */; };
 		4B1365B81826BA2900C54EC2 /* ReadingWildTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1365B71826BA2900C54EC2 /* ReadingWildTests.m */; };
+		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F6A77E962E54896A7A0D11E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleWindow.h; sourceTree = "<group>"; };
 		4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleWindow.m; sourceTree = "<group>"; };
 		4B06FF0C182B4D6E0025E854 /* AnagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnagramViewController.h; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 		4B1365B41826BA2900C54EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B1365B61826BA2900C54EC2 /* ReadingWildTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadingWildTests.h; sourceTree = "<group>"; };
 		4B1365B71826BA2900C54EC2 /* ReadingWildTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadingWildTests.m; sourceTree = "<group>"; };
+		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
+		590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,7 @@
 				4B1365871826BA2400C54EC2 /* UIKit.framework in Frameworks */,
 				4B1365891826BA2400C54EC2 /* Foundation.framework in Frameworks */,
 				4B13658B1826BA2400C54EC2 /* CoreGraphics.framework in Frameworks */,
+				15E8EEFA94A1497EA51F5C32 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +133,7 @@
 				4B1365B01826BA2800C54EC2 /* ReadingWildTests */,
 				4B1365851826BA2400C54EC2 /* Frameworks */,
 				4B1365841826BA2400C54EC2 /* Products */,
+				590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +153,7 @@
 				4B1365881826BA2400C54EC2 /* Foundation.framework */,
 				4B13658A1826BA2400C54EC2 /* CoreGraphics.framework */,
 				4B1365AA1826BA2800C54EC2 /* SenTestingKit.framework */,
+				0F6A77E962E54896A7A0D11E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
 				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
 				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
+				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
 				4B06FF14182B66930025E854 /* wordList1.txt */,
 				4B06FF15182B66930025E854 /* wordList2.txt */,
 				4B06FF16182B66930025E854 /* wordList3.txt */,
@@ -217,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B1365BB1826BA2900C54EC2 /* Build configuration list for PBXNativeTarget "ReadingWild" */;
 			buildPhases = (
+				42D54E8B89BB48E1885CC7FC /* Check Pods Manifest.lock */,
 				4B13657F1826BA2300C54EC2 /* Sources */,
 				4B1365801826BA2300C54EC2 /* Frameworks */,
 				4B1365811826BA2300C54EC2 /* Resources */,
+				F3F95429628443A2B228083E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +296,7 @@
 				4B1365991826BA2400C54EC2 /* Default.png in Resources */,
 				4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */,
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
+				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
 				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
@@ -316,6 +328,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		42D54E8B89BB48E1885CC7FC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		4B1365A71826BA2800C54EC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +355,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F3F95429628443A2B228083E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -454,7 +496,12 @@
 		};
 		4B1365BC1826BA2900C54EC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadingWild/ReadingWild-Prefix.pch";
 				INFOPLIST_FILE = "ReadingWild/ReadingWild-Info.plist";
@@ -465,7 +512,12 @@
 		};
 		4B1365BD1826BA2900C54EC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadingWild/ReadingWild-Prefix.pch";
 				INFOPLIST_FILE = "ReadingWild/ReadingWild-Info.plist";

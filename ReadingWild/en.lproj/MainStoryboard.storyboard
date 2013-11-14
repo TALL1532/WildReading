@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--S - MainMenu-->
+        <!--View Controller - MainMenu-->
         <scene sceneID="4">
             <objects>
-                <viewController title="MainMenu" id="2" customClass="ß" sceneMemberID="viewController">
+                <viewController title="MainMenu" id="2" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oVI-C3-P53"/>
                         <viewControllerLayoutGuide type="bottom" id="GNQ-0q-GVd"/>
@@ -17,66 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg2-44-rGU">
-                                <rect key="frame" x="205" y="96" width="359" height="198"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="198" id="RNM-bn-5Nc"/>
-                                </constraints>
-                                <state key="normal" title="Anagrams">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kU-Cu-70v">
+                                <rect key="frame" x="691" y="974" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Admin">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="g16-we-fCg" kind="push" id="Das-CL-h4L"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hn5-f9-EMY">
-                                <rect key="frame" x="205" y="330" width="359" height="198"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="198" id="D2o-6v-hCj"/>
-                                    <constraint firstAttribute="width" constant="359" id="e6o-3Z-NuK"/>
-                                </constraints>
-                                <state key="normal" title="Fluency">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uzF-kv-DMQ" kind="push" id="t88-wZ-s2R"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBi-mc-Y2P">
-                                <rect key="frame" x="205" y="629" width="359" height="198"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="198" id="Yl2-Mo-mkU"/>
-                                </constraints>
-                                <state key="normal" title="Word Search">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Oc9-x0-BbQ" kind="push" id="t0k-lm-LKq"/>
+                                    <segue destination="XjA-FG-ewe" kind="push" id="jIZ-lN-AaB"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wg2-44-rGU" firstAttribute="centerX" secondItem="5" secondAttribute="centerX" id="CTF-V3-ZUX"/>
-                            <constraint firstItem="hn5-f9-EMY" firstAttribute="top" secondItem="5" secondAttribute="top" constant="330" id="Crq-y6-pcb"/>
-                            <constraint firstItem="hn5-f9-EMY" firstAttribute="leading" secondItem="wg2-44-rGU" secondAttribute="leading" id="Fzb-gM-Ws4"/>
-                            <constraint firstItem="wg2-44-rGU" firstAttribute="top" secondItem="5" secondAttribute="top" constant="96" id="HS0-3f-krg"/>
-                            <constraint firstItem="hn5-f9-EMY" firstAttribute="trailing" secondItem="wg2-44-rGU" secondAttribute="trailing" id="IXK-Q5-Guu"/>
-                            <constraint firstAttribute="bottom" secondItem="dBi-mc-Y2P" secondAttribute="bottom" constant="197" id="QuF-Fx-OlW"/>
-                            <constraint firstItem="dBi-mc-Y2P" firstAttribute="trailing" secondItem="hn5-f9-EMY" secondAttribute="trailing" id="fK9-C7-I6s"/>
-                            <constraint firstItem="dBi-mc-Y2P" firstAttribute="leading" secondItem="hn5-f9-EMY" secondAttribute="leading" id="xJs-sQ-1gi"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PGv-S3-ND5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="682" y="-237"/>
+            <point key="canvasLocation" x="666" y="-269"/>
+        </scene>
+        <!--View Controller - Settings-->
+        <scene sceneID="AgO-gf-TYI">
+            <objects>
+                <viewController title="Settings" id="XjA-FG-ewe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HoQ-NI-qZt"/>
+                        <viewControllerLayoutGuide type="bottom" id="2ZQ-re-QeY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C95-M3-XE3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgP-qb-ZVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="654" y="1012"/>
         </scene>
         <!--Anagram View Controller - Anagrams-->
         <scene sceneID="aPR-D7-a9d">
             <objects>
-                <viewController storyboardIdentifier="Anagrams" id="g16-we-fCg" customClass="AnagramViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Anagram" id="g16-we-fCg" customClass="AnagramViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="arC-SR-FAu"/>
                         <viewControllerLayoutGuide type="bottom" id="dLG-2M-FeQ"/>
@@ -84,9 +65,20 @@
                     <view key="view" contentMode="scaleToFill" id="OKK-UW-AEP" userLabel="Anagrams">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x87-r4-lSN">
+                                <rect key="frame" x="166" y="73" width="436" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Anagrams" id="3ue-yg-i2q"/>
+                    <connections>
+                        <outlet property="_mainWordlabel" destination="x87-r4-lSN" id="cGT-CS-ZmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ew-2G-klV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,7 +149,7 @@
         <!--Word Search View Controller - Word Search-->
         <scene sceneID="jei-hl-DNL">
             <objects>
-                <viewController storyboardIdentifier="Word Seach" id="Oc9-x0-BbQ" customClass="WordSearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordSearch" id="Oc9-x0-BbQ" customClass="WordSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pjd-SZ-pB3"/>
                         <viewControllerLayoutGuide type="bottom" id="Ffa-Ga-4b4"/>
@@ -166,32 +158,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="&lt;Category>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24h-ki-Q9Z">
-                                <rect key="frame" x="0.0" y="65" width="768" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="xp0-ad-6wx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1b-M0-ZQE">
-                                <rect key="frame" x="209" y="157" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a Puzzle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywa-y7-1W3">
+                                <rect key="frame" x="220" y="109" width="329" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="24h-ki-Q9Z" firstAttribute="leading" secondItem="7pr-lu-Zhp" secondAttribute="leading" id="04u-t3-yRc"/>
-                            <constraint firstItem="24h-ki-Q9Z" firstAttribute="top" secondItem="pjd-SZ-pB3" secondAttribute="bottom" constant="1" id="uIF-oQ-ORb"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Word Search" id="jgH-KG-3lN"/>
                     <connections>
-                        <outlet property="category" destination="24h-ki-Q9Z" id="qgP-nU-NvS"/>
+                        <outlet property="category" destination="Ywa-y7-1W3" id="vjp-Ie-gaK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Koc-qm-gI3" userLabel="First Responder" sceneMemberID="firstResponder"/>

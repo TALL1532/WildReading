@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FlatUIKit.h>
 
 @interface AnagramViewController : UIViewController {
     IBOutlet UILabel * _mainWordlabel;
-    IBOutlet UITextField * _entryField;
     
     NSString * _currentWord;
+    
 }
 
-//@property (nonatomic, retain) UILabel * mainWordLabel;
+@property (nonatomic, retain) NSString * currentWord;
 //@property (nonatomic, retain) UITextField * entryField;
 
 @end

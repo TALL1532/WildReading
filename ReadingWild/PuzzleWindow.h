@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ProcessDataDelegate2 <NSObject>
-- (void)logIt:(NSString *)stringToLog;
-- (BOOL)compareWords:(NSString *)wordSent;
-- (int)getPuzzleNumber;
-@end
-
-
 @interface PuzzleWindow : UIView {
 
 		
@@ -25,9 +18,7 @@
 	NSArray *xGridPositions;
 	NSArray *yGridPositions;
 	NSArray *letterArray;
-	
-	//NSMutableString *theWord;
-	
+		
 	CGPoint touchPt;
 
 	int x1;
@@ -45,9 +36,7 @@
 	NSMutableArray *rectAngles;
 	
 	int rectLength;
-		
-	id <ProcessDataDelegate2> delegate;
-    
+		  
     CGFloat _width;
     CGFloat _height;
     
@@ -59,6 +48,8 @@
 }
 
 @property (retain) id delegate;
+
+@property (nonatomic, retain) NSString * title;
 
 - (id)initWithFrame:(CGRect)frame puzzleName:(NSString*)filename answerName:(NSString *)answerfilename;
 - (float)getHypotenuse;
