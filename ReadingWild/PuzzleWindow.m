@@ -79,7 +79,9 @@
 	CGContextFillRect(ctx,rect);	//actually fill the background
 	
 	//set up font parameters
-	CGContextSelectFont(ctx, "Courier New Bold", _colWidth+PADDING, kCGEncodingMacRoman);	//set font,size
+    UIFont * font = [UIFont fontWithName:@"Courier New Bold" size:FONT_SIZE];
+    
+	CGContextSelectFont(ctx, "Courier New Bold", FONT_SIZE, kCGEncodingMacRoman);	//set font,size
     CGContextSetTextDrawingMode(ctx, kCGTextFill);
     CGContextSetRGBFillColor(ctx, 0, 0, 0, 1);
 	
@@ -99,6 +101,7 @@
         NSArray * text = [[letterGridArray objectAtIndex:(i)] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         for(int j = 0; j < text.count; j++){
             const char * c = [[text objectAtIndex:(j)] UTF8String];
+            //CGSize size = [text sizeWithFont:....];
             CGContextShowTextAtPoint(ctx, PADDING + j*(_colWidth) + offx, (i)*(_colWidth) + offy, c, 1);
         }
 	}

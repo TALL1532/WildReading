@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15E8EEFA94A1497EA51F5C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6A77E962E54896A7A0D11E /* libPods.a */; };
+		4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */; };
 		4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
 		4B06FF0B182B4B8D0025E854 /* PuzzleWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */; };
 		4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */; };
@@ -61,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		0F6A77E962E54896A7A0D11E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B0051B8184A9BCA009F1D26 /* WildReadingTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTimerView.h; sourceTree = "<group>"; };
+		4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTimerView.m; sourceTree = "<group>"; };
 		4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleWindow.h; sourceTree = "<group>"; };
 		4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleWindow.m; sourceTree = "<group>"; };
 		4B06FF0C182B4D6E0025E854 /* AnagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnagramViewController.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
 				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
 				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
+				4B0051B8184A9BCA009F1D26 /* WildReadingTimerView.h */,
+				4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */,
 				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
 				4B06FF14182B66930025E854 /* wordList1.txt */,
 				4B06FF15182B66930025E854 /* wordList2.txt */,
@@ -381,6 +386,7 @@
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
+				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
 				4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */,
 				4B06FF12182B57700025E854 /* WordSearchViewController.m in Sources */,
