@@ -47,6 +47,11 @@
 		4B1365AD1826BA2800C54EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365881826BA2400C54EC2 /* Foundation.framework */; };
 		4B1365B51826BA2900C54EC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B1365B31826BA2900C54EC2 /* InfoPlist.strings */; };
 		4B1365B81826BA2900C54EC2 /* ReadingWildTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1365B71826BA2900C54EC2 /* ReadingWildTests.m */; };
+		4B28181B18504A9900B98BDA /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B28181A18504A9900B98BDA /* AdminViewController.m */; };
+		4B28182118504BC800B98BDA /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B28182018504BC800B98BDA /* TaskCell.m */; };
+		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
+		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
+		4B2818291850574E00B98BDA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818281850574E00B98BDA /* Task.m */; };
 		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +105,15 @@
 		4B1365B41826BA2900C54EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B1365B61826BA2900C54EC2 /* ReadingWildTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadingWildTests.h; sourceTree = "<group>"; };
 		4B1365B71826BA2900C54EC2 /* ReadingWildTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadingWildTests.m; sourceTree = "<group>"; };
+		4B28181918504A9900B98BDA /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		4B28181A18504A9900B98BDA /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		4B28181F18504BC800B98BDA /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		4B28182018504BC800B98BDA /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		4B2818221850530900B98BDA /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
+		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		4B2818271850574E00B98BDA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		4B2818281850574E00B98BDA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
 		590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,10 +187,19 @@
 				4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */,
 				4B06FF10182B57700025E854 /* WordSearchViewController.h */,
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
+				4B2818251850562500B98BDA /* Defaults.plist */,
 				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
 				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
 				4B0051B8184A9BCA009F1D26 /* WildReadingTimerView.h */,
 				4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */,
+				4B28181918504A9900B98BDA /* AdminViewController.h */,
+				4B28181A18504A9900B98BDA /* AdminViewController.m */,
+				4B28181F18504BC800B98BDA /* TaskCell.h */,
+				4B28182018504BC800B98BDA /* TaskCell.m */,
+				4B2818271850574E00B98BDA /* Task.h */,
+				4B2818281850574E00B98BDA /* Task.m */,
+				4B2818221850530900B98BDA /* SettingsManager.h */,
+				4B2818231850530900B98BDA /* SettingsManager.m */,
 				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
 				4B06FF14182B66930025E854 /* wordList1.txt */,
 				4B06FF15182B66930025E854 /* wordList2.txt */,
@@ -299,6 +322,7 @@
 			files = (
 				4B1365911826BA2400C54EC2 /* InfoPlist.strings in Resources */,
 				4B1365991826BA2400C54EC2 /* Default.png in Resources */,
+				4B2818261850562500B98BDA /* Defaults.plist in Resources */,
 				4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */,
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
@@ -383,11 +407,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B28181B18504A9900B98BDA /* AdminViewController.m in Sources */,
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
+				4B2818241850530900B98BDA /* SettingsManager.m in Sources */,
+				4B2818291850574E00B98BDA /* Task.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
+				4B28182118504BC800B98BDA /* TaskCell.m in Sources */,
 				4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */,
 				4B06FF12182B57700025E854 /* WordSearchViewController.m in Sources */,
 			);

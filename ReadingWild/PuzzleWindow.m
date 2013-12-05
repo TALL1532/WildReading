@@ -79,7 +79,6 @@
 	CGContextFillRect(ctx,rect);	//actually fill the background
 	
 	//set up font parameters
-    UIFont * font = [UIFont fontWithName:@"Courier New Bold" size:FONT_SIZE];
     
 	CGContextSelectFont(ctx, "Courier New Bold", FONT_SIZE, kCGEncodingMacRoman);	//set font,size
     CGContextSetTextDrawingMode(ctx, kCGTextFill);
@@ -93,18 +92,20 @@
 	//for loop to draw all lines of text
     
 	int i;
-    CGFloat offx = 0.0;
-    CGFloat offy = _colWidth;
+    
 	for (i=0; i<letterGridArray.count; i++){
 	
         //set text to be drawn
         NSArray * text = [[letterGridArray objectAtIndex:(i)] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         for(int j = 0; j < text.count; j++){
             const char * c = [[text objectAtIndex:(j)] UTF8String];
-            //CGSize size = [text sizeWithFont:....];
-            CGContextShowTextAtPoint(ctx, PADDING + j*(_colWidth) + offx, (i)*(_colWidth) + offy, c, 1);
+            
+            CGRect rect = CGRectMake(j*(_colWidth), (i)*(_colWidth), _colWidth, _colWidth);
+            [[NSString stringWithFormat:@"%c",*c] drawInRect:rect withFont:[UIFont systemFontOfSize:24.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+            
         }
 	}
+    
 	//draw any already selected words, if they exist
 	int j;
 	int xpos;
@@ -161,8 +162,6 @@
 	else {
 		//NSLog(@"Swiped out of bounds");
 	}
-	
-	
 }
 
 //////////////////// TOUCHES ////////////////////////////////////////////
