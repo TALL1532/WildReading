@@ -208,6 +208,7 @@
 			BOOL save = [self isAnswer:wordHighlighted];
 			
 			if(save) {
+                [delegate puzzleWindowWordFound];
 				[self addRectangle:x1*_colWidth + _colWidth/2 yOrigin:y1*_colWidth+ _colWidth/2 length:hypotenuse angle:angle];
 			}
 			

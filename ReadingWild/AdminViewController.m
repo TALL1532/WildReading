@@ -11,6 +11,8 @@
 #import "Task.h"
 #import "TaskCell.h"
 
+
+
 @implementation AdminViewController
 
 -(void)viewDidLoad {
@@ -40,19 +42,24 @@
     if(taskCell == nil){
         taskCell = [[TaskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
-    taskCell.timeTextField.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    taskCell.backgroundColor = [UIColor redColor];
+    NSInteger time = [(NSNumber*)[(NSDictionary*)[_word_search_tasks objectAtIndex:indexPath.row] objectForKey:TASK_NUM_SECONDS_KEY] integerValue];
+    taskCell.timeTextField.text = [NSString stringWithFormat:@"%d", time];
+    taskCell.tag = indexPath.row;
     return taskCell;
 }
 
 -(void)addWordSearchTask:(id)sender {
     NSLog(@"add task");
-    Task * temp = [[Task alloc] init];
-    temp.task_duration_seconds = 30;
-    temp.task_type = WORD_SEARCH_TASK;
     
-    [_word_search_tasks addObject:temp];
-    //[SettingsManager setObject:_word_search_tasks withKey:WORD_SEARCH_TASKS_ARRAY];
+    NSMutableDictionary * temp_task = [[NSMutableDictionary alloc] init];
+    NSNumber * task_duration = [NSNumber numberWithInt:30];
+    NSNumber * infinite = [NSNumber numberWithBool:NO];
+    
+    [temp_task setValue:task_duration forKey:TASK_NUM_SECONDS_KEY];
+    [temp_task setValue:infinite forKey:TASK_INFINITE_KEY];
+    
+    [_word_search_tasks addObject:temp_task];
+    [SettingsManager setObject:_word_search_tasks withKey:WORD_SEARCH_TASKS_ARRAY];
     [self refreshTable];
 }
 

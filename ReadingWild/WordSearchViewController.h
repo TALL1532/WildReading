@@ -10,18 +10,24 @@
 #import "PuzzleWindow.h"
 #import "WildReadingTimerView.h"
 
-@interface WordSearchViewController : UIViewController {
+@interface WordSearchViewController : UIViewController <PuzzleWindowDelegate, WildReadingTimerViewDelegate> {
     IBOutlet UILabel * category;
     PuzzleWindow * _currentPuzzleView;
     NSMutableArray * _puzzleViews;
     NSMutableArray * _buttons;
     UIButton * _nextButton;
     
+    NSInteger _currentSeries;
     NSInteger _currentPuzzle;
     NSInteger _numberPuzzlesInSeries;
+    NSInteger _numberWordsFoundInSeries;
     WildReadingTimerView * _timer;
+    NSMutableArray * _tasks;
+    NSInteger _series_time;
 }
 
-- (void)setup:(NSInteger)numPuzzles;
+- (void)setup;
+
+@property (retain) IBOutlet UILabel * wordsFound;
 
 @end

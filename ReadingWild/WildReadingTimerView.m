@@ -44,6 +44,8 @@
     _timeLeft --;
     if (_timeLeft <= 0) {
         [timer invalidate];
+        [delegate wildReadingTimerViewTimeUp];
+
     }
     [self updateTimerDisplay];
 }

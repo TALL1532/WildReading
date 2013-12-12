@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <FlatUIKit.h>
 
+
+@protocol WildReadingTimerViewDelegate
+- (void)wildReadingTimerViewTimeUp;
+@end
+
+
 @interface WildReadingTimerView : UIView {
     UIView * bar;
     UILabel * timerDisplay;
@@ -17,8 +23,9 @@
 }
 
 - (void) start:(NSTimeInterval)time;
+- (void) resume;
 - (void) pause;
 
-@property (nonatomic) id delegate;
+@property (nonatomic) id <WildReadingTimerViewDelegate> delegate;
 
 @end

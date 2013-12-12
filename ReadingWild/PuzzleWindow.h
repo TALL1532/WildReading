@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PuzzleWindowDelegate
+- (void)puzzleWindowWordFound;
+@end
+
 @interface PuzzleWindow : UIView {
 
 		
@@ -47,7 +51,7 @@
     NSArray * _words;
 }
 
-@property (retain) id delegate;
+@property (retain)  id <PuzzleWindowDelegate> delegate;
 
 @property (nonatomic, retain) NSString * title;
 
