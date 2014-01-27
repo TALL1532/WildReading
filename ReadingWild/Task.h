@@ -1,21 +1,20 @@
 //
 //  Task.h
-//  ReadingWild
+//  
 //
-//  Created by Thomas Deegan on 12/5/13.
-//  Copyright (c) 2013 Thomas Deegan. All rights reserved.
+//  Created by Thomas Deegan on 1/26/14.
+//
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-#define WORD_SEARCH_TASK @"k_word_search_task"
-#define ANAGRAM_TASK @"k_anagram_task"
-#define FLUENCY_TASK @"k_fluency_task"
 
-@interface Task : NSObject
+@interface Task : NSManagedObject
 
-@property (weak, nonatomic) NSString * task_type;
-@property (nonatomic) NSInteger task_duration_seconds;
-@property (nonatomic) BOOL isInfinite;
+@property (nonatomic, retain) NSString * taskLoggingName;
+@property (nonatomic, retain) NSString * taskType;
+@property (nonatomic, retain) NSNumber * taskDurationSeconds;
+@property (nonatomic, retain) NSNumber * isInfinite;
 
 @end
