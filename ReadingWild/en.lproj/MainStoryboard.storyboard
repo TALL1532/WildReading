@@ -60,15 +60,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="728" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NqO-V0-7VL">
-                                                    <rect key="frame" x="173" y="18" width="94" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                </stepper>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="30" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mqt-Th-sFR">
-                                                    <rect key="frame" x="275" y="18" width="54" height="30"/>
+                                                    <rect key="frame" x="161" y="17" width="54" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="timeChanged:" destination="6Dr-lC-kLW" eventType="editingDidEnd" id="F8D-Mg-xkO"/>
+                                                    </connections>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-WB-aDo">
                                                     <rect key="frame" x="20" y="18" width="113" height="29"/>
@@ -77,31 +76,47 @@
                                                         <segment title="Single"/>
                                                         <segment title="Infinite"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="6Dr-lC-kLW" eventType="valueChanged" id="vRy-Bt-YaF"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afj-qh-x2D">
-                                                    <rect key="frame" x="337" y="25" width="68" height="21"/>
+                                                    <rect key="frame" x="223" y="24" width="68" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="practice" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJM-rI-KPQ">
-                                                    <rect key="frame" x="611" y="18" width="97" height="30"/>
+                                                    <rect key="frame" x="555" y="18" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameChanged:" destination="6Dr-lC-kLW" eventType="editingDidEnd" id="UOZ-zd-qED"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axu-Pz-miP">
-                                                    <rect key="frame" x="518" y="25" width="85" height="21"/>
+                                                    <rect key="frame" x="462" y="25" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOm-l3-LVX">
+                                                    <rect key="frame" x="670" y="20" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deletePressed:" destination="6Dr-lC-kLW" eventType="touchUpInside" id="DDt-Od-bay"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="lengthSegmentedControl" destination="Sgb-WB-aDo" id="Pil-tF-SbI"/>
-                                            <outlet property="timeStepper" destination="NqO-V0-7VL" id="iDy-xm-Zts"/>
+                                            <outlet property="logNameTextField" destination="tJM-rI-KPQ" id="Rc3-1K-XuB"/>
                                             <outlet property="timeTextField" destination="Mqt-Th-sFR" id="cJd-Pe-uL8"/>
                                         </connections>
                                     </tableViewCell>
@@ -200,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgP-qb-ZVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="984"/>
+            <point key="canvasLocation" x="666" y="998"/>
         </scene>
         <!--Anagram View Controller - Anagrams-->
         <scene sceneID="aPR-D7-a9d">

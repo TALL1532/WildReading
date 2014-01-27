@@ -22,7 +22,7 @@
     NSInteger _numberPuzzlesInSeries;
     NSInteger _numberWordsFoundInSeries;
     WildReadingTimerView * _timer;
-    NSMutableArray * _tasks;
+    NSArray * _tasks;
     NSInteger _series_time;
 }
 

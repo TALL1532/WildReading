@@ -7,11 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
-@interface TaskCell : UITableViewCell
+@protocol TaskCellDelegate
+- (void)taskCellNameChanged:(NSString*)newName;
+- (void)taskCellInfiniteChanged:(BOOL)isInfinite;
+- (void)taskCellTimeChanged:(NSInteger)seconds;
+
+@end
+
+
+@interface TaskCell : UITableViewCell {
+    Task * __taskModel;
+}
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *lengthSegmentedControl;
-@property (weak, nonatomic) IBOutlet UIStepper *timeStepper;
 @property (weak, nonatomic) IBOutlet UITextField *timeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *logNameTextField;
+
+
+@property (retain, nonatomic) id <TaskCellDelegate> delegate;
+
+
+- (IBAction)deletePressed:(id)sender;
+- (IBAction)timeChanged:(id)sender;
+- (IBAction)nameChanged:(id)sender;
+- (IBAction)segmentChanged:(id)sender;
+- (void)setTaskModel:(Task*)task;
 
 @end

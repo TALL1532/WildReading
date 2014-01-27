@@ -31,13 +31,13 @@
     NSInteger max_sets = 4;
     NSLog(@"Next series");
     _currentSeries ++;
-    _tasks = (NSMutableArray*)[SettingsManager getObjectWithKey:WORD_SEARCH_TASKS_ARRAY];
     if(_currentSeries > [_tasks count]-1){
         NSLog(@"done!");
         [[self navigationController] popViewControllerAnimated:YES];
     }
-    BOOL isInfinite = [(NSNumber *)[(NSMutableDictionary*)[_tasks objectAtIndex:_currentSeries] objectForKey:TASK_INFINITE_KEY] boolValue];
-    _series_time = [(NSNumber *)[(NSMutableDictionary*)[_tasks objectAtIndex:_currentSeries] objectForKey:TASK_NUM_SECONDS_KEY] integerValue];
+    Task * task = [_tasks objectAtIndex:_currentSeries];
+    BOOL isInfinite = [task.isInfinite boolValue];
+    _series_time = [task.taskDurationSeconds integerValue];
     if(isInfinite){
         [self startSeries:-1 withTime:_series_time];
     }else{
@@ -48,41 +48,18 @@
 - (void)setup{
     NSInteger max_sets = 4;
     _currentSeries = 0;
-    _tasks = (NSMutableArray*)[SettingsManager getObjectWithKey:WORD_SEARCH_TASKS_ARRAY];
-    BOOL isInfinite = [(NSNumber *)[(NSMutableDictionary*)[_tasks objectAtIndex:_currentSeries] objectForKey:TASK_INFINITE_KEY] boolValue];
-    _series_time = [(NSNumber *)[(NSMutableDictionary*)[_tasks objectAtIndex:_currentSeries] objectForKey:TASK_NUM_SECONDS_KEY] integerValue];
-    
-    NSLog(@"time: %d", _series_time);
+    _tasks = [Task getTasks:WORDSEARCH_TASK];
+    Task * task = [_tasks objectAtIndex:_currentSeries];
+    BOOL isInfinite = [task.isInfinite boolValue];
+    _series_time = [task.taskDurationSeconds integerValue];
+    NSLog(@"time: %d %d", _series_time, isInfinite);
     if(isInfinite){
         [self startSeries:-1 withTime:_series_time];
     }else{
         [self startSeries:max_sets withTime:_series_time];
     }
     return;
-    /*CGFloat spacing = (self.view.frame.size.width - (numPuzzles*BUTTON_WIDTH))/(numPuzzles+1);
-    for( int i =0; i < numPuzzles; i++){
-        NSDictionary * properties = [self getGridProperties:i];
-        NSString *  gridfile = [properties objectForKey:@"gridfilename"];
-        NSString *  listfile = [properties objectForKey:@"listfilename"];
-        NSString * title = [properties objectForKey:@"Name"];
-        PuzzleWindow * temp = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - (spacing*2+BUTTON_WIDTH), 500, 500) puzzleName:gridfile answerName:listfile];
-        temp.title = title;
-        [_puzzleViews addObject:temp];
-        FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake(spacing + i*(spacing+BUTTON_WIDTH), self.view.frame.size.height - BUTTON_WIDTH - spacing, BUTTON_WIDTH, BUTTON_WIDTH)];
-        tempButton.buttonColor = [UIColor turquoiseColor];
-        tempButton.shadowColor = [UIColor greenSeaColor];
-        tempButton.shadowHeight = 3.0f;
-        tempButton.cornerRadius = 6.0f;
-        tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
-        [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-        [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-        
-        [tempButton setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
-        [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:tempButton];
-        [_buttons addObject:tempButton];
-        tempButton.tag = i;
-    }*/
+    
 }
 
 - (void) switchPuzzle:(id)sender{

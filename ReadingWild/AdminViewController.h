@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskCell.h"
+
 
 #define TASK_NUM_SECONDS_KEY @"k_task_num_seconds"
 #define TASK_INFINITE_KEY @"k_task_infinite"
 
-@interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate> {
     NSMutableArray * _word_search_tasks;
 }
 

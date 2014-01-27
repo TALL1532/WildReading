@@ -51,6 +51,7 @@
 + (void)setString:(NSString*)value withKey:(NSString*)key{
     [SettingsManager setObject:value withKey:key];
 }
+
 + (NSString*)getStringWithKey:(NSString*)key{
     NSString * string = (NSString*)[SettingsManager getObjectWithKey:key];
     if(string == nil) string = @"";

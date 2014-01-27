@@ -4,9 +4,10 @@
         <attribute name="isInfinite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="taskDurationSeconds" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="taskLoggingName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskPosition" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="taskType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="360" positionY="54" width="198" height="103"/>
+        <element name="Task" positionX="1881" positionY="-423" width="234" height="118"/>
     </elements>
 </model>

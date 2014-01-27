@@ -51,7 +51,9 @@
 		4B28182118504BC800B98BDA /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B28182018504BC800B98BDA /* TaskCell.m */; };
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
-		4B2818291850574E00B98BDA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818281850574E00B98BDA /* Task.m */; };
+		4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */; };
+		4B601D621895F16D0083A7ED /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D611895F16D0083A7ED /* Task.m */; };
+		4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B601D631895FBC20083A7ED /* CoreData.framework */; };
 		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
 /* End PBXBuildFile section */
 
@@ -112,9 +114,13 @@
 		4B2818221850530900B98BDA /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
 		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
-		4B2818271850574E00B98BDA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		4B2818281850574E00B98BDA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		4B601D5B1895ED840083A7ED /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
+		4B601D601895F16D0083A7ED /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		4B601D611895F16D0083A7ED /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		4B601D631895FBC20083A7ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
+		4BCAEB121896057A006C639E /* TaskDataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel2.xcdatamodel; sourceTree = "<group>"; };
 		590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */,
 				4B1365871826BA2400C54EC2 /* UIKit.framework in Frameworks */,
 				4B1365891826BA2400C54EC2 /* Foundation.framework in Frameworks */,
 				4B13658B1826BA2400C54EC2 /* CoreGraphics.framework in Frameworks */,
@@ -166,6 +173,7 @@
 		4B1365851826BA2400C54EC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B601D631895FBC20083A7ED /* CoreData.framework */,
 				4B1365861826BA2400C54EC2 /* UIKit.framework */,
 				4B1365881826BA2400C54EC2 /* Foundation.framework */,
 				4B13658A1826BA2400C54EC2 /* CoreGraphics.framework */,
@@ -196,8 +204,9 @@
 				4B28181A18504A9900B98BDA /* AdminViewController.m */,
 				4B28181F18504BC800B98BDA /* TaskCell.h */,
 				4B28182018504BC800B98BDA /* TaskCell.m */,
-				4B2818271850574E00B98BDA /* Task.h */,
-				4B2818281850574E00B98BDA /* Task.m */,
+				4B601D601895F16D0083A7ED /* Task.h */,
+				4B601D611895F16D0083A7ED /* Task.m */,
+				4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */,
 				4B2818221850530900B98BDA /* SettingsManager.h */,
 				4B2818231850530900B98BDA /* SettingsManager.m */,
 				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
@@ -407,10 +416,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */,
 				4B28181B18504A9900B98BDA /* AdminViewController.m in Sources */,
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
 				4B2818241850530900B98BDA /* SettingsManager.m in Sources */,
-				4B2818291850574E00B98BDA /* Task.m in Sources */,
+				4B601D621895F16D0083A7ED /* Task.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
@@ -625,6 +635,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4BCAEB121896057A006C639E /* TaskDataModel2.xcdatamodel */,
+				4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */,
+				4B601D5B1895ED840083A7ED /* TaskDataModel.xcdatamodel */,
+			);
+			currentVersion = 4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */;
+			path = TaskDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4B13657B1826BA2300C54EC2 /* Project object */;
 }
