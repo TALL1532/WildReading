@@ -20,6 +20,8 @@
     UILabel * timerDisplay;
     
     NSTimeInterval _timeLeft;
+    
+    CGFloat _barWidth;
 }
 
 - (void) start:(NSTimeInterval)time;

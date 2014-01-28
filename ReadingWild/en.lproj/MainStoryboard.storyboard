@@ -203,6 +203,22 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="User" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7D-7p-SAZ">
+                                <rect key="frame" x="166" y="69" width="276" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameChanged:" destination="XjA-FG-ewe" eventType="editingDidEnd" id="q2h-wz-9bv"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Participant Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaQ-Bj-ohT">
+                                <rect key="frame" x="20" y="73" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -210,6 +226,7 @@
                         <outlet property="_wordSearchButton" destination="Kvf-62-EZu" id="Vq2-wM-ZfE"/>
                         <outlet property="anagramAddButton" destination="TVu-3P-bAo" id="Y3x-Pj-zEg"/>
                         <outlet property="anagramTaskTable" destination="AcL-va-w38" id="sr3-AK-Mkn"/>
+                        <outlet property="participantNameTextView" destination="b7D-7p-SAZ" id="0zz-cM-TF7"/>
                         <outlet property="wordSearchTaskTable" destination="hiM-Rl-8M6" id="Rfy-GN-WMi"/>
                     </connections>
                 </viewController>

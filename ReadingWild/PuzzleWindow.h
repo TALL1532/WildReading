@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol PuzzleWindowDelegate
-- (void)puzzleWindowWordFound;
+- (void)puzzleWindowWordFound:(NSString*)word;
 @end
 
 @interface PuzzleWindow : UIView {

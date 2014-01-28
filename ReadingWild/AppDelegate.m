@@ -23,10 +23,6 @@
     
     // Override point for customization after application launch.
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    
-    
     
     
     return YES;

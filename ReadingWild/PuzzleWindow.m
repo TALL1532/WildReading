@@ -201,17 +201,14 @@
 		float angle = [self getAngle:hypotenuse];
 		int angleOrient = [self getHighlightOrient];
 		
-		if(angleOrient != -1) { //if the angle is valid (0,45,90,135,180,225,270,315)
-			
+		if(angleOrient != -1) {
 			NSString *wordHighlighted = [self getHighlightContent];
             NSLog(@"%@", wordHighlighted);
 			BOOL save = [self isAnswer:wordHighlighted];
-			
 			if(save) {
-                [delegate puzzleWindowWordFound];
+                [delegate puzzleWindowWordFound:wordHighlighted];
 				[self addRectangle:x1*_colWidth + _colWidth/2 yOrigin:y1*_colWidth+ _colWidth/2 length:hypotenuse angle:angle];
 			}
-			
 		}
 		else {
 		}

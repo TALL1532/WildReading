@@ -22,11 +22,13 @@
     [self._wordSearchButton addTarget:self action:@selector(addWordSearchTask:) forControlEvents:UIControlEventTouchUpInside];
     _wordSearchTaskTable.dataSource = self;
     _wordSearchTaskTable.delegate = self;
+    
+    self.participantNameTextView.text = [[NSUserDefaults standardUserDefaults] valueForKey:PARTICIPANT_NAME];
     [super viewDidLoad];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self saveEverything];  
+    [self saveTasks];
 }
 
 //table view delegates
@@ -94,9 +96,19 @@
     [self.wordSearchTaskTable reloadData];
 }
 
-- (void) saveEverything {
+- (void) saveTasks {
     AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
     [mainApp saveContext];
+}
+
+- (IBAction)nameChanged:(id)sender {
+    NSString * name = ((UITextField*)sender).text;
+    NSLog(name);
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:PARTICIPANT_NAME];
+}
+
++ (NSString*)getParticipantName {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:PARTICIPANT_NAME];
 }
 
 @end

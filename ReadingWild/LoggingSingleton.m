@@ -20,6 +20,11 @@
     return sharedInstance;
 }
 
+- (void)pushRecord:(NSString *)record {
+    //might have to make sure there is a new line?
+    if (!self.recordsStringWriteBuffer) self.recordsStringWriteBuffer = @"";
+    self.recordsStringWriteBuffer = [self.recordsStringWriteBuffer stringByAppendingString:record];
+}
 - (void)storeTrialDataWithName:(NSString*)name task:(NSString*)task sessionNumber:(NSInteger)sessionNum date:(NSString*)date trial:(NSInteger)trialNum taskAccuracy:(CGFloat)taskAccuracy averageReactionTime:(NSInteger)reactionTime memoryAccuracy:(CGFloat)memoryAccuracy andSpanLevel:(NSInteger)spanLevel{
     if(taskAccuracy == 0){
         taskAccuracy = 0;
@@ -82,9 +87,6 @@
     [self writeToEndOfFile:self.recordsStringWriteBuffer withFilename:@"record.csv"];
     self.recordsStringWriteBuffer = @"";
     
-    //NSLog(@"writing buffer to file: %@ \n",self.recordsStringWriteBuffer);
-    [self writeToEndOfFile:self.loggingStringWriteBuffer withFilename:@"control_logs.csv"];
-    self.loggingStringWriteBuffer = @"";
 }
 
 - (void)writeToEndOfFile:(NSString*)string withFilename:(NSString*)filename{
@@ -100,7 +102,7 @@
         
         NSError *error = nil;
         if([filename isEqualToString:@"control_logs.csv"]){
-            string = [NSString stringWithFormat:@"%@%@",CONTROL_HEADER,string];
+            string = [NSString stringWithFormat:@"%@%@",@"something?\n",string];
         }
         BOOL success = [string writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
         if (!success) {
@@ -131,52 +133,5 @@
 - (NSString *)applicationDocumentsDirectory
 {
 	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-}
-//This number is reset when the subject is reset in the Admin Screen
-+ (NSInteger)getSessionNumber{
-    NSInteger toReturn = [[NSUserDefaults standardUserDefaults] integerForKey:@"k_sessionNumber"];
-    return toReturn;
-}
-+ (NSString*)getSubjectName{
-    NSString* toReturn = [[NSUserDefaults standardUserDefaults] stringForKey:SUBJECT_NAME];
-    if(toReturn == nil){
-        [[NSUserDefaults standardUserDefaults] setObject:@"default_subject" forKey:SUBJECT_NAME];
-        toReturn = @"default_subject";
-    }
-    return toReturn;
-}
-
-
-+ (void)setRecoveryTime:(NSDate*)date{
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"k_recovery_timestamp"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-+ (void)setRecoverySection:(NSNumber*)section{
-    [[NSUserDefaults standardUserDefaults] setObject:section forKey:@"k_recovery_section"];
-}
-+ (void)setRecoverySections:(NSMutableArray*)sectionsArray{
-    [[NSUserDefaults standardUserDefaults] setObject:sectionsArray forKey:@"k_recovery_order"];
-}
-+ (void)setRecoverySectionTimeLeft:(NSNumber*)time{
-    [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"k_recovery_section_time_left"];
-}
-+ (void)setRecoveryValidExit:(BOOL)validExit{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:validExit] forKey:@"k_recovery_valid_exit"];
-}
-
-+ (NSDate*)getRecoveryTime{
-    return  (NSDate*)[[NSUserDefaults standardUserDefaults] objectForKey:@"k_recovery_timestamp"];
-}
-+ (NSNumber*)getRecoverySection{
-    return  (NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"k_recovery_section"];
-}
-+ (NSMutableArray*)getRecoverySections{
-    return [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"k_recovery_order"]];
-}
-+ (NSNumber*)getRecoverySectionTimeLeft{
-    return  (NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"k_recovery_section_time_left"];
-}
-+ (BOOL)getRecoveryValidExit{
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"k_recovery_valid_exit"] boolValue];
 }
 @end

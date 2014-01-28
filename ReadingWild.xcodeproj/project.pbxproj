@@ -55,6 +55,7 @@
 		4B601D621895F16D0083A7ED /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D611895F16D0083A7ED /* Task.m */; };
 		4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B601D631895FBC20083A7ED /* CoreData.framework */; };
 		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
+		4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,9 +119,11 @@
 		4B601D601895F16D0083A7ED /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4B601D611895F16D0083A7ED /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4B601D631895FBC20083A7ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
 		4BCAEB121896057A006C639E /* TaskDataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel2.xcdatamodel; sourceTree = "<group>"; };
+		4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingSingleton.h; sourceTree = "<group>"; };
+		4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingSingleton.m; sourceTree = "<group>"; };
 		590B3603FBCB47AE9EFE65EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +212,8 @@
 				4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */,
 				4B2818221850530900B98BDA /* SettingsManager.h */,
 				4B2818231850530900B98BDA /* SettingsManager.m */,
+				4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */,
+				4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */,
 				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
 				4B06FF14182B66930025E854 /* wordList1.txt */,
 				4B06FF15182B66930025E854 /* wordList2.txt */,
@@ -421,6 +426,7 @@
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
 				4B2818241850530900B98BDA /* SettingsManager.m in Sources */,
 				4B601D621895F16D0083A7ED /* Task.m in Sources */,
+				4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,

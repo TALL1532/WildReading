@@ -22,8 +22,9 @@
 @implementation WordSearchViewController
 
 // Puzzle Window delgate
--(void)puzzleWindowWordFound {
+-(void)puzzleWindowWordFound:(NSString*)word{
     _numberWordsFoundInSeries ++;
+    [self pushRecord:word];
     _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
 }
 
@@ -59,7 +60,6 @@
         [self startSeries:max_sets withTime:_series_time];
     }
     return;
-    
 }
 
 - (void) switchPuzzle:(id)sender{
@@ -81,7 +81,6 @@
     }else{
         _numberPuzzlesInSeries--;
     }
-    
 
     [self.view addSubview:temp];
     _currentPuzzleView = temp;
@@ -124,6 +123,7 @@
 }
 
 -(void)beginTesting{
+    NSLog(@"Begin Testing");
     if(!_timer){
         _timer = [[WildReadingTimerView alloc] initWithFrame:CGRectMake(0.0, 65.0, self.view.frame.size.width, 30)];
         [self.view addSubview:_timer];
@@ -161,6 +161,20 @@
     NSArray * myArray = [NSArray arrayWithContentsOfFile:  [[NSBundle mainBundle] pathForResource:@"wordGrids" ofType:@"plist"]];
     return [myArray objectAtIndex:i];
 }
+#pragma mark - Word Search Logging
+
+- (void)pushRecord:(NSString*)word{
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * time = @"1.00";//placeholder
+    NSString * puzzleNumber = @"111";
+    NSString * wordPressed = word;
+    NSString * record = [NSString stringWithFormat:@"WORDS_SEARCH,%@,%@,%@,%@\n",username, time, puzzleNumber,wordPressed];
+    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [[LoggingSingleton sharedSingleton] writeBufferToFile];
+}
+
+#pragma mark - Controller Delegate Methods
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

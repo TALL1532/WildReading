@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PuzzleWindow.h"
 #import "WildReadingTimerView.h"
+#import "LoggingSingleton.h"
 
 @interface WordSearchViewController : UIViewController <PuzzleWindowDelegate, WildReadingTimerViewDelegate> {
     IBOutlet UILabel * category;

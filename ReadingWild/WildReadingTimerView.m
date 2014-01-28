@@ -16,13 +16,14 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self){
+        _barWidth = frame.size.width;
         bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         bar.backgroundColor = [UIColor peterRiverColor];
         [self addSubview:bar];
         
         timerDisplay = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         timerDisplay.font = [UIFont systemFontOfSize:20];
-        timerDisplay.text = @"_";
+        timerDisplay.text = @"";
         timerDisplay.textColor = [UIColor whiteColor];
         [self addSubview:timerDisplay];
         self.backgroundColor = [UIColor belizeHoleColor];
@@ -53,6 +54,7 @@
 - (void)start:(NSTimeInterval)time {
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     _timeLeft = time;
+    [bar setFrame:CGRectMake(0,0,_barWidth, bar.frame.size.height)];
     [UIView animateWithDuration:time animations:^
     {
         bar.frame = CGRectMake(0, 0, 0, bar.frame.size.height);
