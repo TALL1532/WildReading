@@ -35,14 +35,17 @@
     if(_currentSeries > [_tasks count]-1){
         NSLog(@"done!");
         [[self navigationController] popViewControllerAnimated:YES];
+        return;
     }
     Task * task = [_tasks objectAtIndex:_currentSeries];
     BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
     if(isInfinite){
-        [self startSeries:-1 withTime:_series_time];
-    }else{
+        NSLog(@"infinite");
         [self startSeries:max_sets withTime:_series_time];
+    }else{
+        NSLog(@"Single");
+        [self startSeries:1 withTime:_series_time];
     }
 }
 
@@ -55,9 +58,9 @@
     _series_time = [task.taskDurationSeconds integerValue];
     NSLog(@"time: %d %d", _series_time, isInfinite);
     if(isInfinite){
-        [self startSeries:-1 withTime:_series_time];
-    }else{
         [self startSeries:max_sets withTime:_series_time];
+    }else{
+        [self startSeries:1 withTime:_series_time];
     }
     return;
 }
@@ -131,20 +134,7 @@
     }
 
     [_timer start:_series_time];
-    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, self.view.frame.size.height - 2*BUTTON_WIDTH, BUTTON_WIDTH, BUTTON_WIDTH)];
-    tempButton.buttonColor = [UIColor turquoiseColor];
-    tempButton.shadowColor = [UIColor greenSeaColor];
-    tempButton.shadowHeight = 3.0f;
-    tempButton.cornerRadius = 6.0f;
-    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
-    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
-    [tempButton setTitle:@"Next" forState:UIControlStateNormal];
-    [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
-    _nextButton = tempButton;
-    
-    [self.view addSubview:tempButton];
     [self switchPuzzle:nil];
 }
 
@@ -191,7 +181,20 @@
     _puzzleViews = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
     //_currentPuzzleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, .5, .5);
+    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, self.view.frame.size.height - 2*BUTTON_WIDTH, BUTTON_WIDTH, BUTTON_WIDTH)];
+    tempButton.buttonColor = [UIColor turquoiseColor];
+    tempButton.shadowColor = [UIColor greenSeaColor];
+    tempButton.shadowHeight = 3.0f;
+    tempButton.cornerRadius = 6.0f;
+    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
+    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
+    [tempButton setTitle:@"Next" forState:UIControlStateNormal];
+    [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
+    _nextButton = tempButton;
+    
+    [self.view addSubview:tempButton];
     [self setup];//[self.view addSubview:_puzzleView];
 }
 

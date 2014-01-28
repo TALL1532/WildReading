@@ -9,6 +9,7 @@
 #import "AnagramViewController.h"
 #import <RubyCocoaString/NSString+RubyCocoaString.h>
 #define BUTTON_WIDTH 65.0
+#define NEXT_BUTTON_WIDTH 100.0
 #define FINAL_INDEX -1
 @interface AnagramViewController ()
 
@@ -64,8 +65,9 @@
     return buttons;
 }
 
-- (void)setup:(NSString*)word{
-    NSMutableArray * buttons = [self generateButtonsFromWord:word];
+- (void)setup{
+    [self loadFile:@"magical.txt"];
+    NSMutableArray * buttons = [self generateButtonsFromWord:_currentWord];
     CGFloat spacing = (self.view.frame.size.width - (buttons.count)*BUTTON_WIDTH)/(buttons.count+1);
     for( int i=0; i < buttons.count; i++){
         FUIButton * button = [buttons objectAtIndex:i];
@@ -75,6 +77,7 @@
     }
     _constructedWord = @"";
     _buttons = buttons;
+    _score = 0;
 }
 
 - (void) buttonPressed:(id)caller{
@@ -86,6 +89,13 @@
         NSLog(@"asd %@",_constructedWord);
     }
     else{
+        NSLog(@"Submitted...");
+        if ([_realWords containsObject:_constructedWord]) {
+            NSLog(@"yes!");
+            _score ++;
+            [self updateScore];
+            [_realWords removeObject:_constructedWord];
+        }
         _mainWordlabel.text = self.currentWord;
         _constructedWord = @"";
         for(int i = 0; i< _buttons.count-1; i++){
@@ -97,10 +107,26 @@
     }
 }
 
+- (void)updateScore {
+    [self.scoreDisplay setText:[NSString stringWithFormat:@"Score: %d", _score]];
+}
 - (void) disableButton:(FUIButton*)button {
     button.enabled = NO;
     button.buttonColor = [UIColor cloudsColor];
     button.shadowColor = [UIColor grayColor];
+}
+
+- (void) loadFile:(NSString*)filename {
+    NSString * fullPath = [[NSBundle mainBundle] pathForResource:filename ofType:@""];
+    
+    NSString * contents = [NSString stringWithContentsOfFile:fullPath
+                                                        encoding:NSUTF8StringEncoding
+                                                           error:nil];
+    NSArray * split = [contents componentsSeparatedByString:@"\n"];
+    _currentWord = [split objectAtIndex:0];
+    split = [split subarrayWithRange:NSMakeRange(1, [split count]-1)];
+    NSSet * result = [NSSet setWithArray:split];
+    _realWords = [NSMutableSet setWithSet:result];
 }
 
 - (void)viewDidLoad
@@ -108,9 +134,22 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [_mainWordlabel setFont:[UIFont flatFontOfSize:40]];
-	[self setup:@"magical"];
+    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - NEXT_BUTTON_WIDTH)/2, self.view.frame.size.height - 2*NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH)];
+    tempButton.buttonColor = [UIColor turquoiseColor];
+    tempButton.shadowColor = [UIColor greenSeaColor];
+    tempButton.shadowHeight = 3.0f;
+    tempButton.cornerRadius = 6.0f;
+    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
+    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
-    self.currentWord = @"magical";
+    [tempButton setTitle:@"Next" forState:UIControlStateNormal];
+    [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
+    _nextButton = tempButton;
+    
+    [self.view addSubview:_nextButton];
+	[self setup];
+    
 }
 
 - (void)didReceiveMemoryWarning

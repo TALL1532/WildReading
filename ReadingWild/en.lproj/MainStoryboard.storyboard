@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="eVl-DT-bal">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="eVl-DT-bal">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -53,7 +53,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordSearchTaskCell" rowHeight="69" id="6Dr-lC-kLW" customClass="TaskCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="69" id="6Dr-lC-kLW" customClass="TaskCell">
                                         <rect key="frame" x="0.0" y="86" width="728" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Dr-lC-kLW" id="t6e-bP-hyz">
@@ -127,50 +127,71 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordSearchTaskCell" rowHeight="69" id="qhd-ho-XN4" customClass="TaskCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="69" id="Rep-ff-PFe" customClass="TaskCell">
                                         <rect key="frame" x="0.0" y="22" width="728" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qhd-ho-XN4" id="Ijg-89-6yg">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rep-ff-PFe" id="cTT-zG-b3N">
                                             <rect key="frame" x="0.0" y="0.0" width="728" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="dKd-7R-vcv">
-                                                    <rect key="frame" x="173" y="18" width="94" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                </stepper>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="30" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-RT-zt0">
-                                                    <rect key="frame" x="275" y="18" width="54" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="30" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNo-wi-pYH">
+                                                    <rect key="frame" x="161" y="17" width="54" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="timeChanged:" destination="Rep-ff-PFe" eventType="editingDidEnd" id="0DQ-ky-bVa"/>
+                                                    </connections>
                                                 </textField>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtY-G5-F90">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Unl-Iy-K3b">
                                                     <rect key="frame" x="20" y="18" width="113" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Single"/>
                                                         <segment title="Infinite"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="Rep-ff-PFe" eventType="valueChanged" id="JdM-7V-dew"/>
+                                                    </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrA-4b-hQC">
-                                                    <rect key="frame" x="337" y="25" width="68" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbV-p4-sE0">
+                                                    <rect key="frame" x="223" y="24" width="68" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Options?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1f-az-ncf">
-                                                    <rect key="frame" x="594" y="23" width="114" height="21"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="practice" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vza-JF-QOE">
+                                                    <rect key="frame" x="555" y="18" width="97" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameChanged:" destination="Rep-ff-PFe" eventType="editingDidEnd" id="UBS-SG-OJe"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaX-2v-IZM">
+                                                    <rect key="frame" x="462" y="25" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ow6-eR-AHR">
+                                                    <rect key="frame" x="670" y="20" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deletePressed:" destination="Rep-ff-PFe" eventType="touchUpInside" id="oG0-vL-XS5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="lengthSegmentedControl" destination="qtY-G5-F90" id="N6q-O1-T6B"/>
-                                            <outlet property="timeStepper" destination="dKd-7R-vcv" id="f3I-en-DcG"/>
-                                            <outlet property="timeTextField" destination="i1M-RT-zt0" id="H8e-OL-R2m"/>
+                                            <outlet property="lengthSegmentedControl" destination="Unl-Iy-K3b" id="q4d-Aq-d4r"/>
+                                            <outlet property="logNameTextField" destination="Vza-JF-QOE" id="ZJu-Hx-Upj"/>
+                                            <outlet property="timeTextField" destination="KNo-wi-pYH" id="dOE-sO-P54"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -223,10 +244,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="_wordSearchButton" destination="Kvf-62-EZu" id="Vq2-wM-ZfE"/>
                         <outlet property="anagramAddButton" destination="TVu-3P-bAo" id="Y3x-Pj-zEg"/>
                         <outlet property="anagramTaskTable" destination="AcL-va-w38" id="sr3-AK-Mkn"/>
                         <outlet property="participantNameTextView" destination="b7D-7p-SAZ" id="0zz-cM-TF7"/>
+                        <outlet property="wordSearchButton" destination="Kvf-62-EZu" id="kwF-PG-NWH"/>
                         <outlet property="wordSearchTaskTable" destination="hiM-Rl-8M6" id="Rfy-GN-WMi"/>
                     </connections>
                 </viewController>
@@ -252,11 +273,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfR-jd-5di">
-                                <rect key="frame" x="47" y="101" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80G-YR-j3p">
+                                <rect key="frame" x="209" y="560" width="350" height="149"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -265,6 +285,7 @@
                     <navigationItem key="navigationItem" title="Anagrams" id="3ue-yg-i2q"/>
                     <connections>
                         <outlet property="_mainWordlabel" destination="x87-r4-lSN" id="cGT-CS-ZmU"/>
+                        <outlet property="scoreDisplay" destination="80G-YR-j3p" id="ZBV-2x-0vP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ew-2G-klV" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,13 +12,22 @@
 @interface AnagramViewController : UIViewController {
     IBOutlet UILabel * _mainWordlabel;
     
+    UIButton * _nextButton;
+
+    
     NSString * _currentWord;
     NSString * _constructedWord;
     NSMutableArray * _buttons;
+    
+    NSMutableSet * _realWords;
+    
+    
+    NSInteger _score;
 }
 
 @property (nonatomic, retain) NSString * currentWord;
 //@property (nonatomic, retain) UITextField * entryField;
+@property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
 
 @end
 

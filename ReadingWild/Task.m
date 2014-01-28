@@ -22,10 +22,14 @@
     AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext * context = mainApp.managedObjectContext;
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"taskType = %@", type];
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:predicate];
+
     NSError * error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     

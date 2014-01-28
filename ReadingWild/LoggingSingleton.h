@@ -23,8 +23,5 @@
 
 - (void)writeBufferToFile;
 
-+ (NSInteger)getSessionNumber;
-+ (NSString*)getSubjectName;
-
 
 @end

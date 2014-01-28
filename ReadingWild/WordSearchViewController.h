@@ -11,7 +11,7 @@
 #import "WildReadingTimerView.h"
 #import "LoggingSingleton.h"
 
-@interface WordSearchViewController : UIViewController <PuzzleWindowDelegate, WildReadingTimerViewDelegate> {
+@interface WordSearchViewController : UIViewController <PuzzleWindowDelegate> {
     IBOutlet UILabel * category;
     PuzzleWindow * _currentPuzzleView;
     NSMutableArray * _puzzleViews;

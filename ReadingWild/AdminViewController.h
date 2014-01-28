@@ -13,12 +13,15 @@
 
 @interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate> {
     NSMutableArray * _word_search_tasks;
+    NSMutableArray * _anagram_tasks;
+    NSMutableArray * _fluency_tasks;
+
 }
 
 @property (weak, nonatomic) IBOutlet UITextField * participantNameTextView;
 
 @property (weak, nonatomic) IBOutlet UITableView *wordSearchTaskTable;
-@property (weak, nonatomic) IBOutlet UIButton *_wordSearchButton;
+@property (weak, nonatomic) IBOutlet UIButton *wordSearchButton;
 
 @property (weak, nonatomic) IBOutlet UITableView *anagramTaskTable;
 @property (weak, nonatomic) IBOutlet UIButton *anagramAddButton;
