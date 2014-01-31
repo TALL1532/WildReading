@@ -29,6 +29,7 @@
 
 - (void)setup;
 
+
 @property (retain) IBOutlet UILabel * wordsFound;
 
 @end

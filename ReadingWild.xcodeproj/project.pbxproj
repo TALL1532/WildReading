@@ -51,10 +51,12 @@
 		4B28182118504BC800B98BDA /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B28182018504BC800B98BDA /* TaskCell.m */; };
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
+		4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */; };
 		4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */; };
 		4B601D621895F16D0083A7ED /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D611895F16D0083A7ED /* Task.m */; };
 		4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B601D631895FBC20083A7ED /* CoreData.framework */; };
 		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
+		4BB707B118980C510032F3C4 /* magical.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4BB707B018980C510032F3C4 /* magical.txt */; };
 		4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */; };
 /* End PBXBuildFile section */
 
@@ -115,12 +117,15 @@
 		4B2818221850530900B98BDA /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
 		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTaskPlayerViewController.h; sourceTree = "<group>"; };
+		4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTaskPlayerViewController.m; sourceTree = "<group>"; };
 		4B601D5B1895ED840083A7ED /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4B601D601895F16D0083A7ED /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4B601D611895F16D0083A7ED /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4B601D631895FBC20083A7ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
+		4BB707B018980C510032F3C4 /* magical.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magical.txt; sourceTree = "<group>"; };
 		4BCAEB121896057A006C639E /* TaskDataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel2.xcdatamodel; sourceTree = "<group>"; };
 		4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingSingleton.h; sourceTree = "<group>"; };
 		4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingSingleton.m; sourceTree = "<group>"; };
@@ -198,6 +203,8 @@
 				4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */,
 				4B06FF10182B57700025E854 /* WordSearchViewController.h */,
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
+				4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */,
+				4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */,
 				4B2818251850562500B98BDA /* Defaults.plist */,
 				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
 				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
@@ -223,6 +230,7 @@
 				4B06FF19182B66930025E854 /* wordGrid2.txt */,
 				4B06FF1A182B66940025E854 /* wordGrid3.txt */,
 				4B06FF1B182B66940025E854 /* wordGrid4.txt */,
+				4BB707AE18980C510032F3C4 /* resources */,
 				4B13658D1826BA2400C54EC2 /* Supporting Files */,
 			);
 			path = ReadingWild;
@@ -259,6 +267,22 @@
 				4B1365B31826BA2900C54EC2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BB707AE18980C510032F3C4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				4BB707AF18980C510032F3C4 /* anagram */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		4BB707AF18980C510032F3C4 /* anagram */ = {
+			isa = PBXGroup;
+			children = (
+				4BB707B018980C510032F3C4 /* magical.txt */,
+			);
+			path = anagram;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +365,7 @@
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
+				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
 				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
 				4B06FF20182B66940025E854 /* wordList3.txt in Resources */,
@@ -428,6 +453,7 @@
 				4B601D621895F16D0083A7ED /* Task.m in Sources */,
 				4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
+				4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
