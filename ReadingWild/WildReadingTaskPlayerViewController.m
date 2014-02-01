@@ -14,15 +14,14 @@
 - (void)setup{
     NSInteger max_sets = 4;
     _currentSeries = 0;
-    _tasks = [Task getTasks:WORDSEARCH_TASK];
     Task * task = [_tasks objectAtIndex:_currentSeries];
     BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
     NSLog(@"time: %d %d", _series_time, isInfinite);
     if(isInfinite){
-        [self startSeries:max_sets withTime:_series_time];
+        [self startSeries:max_sets ];
     }else{
-        [self startSeries:1 withTime:_series_time];
+        [self startSeries:1];
     }
     return;
 }
@@ -80,11 +79,15 @@
 }
 
 //starts a series of puzzle tasks, num == -1 will result in an infinite set
-- (void)startSeries:(NSInteger)num withTime:(NSInteger)time{
+- (void)startSeries:(NSInteger)num{
     _currentPuzzle = 0;
     _numberPuzzlesInSeries = num -1;
     _numberWordsFoundInSeries = 0;
     //subclass needs to call show instructions
+}
+
+- (void)endSeries {
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 - (NSDictionary *)getGridProperties:(NSInteger)i{
@@ -112,6 +115,7 @@
 #pragma mark timer view delegate methods
 
 -(void)wildReadingTimerViewTimeUp {
+    [self endSeries];
     NSInteger max_sets = 4;
     NSLog(@"Next series");
     _currentSeries ++;
@@ -125,12 +129,14 @@
     _series_time = [task.taskDurationSeconds integerValue];
     if(isInfinite){
         NSLog(@"infinite");
-        [self startSeries:max_sets withTime:_series_time];
+        [self startSeries:max_sets];
     }else{
         NSLog(@"Single");
-        [self startSeries:1 withTime:_series_time];
+        [self startSeries:1];
     }
 }
+
+#pragma mark - Controller Delegate Methods
 
 
 // initialize subviews
@@ -138,7 +144,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    //_currentPuzzleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, .5, .5);
+
     FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, self.view.frame.size.height - 2*BUTTON_WIDTH, BUTTON_WIDTH, BUTTON_WIDTH)];
     tempButton.buttonColor = [UIColor turquoiseColor];
     tempButton.shadowColor = [UIColor greenSeaColor];

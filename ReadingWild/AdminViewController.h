@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *anagramTaskTable;
 @property (weak, nonatomic) IBOutlet UIButton *anagramAddButton;
 
+@property (weak, nonatomic) IBOutlet UITableView *fluencyTaskTable;
+@property (weak, nonatomic) IBOutlet UIButton *fluencyAddButton;
+
 - (IBAction)nameChanged:(id)sender;
 
 + (NSString*)getParticipantName;

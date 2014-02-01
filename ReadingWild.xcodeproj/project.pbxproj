@@ -52,6 +52,10 @@
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
 		4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */; };
+		4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */; };
+		4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */; };
+		4B4019EA189C7756003FA1D0 /* fluencycategories.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B4019E9189C7756003FA1D0 /* fluencycategories.txt */; };
+		4B4019EC189C8BBE003FA1D0 /* recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B4019EB189C8BBE003FA1D0 /* recording.png */; };
 		4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */; };
 		4B601D621895F16D0083A7ED /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D611895F16D0083A7ED /* Task.m */; };
 		4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B601D631895FBC20083A7ED /* CoreData.framework */; };
@@ -119,6 +123,11 @@
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTaskPlayerViewController.h; sourceTree = "<group>"; };
 		4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTaskPlayerViewController.m; sourceTree = "<group>"; };
+		4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluencyViewController.h; sourceTree = "<group>"; };
+		4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluencyViewController.m; sourceTree = "<group>"; };
+		4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4B4019E9189C7756003FA1D0 /* fluencycategories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fluencycategories.txt; path = ../../../fluencycategories.txt; sourceTree = "<group>"; };
+		4B4019EB189C8BBE003FA1D0 /* recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recording.png; sourceTree = "<group>"; };
 		4B601D5B1895ED840083A7ED /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4B601D601895F16D0083A7ED /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4B601D611895F16D0083A7ED /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
@@ -137,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */,
 				4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */,
 				4B1365871826BA2400C54EC2 /* UIKit.framework in Frameworks */,
 				4B1365891826BA2400C54EC2 /* Foundation.framework in Frameworks */,
@@ -181,6 +191,7 @@
 		4B1365851826BA2400C54EC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */,
 				4B601D631895FBC20083A7ED /* CoreData.framework */,
 				4B1365861826BA2400C54EC2 /* UIKit.framework */,
 				4B1365881826BA2400C54EC2 /* Foundation.framework */,
@@ -203,6 +214,8 @@
 				4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */,
 				4B06FF10182B57700025E854 /* WordSearchViewController.h */,
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
+				4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */,
+				4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */,
 				4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */,
 				4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */,
 				4B2818251850562500B98BDA /* Defaults.plist */,
@@ -216,11 +229,11 @@
 				4B28182018504BC800B98BDA /* TaskCell.m */,
 				4B601D601895F16D0083A7ED /* Task.h */,
 				4B601D611895F16D0083A7ED /* Task.m */,
-				4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */,
 				4B2818221850530900B98BDA /* SettingsManager.h */,
 				4B2818231850530900B98BDA /* SettingsManager.m */,
 				4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */,
 				4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */,
+				4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */,
 				4B9732A21834ABD100AFB6A3 /* wordGrids.plist */,
 				4B06FF14182B66930025E854 /* wordList1.txt */,
 				4B06FF15182B66930025E854 /* wordList2.txt */,
@@ -230,6 +243,7 @@
 				4B06FF19182B66930025E854 /* wordGrid2.txt */,
 				4B06FF1A182B66940025E854 /* wordGrid3.txt */,
 				4B06FF1B182B66940025E854 /* wordGrid4.txt */,
+				4B4019EB189C8BBE003FA1D0 /* recording.png */,
 				4BB707AE18980C510032F3C4 /* resources */,
 				4B13658D1826BA2400C54EC2 /* Supporting Files */,
 			);
@@ -280,6 +294,7 @@
 		4BB707AF18980C510032F3C4 /* anagram */ = {
 			isa = PBXGroup;
 			children = (
+				4B4019E9189C7756003FA1D0 /* fluencycategories.txt */,
 				4BB707B018980C510032F3C4 /* magical.txt */,
 			);
 			path = anagram;
@@ -364,12 +379,14 @@
 				4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */,
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
+				4B4019EA189C7756003FA1D0 /* fluencycategories.txt in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
 				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
 				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
 				4B06FF20182B66940025E854 /* wordList3.txt in Resources */,
 				4B06FF22182B66940025E854 /* wordList4.txt in Resources */,
+				4B4019EC189C8BBE003FA1D0 /* recording.png in Resources */,
 				4B06FF24182B66940025E854 /* wordGrid1.txt in Resources */,
 				4B06FF26182B66940025E854 /* wordGrid2.txt in Resources */,
 				4B06FF28182B66940025E854 /* wordGrid3.txt in Resources */,
@@ -454,6 +471,7 @@
 				4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */,
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */,
+				4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */,
 				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,

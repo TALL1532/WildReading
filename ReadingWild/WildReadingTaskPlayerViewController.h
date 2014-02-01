@@ -30,14 +30,14 @@
 }
 
 - (void)setup;
-- (void)switchPuzzle;
-- (void)switchTask;
+- (void)switchPuzzle:(id)sender;
+//- (void)switchTask;
 
 - (void)beginTesting;
-- (void)startSeries;
+- (void)startSeries:(NSInteger)num;
 
 - (void)showInstructions:(NSString*)content;
-- (void)instructionsColsed:(id)sender;
+- (void)instructionsClosed:(id)sender;
 
 - (void)pushRecordToLog:(NSString*)word;
 

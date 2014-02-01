@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AnagramViewController.h"
 #import "WordSearchViewController.h"
-
+#import "FluencyViewController.h"
 
 #define BUTTON_WIDTH 200.0
 #define BUTTON_HEIGHT 60.0
@@ -32,7 +32,7 @@
     [fluencyButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [fluencyButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     [fluencyButton setTitle:@"Fluency Task" forState:UIControlStateNormal];
-    [fluencyButton addTarget:self action:@selector(startAnagram:) forControlEvents:UIControlEventTouchUpInside];
+    [fluencyButton addTarget:self action:@selector(startFluency:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:fluencyButton];
     
     anagramButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-BUTTON_WIDTH)/2,2*SPACING + BUTTON_HEIGHT,BUTTON_WIDTH,BUTTON_HEIGHT)];
@@ -58,6 +58,12 @@
     [wordSearchButton setTitle:@"Word Search Task" forState:UIControlStateNormal];
     [wordSearchButton addTarget:self action:@selector(startWordSearch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wordSearchButton];
+}
+
+- (void)startFluency:(id)sender{
+    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    FluencyViewController * tempViewController = [sb instantiateViewControllerWithIdentifier:@"Fluency"];
+    [self.navigationController pushViewController:tempViewController animated:YES];
 }
 
 - (void)startAnagram:(id)sender{
