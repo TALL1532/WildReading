@@ -17,6 +17,8 @@
     PuzzleWindow * _currentPuzzleView;
     NSMutableArray * _puzzleViews;
     NSMutableArray * _buttons;
+    
+    NSInteger _currentPuzzleIndex;
 }
 
 - (void)setup;

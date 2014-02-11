@@ -34,13 +34,14 @@
 
 - (void)setup{
     _tasks = [Task getTasks:WORDSEARCH_TASK];
+    _currentPuzzleIndex = 0;
     [super setup];
 }
 
 - (void) switchPuzzle:(id)sender{
     [_currentPuzzleView removeFromSuperview];
-    NSDictionary * properties = [self getGridProperties:_currentPuzzle];
-    _currentPuzzle ++;
+    NSDictionary * properties = [self getGridProperties:_currentPuzzleIndex];
+    _currentPuzzleIndex ++;
     
     NSString *  gridfile = [properties objectForKey:@"gridfilename"];
     NSString *  listfile = [properties objectForKey:@"listfilename"];
@@ -50,14 +51,7 @@
     temp.delegate = self;
     temp.title = title;
     [_puzzleViews addObject:temp];
-    
-    if(_numberPuzzlesInSeries == 0){
-        _nextButton.hidden = YES;
-    }else{
-        _nextButton.hidden = NO;
-        _numberPuzzlesInSeries--;
-    }
-
+        
     [self.view addSubview:temp];
     _currentPuzzleView = temp;
     category.text = temp.title;
@@ -83,7 +77,8 @@
 
 - (NSDictionary *)getGridProperties:(NSInteger)i{
     NSArray * myArray = [NSArray arrayWithContentsOfFile:  [[NSBundle mainBundle] pathForResource:@"wordGrids" ofType:@"plist"]];
-    return [myArray objectAtIndex:i];
+    NSInteger roundedIndex = i % [myArray count];
+    return [myArray objectAtIndex:roundedIndex];
 }
 
 #pragma mark - Word Search Logging

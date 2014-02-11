@@ -84,7 +84,9 @@
 
 -(void)writeBufferToFile{
     //NSLog(@"writing buffer to file: %@ \n",self.recordsStringWriteBuffer);
-    [self writeToEndOfFile:self.recordsStringWriteBuffer withFilename:@"record.csv"];
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * filename = [username concat:@"-log.csv"];
+    [self writeToEndOfFile:self.recordsStringWriteBuffer withFilename:filename];
     self.recordsStringWriteBuffer = @"";
     
 }

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdminViewController.h"
 
 @interface LoggingSingleton : NSObject
 {}

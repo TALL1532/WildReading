@@ -82,6 +82,10 @@
     NSLog(@"recorder stopped!");
 }
 
+- (NSString*)getInstructionsForTask:(Task*)task {
+    return @"fluency instructions";
+}
+
 - (NSString*)getCategory:(NSInteger)index {
     if(!_categories){
         NSString * fullPath = [[NSBundle mainBundle] pathForResource:@"fluencycategories.txt" ofType:@""];
