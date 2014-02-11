@@ -51,6 +51,7 @@
 		4B28182118504BC800B98BDA /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B28182018504BC800B98BDA /* TaskCell.m */; };
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
+		4B3FBD7B18A9E82B008111A9 /* anagram_words.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */; };
 		4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */; };
 		4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */; };
 		4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */; };
@@ -59,6 +60,8 @@
 		4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */; };
 		4B601D621895F16D0083A7ED /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B601D611895F16D0083A7ED /* Task.m */; };
 		4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B601D631895FBC20083A7ED /* CoreData.framework */; };
+		4B7CEB0418A6F22500493FC7 /* WildReadingUserSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */; };
+		4B7CEB0618A703D000493FC7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7CEB0518A703D000493FC7 /* MessageUI.framework */; };
 		4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9732A21834ABD100AFB6A3 /* wordGrids.plist */; };
 		4BB707B118980C510032F3C4 /* magical.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4BB707B018980C510032F3C4 /* magical.txt */; };
 		4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */; };
@@ -121,6 +124,7 @@
 		4B2818221850530900B98BDA /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
 		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = anagram_words.csv; sourceTree = SOURCE_ROOT; };
 		4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTaskPlayerViewController.h; sourceTree = "<group>"; };
 		4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTaskPlayerViewController.m; sourceTree = "<group>"; };
 		4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluencyViewController.h; sourceTree = "<group>"; };
@@ -132,6 +136,9 @@
 		4B601D601895F16D0083A7ED /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4B601D611895F16D0083A7ED /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4B601D631895FBC20083A7ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4B7CEB0218A6F22500493FC7 /* WildReadingUserSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingUserSelectionView.h; sourceTree = "<group>"; };
+		4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingUserSelectionView.m; sourceTree = "<group>"; };
+		4B7CEB0518A703D000493FC7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		4B9732A21834ABD100AFB6A3 /* wordGrids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordGrids.plist; sourceTree = "<group>"; };
 		4BB707B018980C510032F3C4 /* magical.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magical.txt; sourceTree = "<group>"; };
@@ -146,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B7CEB0618A703D000493FC7 /* MessageUI.framework in Frameworks */,
 				4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */,
 				4B601D641895FBC20083A7ED /* CoreData.framework in Frameworks */,
 				4B1365871826BA2400C54EC2 /* UIKit.framework in Frameworks */,
@@ -191,6 +199,7 @@
 		4B1365851826BA2400C54EC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B7CEB0518A703D000493FC7 /* MessageUI.framework */,
 				4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */,
 				4B601D631895FBC20083A7ED /* CoreData.framework */,
 				4B1365861826BA2400C54EC2 /* UIKit.framework */,
@@ -225,6 +234,8 @@
 				4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */,
 				4B28181918504A9900B98BDA /* AdminViewController.h */,
 				4B28181A18504A9900B98BDA /* AdminViewController.m */,
+				4B7CEB0218A6F22500493FC7 /* WildReadingUserSelectionView.h */,
+				4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */,
 				4B28181F18504BC800B98BDA /* TaskCell.h */,
 				4B28182018504BC800B98BDA /* TaskCell.m */,
 				4B601D601895F16D0083A7ED /* Task.h */,
@@ -294,6 +305,7 @@
 		4BB707AF18980C510032F3C4 /* anagram */ = {
 			isa = PBXGroup;
 			children = (
+				4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */,
 				4B4019E9189C7756003FA1D0 /* fluencycategories.txt */,
 				4BB707B018980C510032F3C4 /* magical.txt */,
 			);
@@ -380,6 +392,7 @@
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
 				4B4019EA189C7756003FA1D0 /* fluencycategories.txt in Resources */,
+				4B3FBD7B18A9E82B008111A9 /* anagram_words.csv in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
 				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
@@ -466,6 +479,7 @@
 				4B601D5C1895ED840083A7ED /* TaskDataModel.xcdatamodeld in Sources */,
 				4B28181B18504A9900B98BDA /* AdminViewController.m in Sources */,
 				4B1365931826BA2400C54EC2 /* main.m in Sources */,
+				4B7CEB0418A6F22500493FC7 /* WildReadingUserSelectionView.m in Sources */,
 				4B2818241850530900B98BDA /* SettingsManager.m in Sources */,
 				4B601D621895F16D0083A7ED /* Task.m in Sources */,
 				4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */,

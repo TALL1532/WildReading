@@ -9,17 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <FlatUIKit.h>
 
-@interface AnagramViewController : UIViewController {
+#import "WildReadingTaskPlayerViewController.h"
+
+
+@interface AnagramViewController : WildReadingTaskPlayerViewController {
     IBOutlet UILabel * _mainWordlabel;
     
-    UIButton * _nextButton;
-
-    
+    NSInteger _currentCategoryIndex;
     NSString * _currentWord;
+    NSMutableArray * _realWords;
+    
     NSString * _constructedWord;
+    
     NSMutableArray * _buttons;
     
-    NSMutableSet * _realWords;
+    NSMutableArray * _categories;
     
     
     NSInteger _score;

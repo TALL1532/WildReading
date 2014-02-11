@@ -12,18 +12,19 @@
 
 
 - (void)setup{
-    NSInteger max_sets = 4;
     _currentSeries = 0;
     Task * task = [_tasks objectAtIndex:_currentSeries];
     BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
+    _seriesIsInfinte = isInfinite;
+    [self startSeries];
+    [self showInstructions:[self getInstructionsForTask:task]];
     NSLog(@"time: %d %d", _series_time, isInfinite);
-    if(isInfinite){
-        [self startSeries:max_sets ];
-    }else{
-        [self startSeries:1];
-    }
     return;
+}
+
+- (void)setNextButtonVisibile:(BOOL)visible{
+    _nextButton.hidden = !visible;
 }
 
 - (void) switchPuzzle:(id)sender{
@@ -66,6 +67,7 @@
 }
 
 -(void)beginTesting{
+    _currentPuzzle = 0;
     NSLog(@"Begin Testing");
     if(!_timer){
         _timer = [[WildReadingTimerView alloc] initWithFrame:CGRectMake(0.0, 65.0, self.view.frame.size.width, 30)];
@@ -74,28 +76,26 @@
     }
     
     [_timer start:_series_time];
-    
+    [self setNextButtonVisibile:_seriesIsInfinte];
     [self switchPuzzle:nil];
 }
 
-//starts a series of puzzle tasks, num == -1 will result in an infinite set
-- (void)startSeries:(NSInteger)num{
-    _currentPuzzle = 0;
-    _numberPuzzlesInSeries = num -1;
-    _numberWordsFoundInSeries = 0;
-    //subclass needs to call show instructions
+#pragma mark abstract methods
+
+- (void)startSeries{
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 - (void)endSeries {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
-- (NSDictionary *)getGridProperties:(NSInteger)i{
-    NSArray * myArray = [NSArray arrayWithContentsOfFile:  [[NSBundle mainBundle] pathForResource:@"wordGrids" ofType:@"plist"]];
-    return [myArray objectAtIndex:i];
+- (NSString*)getInstructionsForTask:(Task*)task {
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    return @"Need to subclass";
 }
 
-#pragma mark - Word Search Logging
+#pragma mark - Logging
 
 - (void)pushRecordToLog:(NSString*)word{
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
@@ -116,7 +116,6 @@
 
 -(void)wildReadingTimerViewTimeUp {
     [self endSeries];
-    NSInteger max_sets = 4;
     NSLog(@"Next series");
     _currentSeries ++;
     if(_currentSeries > [_tasks count]-1){
@@ -125,15 +124,10 @@
         return;
     }
     Task * task = [_tasks objectAtIndex:_currentSeries];
-    BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
-    if(isInfinite){
-        NSLog(@"infinite");
-        [self startSeries:max_sets];
-    }else{
-        NSLog(@"Single");
-        [self startSeries:1];
-    }
+    _seriesIsInfinte = [task.isInfinite boolValue];
+    [self startSeries];
+    [self showInstructions:[self getInstructionsForTask:task]];
 }
 
 #pragma mark - Controller Delegate Methods
@@ -145,7 +139,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, self.view.frame.size.height - 2*BUTTON_WIDTH, BUTTON_WIDTH, BUTTON_WIDTH)];
+    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - NEXT_BUTTON_WIDTH)/2, self.view.frame.size.height - 2*NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH)];
     tempButton.buttonColor = [UIColor turquoiseColor];
     tempButton.shadowColor = [UIColor greenSeaColor];
     tempButton.shadowHeight = 3.0f;

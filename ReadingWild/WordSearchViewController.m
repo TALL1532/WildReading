@@ -65,11 +65,20 @@
 
 
 //starts a series of puzzle tasks, num == -1 will result in an infinite set
-- (void)startSeries:(NSInteger)num{
-    [super startSeries:num];
+
+#pragma mark abstract methods
+- (void)startSeries{
+    //do nothing
+}
+
+
+- (void)endSeries {
+    //do nothing for now
+}
+
+- (NSString*)getInstructionsForTask:(Task*)task {
     NSString * content = @"In this study, you are going to solve some word puzzles in 12 minutes. The goal is to find as many words as you can from multiple puzzles in 12 minutes. Different puzzles have words in different semantic categories (e.g., animal).  You will see one word puzzle at a time. Once you feel that you cannot find more words in the current puzzle or it is better to try a new puzzle, you can click on the button \"NEXT\" to go to the next puzzle. You will not be able to go back to the previously visited puzzles. Some puzzles are easier than others. However, the program will only present one puzzle at a time in a randomized order. Therefore, you can decide how long you want to spend on each puzzle. There will be a time delay when you visit a new puzzle. Please wait patiently after the next puzzle is loaded completely.   Remember, you are free to switch to a new puzzle anytime you want. The goal is to find as many words as you can in 12 minutes. If you are ready, please press NEXT.";
-    [super showInstructions:content];
-    
+    return content;
 }
 
 - (NSDictionary *)getGridProperties:(NSInteger)i{

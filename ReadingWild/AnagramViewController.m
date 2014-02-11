@@ -9,7 +9,6 @@
 #import "AnagramViewController.h"
 #import <RubyCocoaString/NSString+RubyCocoaString.h>
 #define BUTTON_WIDTH 65.0
-#define NEXT_BUTTON_WIDTH 100.0
 #define FINAL_INDEX -1
 @interface AnagramViewController ()
 
@@ -66,18 +65,12 @@
 }
 
 - (void)setup{
-    [self loadFile:@"magical.txt"];
-    NSMutableArray * buttons = [self generateButtonsFromWord:_currentWord];
-    CGFloat spacing = (self.view.frame.size.width - (buttons.count)*BUTTON_WIDTH)/(buttons.count+1);
-    for( int i=0; i < buttons.count; i++){
-        FUIButton * button = [buttons objectAtIndex:i];
-        [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 200, button.frame.size.width, button.frame.size.height);
-        [self.view addSubview:button];
-    }
-    _constructedWord = @"";
-    _buttons = buttons;
+    [self loadFile:@"anagram_words.csv"];
     _score = 0;
+    _currentCategoryIndex = 0;
+    _buttons = nil;
+    _tasks = [Task getTasks:ANAGRAM_TASK];
+    [super setup];
 }
 
 - (void) buttonPressed:(id)caller{
@@ -90,11 +83,14 @@
     }
     else{
         NSLog(@"Submitted...");
-        if ([_realWords containsObject:_constructedWord]) {
-            NSLog(@"yes!");
-            _score ++;
-            [self updateScore];
-            [_realWords removeObject:_constructedWord];
+        for(NSString * word in _realWords){
+            if( [_constructedWord caseInsensitiveCompare:word] == NSOrderedSame){
+                NSLog(@"yes!");
+                _score ++;
+                [self updateScore];
+                [_realWords removeObject:_constructedWord];
+                break;
+            }
         }
         _mainWordlabel.text = self.currentWord;
         _constructedWord = @"";
@@ -107,6 +103,46 @@
     }
 }
 
+#pragma mark implement abstract methods
+- (void)startSeries{
+    //nothing to do
+}
+
+- (void)endSeries {
+    //nothing to do
+}
+
+- (NSString*)getInstructionsForTask:(Task*)task {
+    return @"anagram task instructions";
+}
+
+- (void)pushRecordToLog:(NSString*)word{
+    //TODO: push log
+}
+
+- (void) switchPuzzle:(id)sender{
+    if (_buttons != nil) {
+        for (FUIButton * button in _buttons){
+            [button removeFromSuperview];
+        }
+    }
+    NSMutableArray * categoryContent = [_categories objectAtIndex:_currentCategoryIndex];
+    [self setCurrentWord:[categoryContent objectAtIndex:0]];
+    _realWords = [NSMutableArray arrayWithArray:[categoryContent subarrayWithRange:NSMakeRange(1, [categoryContent count]-1)]];
+    _currentCategoryIndex = (_currentCategoryIndex + 1) % [_categories count]; //just loop when we run out
+    
+    NSMutableArray * buttons = [self generateButtonsFromWord:_currentWord];
+    CGFloat spacing = (self.view.frame.size.width - (buttons.count)*BUTTON_WIDTH)/(buttons.count+1);
+    for( int i=0; i < buttons.count; i++){
+        FUIButton * button = [buttons objectAtIndex:i];
+        [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 200, button.frame.size.width, button.frame.size.height);
+        [self.view addSubview:button];
+    }
+    _constructedWord = @"";
+    _buttons = buttons;
+}
+
 - (void)updateScore {
     [self.scoreDisplay setText:[NSString stringWithFormat:@"Score: %d", _score]];
 }
@@ -117,45 +153,30 @@
 }
 
 - (void) loadFile:(NSString*)filename {
+    if( _categories != nil) return;//no need to load the file again if we already did it
+    _categories = [[NSMutableArray alloc] init];
     NSString * fullPath = [[NSBundle mainBundle] pathForResource:filename ofType:@""];
     
-    NSString * contents = [NSString stringWithContentsOfFile:fullPath
-                                                        encoding:NSUTF8StringEncoding
-                                                           error:nil];
-    NSArray * split = [contents componentsSeparatedByString:@"\n"];
-    _currentWord = [split objectAtIndex:0];
-    split = [split subarrayWithRange:NSMakeRange(1, [split count]-1)];
-    NSSet * result = [NSSet setWithArray:split];
-    _realWords = [NSMutableSet setWithSet:result];
+    NSString * contents = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:nil];
+    NSArray * rows = [contents componentsSeparatedByString:@"\n"];
+    for(int i = 1; i < [rows count]; i++){
+        NSString * row = [rows objectAtIndex:i];
+        NSArray * values = [row componentsSeparatedByString:@","];
+        NSString * categoryName = [values objectAtIndex:1];
+        
+        NSMutableArray * categoryArray = [[NSMutableArray alloc] init];
+        [categoryArray addObject:categoryName];
+        
+        NSArray * realWords = [values subarrayWithRange:NSMakeRange(4, [values count]-4)];
+        for(NSString * word in realWords){
+            if (![word isBlank]){
+                [categoryArray addObject:word];
+            }
+        }
+        // category array contains: <CATEGORY SUBJECT, VALID ANAGRAM, VALID ANAGRAM, VALID ANAGRAM, ... >
+        [_categories addObject:categoryArray];
+    }
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    [_mainWordlabel setFont:[UIFont flatFontOfSize:40]];
-    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - NEXT_BUTTON_WIDTH)/2, self.view.frame.size.height - 2*NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH)];
-    tempButton.buttonColor = [UIColor turquoiseColor];
-    tempButton.shadowColor = [UIColor greenSeaColor];
-    tempButton.shadowHeight = 3.0f;
-    tempButton.cornerRadius = 6.0f;
-    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
-    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    
-    [tempButton setTitle:@"Next" forState:UIControlStateNormal];
-    [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
-    _nextButton = tempButton;
-    
-    [self.view addSubview:_nextButton];
-	[self setup];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

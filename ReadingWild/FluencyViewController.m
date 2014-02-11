@@ -48,6 +48,7 @@
     self.recordingImage.hidden = NO;
     return recorder;
 }
+
 - (void) switchPuzzle:(id)sender{
     
     NSString * category = [self getCategory:_currentCategory];
@@ -56,7 +57,7 @@
     
     NSString * user = [AdminViewController getParticipantName];
     NSString * filename = [NSString stringWithFormat:@"fluency_%@_%@.caf",user,category];
-    
+        
     _recorder = [self startRecording:filename];
     
     
@@ -71,11 +72,8 @@
 
 
 //starts a series of puzzle tasks, num == -1 will result in an infinite set
-- (void)startSeries:(NSInteger)num{
-    [super startSeries:num];
-    NSString * content = @"Custom instructions for the fluency task";
-    [super showInstructions:content];
-    
+- (void)startSeries{
+    //nothing to do
 }
 
 - (void)endSeries {

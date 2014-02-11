@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <RubyCocoaString/NSString+RubyCocoaString.h>
+
 #import "TaskCell.h"
+#import "WildReadingUserSelectionView.h"
 
 #define PARTICIPANT_NAME @"Username"
 
-@interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate> {
+@interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate, UserSelectionViewDelegate, MFMailComposeViewControllerDelegate> {
     NSMutableArray * _word_search_tasks;
     NSMutableArray * _anagram_tasks;
     NSMutableArray * _fluency_tasks;
@@ -30,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fluencyAddButton;
 
 - (IBAction)nameChanged:(id)sender;
+- (IBAction)emailPressed:(id)sender;
 
 + (NSString*)getParticipantName;
 

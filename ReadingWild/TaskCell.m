@@ -17,7 +17,9 @@
     if(self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]){
         [self.timeTextField addTarget:self action:@selector(timeLimitChanged:) forControlEvents:UIControlEventValueChanged];
         [self.lengthSegmentedControl addTarget:self action:@selector(lengthSegmentedControl:) forControlEvents:UIControlEventValueChanged];
-        [self.logNameTextField addTarget:self action:@selector(logNameChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.logNameTextField addTarget:self action:@selector(logNameChanged:) forControlEvents:UIControlEventEditingDidEnd];
+
+        
     }
     return self;
 }
@@ -37,12 +39,15 @@
 }
 
 - (void) logNameChanged:(UITextField*)sender {
-    __taskModel.taskLoggingName = sender.text;
     
 }
 
 - (IBAction)deletePressed:(id)sender{
-    NSLog(@"Delete Pressed");
+    AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext * context = mainApp.managedObjectContext;
+    [context deleteObject:__taskModel];
+    [[self delegate] taskCellChanged:self];
+    [context save:nil];
 }
 - (IBAction)timeChanged:(id)sender{
     UITextView * timeTextView = sender;
@@ -60,6 +65,7 @@
     NSLog(@"%d",isInfinite);
     __taskModel.isInfinite = [NSNumber numberWithBool:isInfinite];
 }
+
 
 - (void) setTaskModel: (Task *)task {
     __taskModel = task;

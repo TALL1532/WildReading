@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
-
+@class TaskCell;
 @protocol TaskCellDelegate
-- (void)taskCellNameChanged:(NSString*)newName;
-- (void)taskCellInfiniteChanged:(BOOL)isInfinite;
-- (void)taskCellTimeChanged:(NSInteger)seconds;
-
+- (void)taskCellChanged:(TaskCell*)taskCell;
 @end
 
 

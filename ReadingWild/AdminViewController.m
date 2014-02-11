@@ -161,14 +161,9 @@
     //set the next position to be the latest position +1
     
     if([tasks count] <= 0)
-    {
         newTask.taskPosition = 0;
-    }
     else
-    {
         newTask.taskPosition = [NSNumber numberWithInt:[[((Task*)[tasks lastObject]) taskPosition] integerValue]+1];
-    }
-    
     NSError * error;
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -182,6 +177,8 @@
 
 -(void)refreshTable {
     [self.wordSearchTaskTable reloadData];
+    [self.fluencyTaskTable reloadData];
+    [self.anagramTaskTable reloadData];
 }
 
 - (void) saveTasks {
@@ -191,11 +188,120 @@
 
 - (IBAction)nameChanged:(id)sender {
     NSString * name = ((UITextField*)sender).text;
+    name = [name gsub:@" " withString:@""];
+    ((UITextField*)sender).text = name;
     [[NSUserDefaults standardUserDefaults] setObject:name forKey:PARTICIPANT_NAME];
 }
+
+#pragma mark task cell delegate methods
+
+- (void)taskCellChanged:(TaskCell *)taskCell {
+    [self refreshTable];
+}
+
+
+#pragma mark email methods
+
+- (IBAction)emailPressed:(id)sender {
+    WildReadingUserSelectionView * userSelection = [[WildReadingUserSelectionView alloc] init];
+    userSelection.delegate = self;
+    userSelection.modalInPopover = YES;
+    userSelection.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [self presentViewController:userSelection animated:YES completion:nil];
+}
+
+-(void)presentEmailForUser:(NSString *)username{
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self;
+    
+    NSString *documentsDirectory = [self getDocumentsDirectory];
+    NSArray * files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    NSMutableArray * filesToMail = [[NSMutableArray alloc] init];
+    for(NSString * file in files){
+        if([file rangeOfString:username].location != NSNotFound){
+            [filesToMail addObject:file];
+        }
+    }
+    
+    // Set subject line
+	[picker setSubject:@"Adult Learning Lab iPad Log File"];
+    
+	// Set up recipients
+	NSArray *toRecipients = [NSArray arrayWithObject:@"AdultLearningLab.ipad@gmail.com"];
+	[picker setToRecipients:toRecipients];
+    
+	// Attach data to the email
+    for(NSString * file in filesToMail){
+        NSString * filePath = [[self getDocumentsDirectory] concat:file];
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        [picker addAttachmentData:data mimeType:[self mimeTypeForFile:file] fileName:file];
+    }
+    
+    NSString *emailBody = @"Log file attached.";
+	[picker setMessageBody:emailBody isHTML:NO];
+    picker.modalPresentationStyle = UIModalPresentationFormSheet;
+	if (picker != nil) {
+        [self presentViewController:picker animated:YES completion:nil];
+	}
+}
+
+#pragma mark MFMailComposeViewControllerDelegate methods
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	// Notifies users about errors associated with the interface
+	switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			NSLog(@"Compose cancelled");
+			break;
+		case MFMailComposeResultSaved:
+			NSLog(@"Compose saved");
+			break;
+		case MFMailComposeResultSent:
+			NSLog(@"Compose sent");
+			break;
+		case MFMailComposeResultFailed:
+			NSLog(@"Compose failed");
+			break;
+            
+		default:
+		{
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email" message:@"Sending Failed - Unknown Error :-(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+			[alert show];
+		}
+            
+			break;
+	}
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark helper methods
+
+- (NSString *)getDocumentsDirectory {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	return [paths objectAtIndex:0];
+}
+
+- (NSString *)mimeTypeForFile:(NSString*)filename {
+    if([filename endsWith:@".caf"]) return @"audio/caf";
+    if([filename endsWith:@".csv"] || [filename endsWith:@".txt"]) return @"text/plain";
+    return @"application/octet-stream";
+}
+
+#pragma mark WildReadingUserSelectionDelegateMethods
+
+- (void)selectionView:(WildReadingUserSelectionView*)selectionView selectedUser:(NSString *)user {
+    [selectionView dismissViewControllerAnimated:YES completion:^(void){
+        [self presentEmailForUser:user];
+    }];
+}
+
 
 + (NSString*)getParticipantName {
     return [[NSUserDefaults standardUserDefaults] valueForKey:PARTICIPANT_NAME];
 }
+
 
 @end

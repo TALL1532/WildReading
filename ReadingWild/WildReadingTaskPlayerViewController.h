@@ -12,7 +12,7 @@
 #import "LoggingSingleton.h"
 #import "AdminViewController.h"
 
-#define BUTTON_WIDTH 100.0
+#define NEXT_BUTTON_WIDTH 100.0
 #define INFINITE -1
 
 #define padding 5.0
@@ -27,14 +27,15 @@
     WildReadingTimerView * _timer;
     NSArray * _tasks;
     NSInteger _series_time;
+    BOOL _seriesIsInfinte;
 }
 
 - (void)setup;
+
 - (void)switchPuzzle:(id)sender;
-//- (void)switchTask;
 
 - (void)beginTesting;
-- (void)startSeries:(NSInteger)num;
+- (void)startSeries;
 
 - (void)showInstructions:(NSString*)content;
 - (void)instructionsClosed:(id)sender;
