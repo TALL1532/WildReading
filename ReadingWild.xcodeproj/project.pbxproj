@@ -52,6 +52,9 @@
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
 		4B3FBD7B18A9E82B008111A9 /* anagram_words.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */; };
+		4B3FBD7D18B1DF34008111A9 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7C18B1DF34008111A9 /* check.png */; };
+		4B3FBD7F18B1E3C4008111A9 /* check.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7E18B1E3C4008111A9 /* check.svg */; };
+		4B3FBD8118B1E5F3008111A9 /* check2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8018B1E5F3008111A9 /* check2.png */; };
 		4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */; };
 		4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */; };
 		4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */; };
@@ -125,6 +128,9 @@
 		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = anagram_words.csv; sourceTree = SOURCE_ROOT; };
+		4B3FBD7C18B1DF34008111A9 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		4B3FBD7E18B1E3C4008111A9 /* check.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = check.svg; sourceTree = "<group>"; };
+		4B3FBD8018B1E5F3008111A9 /* check2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check2.png; sourceTree = "<group>"; };
 		4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTaskPlayerViewController.h; sourceTree = "<group>"; };
 		4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTaskPlayerViewController.m; sourceTree = "<group>"; };
 		4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluencyViewController.h; sourceTree = "<group>"; };
@@ -251,11 +257,14 @@
 				4B06FF16182B66930025E854 /* wordList3.txt */,
 				4B06FF17182B66930025E854 /* wordList4.txt */,
 				4B06FF18182B66930025E854 /* wordGrid1.txt */,
+				4B3FBD7C18B1DF34008111A9 /* check.png */,
+				4B3FBD8018B1E5F3008111A9 /* check2.png */,
+				4B3FBD7E18B1E3C4008111A9 /* check.svg */,
+				4BB707AE18980C510032F3C4 /* resources */,
 				4B06FF19182B66930025E854 /* wordGrid2.txt */,
 				4B06FF1A182B66940025E854 /* wordGrid3.txt */,
 				4B06FF1B182B66940025E854 /* wordGrid4.txt */,
 				4B4019EB189C8BBE003FA1D0 /* recording.png */,
-				4BB707AE18980C510032F3C4 /* resources */,
 				4B13658D1826BA2400C54EC2 /* Supporting Files */,
 			);
 			path = ReadingWild;
@@ -397,11 +406,14 @@
 				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
 				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
+				4B3FBD8118B1E5F3008111A9 /* check2.png in Resources */,
 				4B06FF20182B66940025E854 /* wordList3.txt in Resources */,
 				4B06FF22182B66940025E854 /* wordList4.txt in Resources */,
 				4B4019EC189C8BBE003FA1D0 /* recording.png in Resources */,
 				4B06FF24182B66940025E854 /* wordGrid1.txt in Resources */,
+				4B3FBD7D18B1DF34008111A9 /* check.png in Resources */,
 				4B06FF26182B66940025E854 /* wordGrid2.txt in Resources */,
+				4B3FBD7F18B1E3C4008111A9 /* check.svg in Resources */,
 				4B06FF28182B66940025E854 /* wordGrid3.txt in Resources */,
 				4B06FF2A182B66940025E854 /* wordGrid4.txt in Resources */,
 			);

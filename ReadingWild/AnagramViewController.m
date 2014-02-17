@@ -52,10 +52,15 @@
     finalButton.buttonColor = [UIColor wisteriaColor];
     finalButton.shadowColor = [UIColor purpleColor];
     finalButton.shadowHeight = 3.0f;
-    finalButton.cornerRadius = 6.0f;
+    finalButton.cornerRadius = (BUTTON_WIDTH-1)/2;
     finalButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [finalButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [finalButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    NSString * fullPath = [[NSBundle mainBundle] pathForResource:@"check2.png" ofType:@""];
+
+    [finalButton setBackgroundImage:[UIImage imageWithContentsOfFile:fullPath] forState:UIControlStateNormal];
+    [finalButton setBackgroundImage:[UIImage imageWithContentsOfFile:fullPath] forState:UIControlStateHighlighted];
+
     
     [finalButton setTitle:@">" forState:UIControlStateNormal];
     finalButton.tag = FINAL_INDEX;
@@ -81,25 +86,27 @@
         _mainWordlabel.text = _constructedWord;
         NSLog(@"asd %@",_constructedWord);
     }
-    else{
-        NSLog(@"Submitted...");
-        for(NSString * word in _realWords){
-            if( [_constructedWord caseInsensitiveCompare:word] == NSOrderedSame){
-                NSLog(@"yes!");
-                _score ++;
-                [self updateScore];
-                [_realWords removeObject:_constructedWord];
-                break;
-            }
+}
+
+
+- (void) submitWord:(id)caller {
+    NSLog(@"Submitted...");
+    for(NSString * word in _realWords){
+        if( [_constructedWord caseInsensitiveCompare:word] == NSOrderedSame){
+            NSLog(@"yes!");
+            _score ++;
+            [self updateScore];
+            [_realWords removeObject:word];
+            break;
         }
-        _mainWordlabel.text = self.currentWord;
-        _constructedWord = @"";
-        for(int i = 0; i< _buttons.count-1; i++){
-            FUIButton * b = [_buttons objectAtIndex:i];
-            [b setEnabled:YES];
-            b.buttonColor = [UIColor turquoiseColor];
-            b.shadowColor = [UIColor greenSeaColor];
-        }
+    }
+    _mainWordlabel.text = self.currentWord;
+    _constructedWord = @"";
+    for(int i = 0; i< _buttons.count-1; i++){
+        FUIButton * b = [_buttons objectAtIndex:i];
+        [b setEnabled:YES];
+        b.buttonColor = [UIColor turquoiseColor];
+        b.shadowColor = [UIColor greenSeaColor];
     }
 }
 
@@ -132,13 +139,17 @@
     _currentCategoryIndex = (_currentCategoryIndex + 1) % [_categories count]; //just loop when we run out
     
     NSMutableArray * buttons = [self generateButtonsFromWord:_currentWord];
-    CGFloat spacing = (self.view.frame.size.width - (buttons.count)*BUTTON_WIDTH)/(buttons.count+1);
-    for( int i=0; i < buttons.count; i++){
+    CGFloat spacing = (self.view.frame.size.width - (buttons.count-1)*BUTTON_WIDTH)/(buttons.count);
+    for( int i=0; i < buttons.count-1; i++){
         FUIButton * button = [buttons objectAtIndex:i];
         [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 200, button.frame.size.width, button.frame.size.height);
         [self.view addSubview:button];
     }
+    FUIButton * submit = [buttons lastObject];
+    [submit addTarget:self action:@selector(submitWord:) forControlEvents:UIControlEventTouchUpInside];
+    submit.frame = CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, 300 , BUTTON_WIDTH, BUTTON_WIDTH);
+    [self.view addSubview:submit];
     _constructedWord = @"";
     _buttons = buttons;
 }

@@ -1,11 +1,47 @@
-Fish
-Buildings
-Flowers
-Weather
-Toys
-Countries
-Foods
-Beers
-Drugs
-Sex Positions
-Galleries
+a garderner's tool
+a musical instrument
+type of reading material
+a natural earth formation
+alcoholic beverage
+a male first name
+an article of clothing
+a fish
+article of furtniture
+an insect
+a sport
+a flower
+a vegetble
+military title
+precious stone
+fruit
+a type of music
+metal
+kitchen utensil
+a weather phenomenon
+a type of vehicle
+carpenter's tool
+a disease
+country
+a type of dance
+a type of human dwelling
+a city
+electronic device
+weapon
+a science
+body part
+type of fabric
+a bird
+a toy
+an occupation or profession
+car brand
+animal
+a part of building
+a type of sweet
+a state
+a female first name
+an herb
+a kind of money
+a substance for flavoring food
+color
+a type of ship/boat
+a tree

@@ -143,7 +143,7 @@
     tempButton.buttonColor = [UIColor turquoiseColor];
     tempButton.shadowColor = [UIColor greenSeaColor];
     tempButton.shadowHeight = 3.0f;
-    tempButton.cornerRadius = 6.0f;
+    tempButton.cornerRadius = 20.0f;
     tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
