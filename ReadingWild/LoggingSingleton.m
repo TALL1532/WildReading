@@ -132,6 +132,28 @@
         [fileHandle closeFile];
     }
 }
++ (NSString*)getCurrentDate {
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];// here set format which you want...
+    
+    NSString *convertedString = [dateFormatter stringFromDate:date];
+    
+    return convertedString;
+}
+
++ (NSString*)getCurrentTime {
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:SSSS"];// here set format which you want...
+    
+    NSString *convertedString = [dateFormatter stringFromDate:date];
+    
+    return convertedString;
+}
+
 - (NSString *)applicationDocumentsDirectory
 {
 	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

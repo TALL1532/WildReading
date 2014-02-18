@@ -28,6 +28,8 @@
     NSArray * _tasks;
     NSInteger _series_time;
     BOOL _seriesIsInfinte;
+    
+    BOOL _shouldCancelNext;
 }
 
 - (void)setup;

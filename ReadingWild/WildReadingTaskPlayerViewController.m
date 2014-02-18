@@ -27,7 +27,29 @@
     _nextButton.hidden = !visible;
 }
 
-- (void) switchPuzzle:(id)sender{
+- (void)nextPressed:(id)sender {
+    NSNumber * delay = [[NSUserDefaults standardUserDefaults] objectForKey:NEXT_DELAY];
+    double d = [delay floatValue];
+
+    UIActivityIndicatorView * spinner = [[UIActivityIndicatorView alloc] initWithFrame:_nextButton.frame];
+    [spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner setColor:[UIColor turquoiseColor]];
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    [_nextButton setHidden:YES];
+    
+    _shouldCancelNext = NO;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, d * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        if (_shouldCancelNext) return;
+        [_nextButton setHidden:NO];
+        [spinner removeFromSuperview];
+        [self switchPuzzle:sender];
+    });
+}
+
+
+- (void) switchPuzzle:(id)sender {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
@@ -128,6 +150,8 @@
     _seriesIsInfinte = [task.isInfinite boolValue];
     [self startSeries];
     [self showInstructions:[self getInstructionsForTask:task]];
+    
+    _shouldCancelNext = YES;
 }
 
 #pragma mark - Controller Delegate Methods
@@ -143,17 +167,19 @@
     tempButton.buttonColor = [UIColor turquoiseColor];
     tempButton.shadowColor = [UIColor greenSeaColor];
     tempButton.shadowHeight = 3.0f;
-    tempButton.cornerRadius = 20.0f;
+    tempButton.cornerRadius = 10.0f;
     tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
     [tempButton setTitle:@"Next" forState:UIControlStateNormal];
-    [tempButton addTarget:self action:@selector(switchPuzzle:) forControlEvents:UIControlEventTouchUpInside];
+    [tempButton addTarget:self action:@selector(nextPressed:) forControlEvents:UIControlEventTouchUpInside];
     _nextButton = tempButton;
     
     [self.view addSubview:tempButton];
     [self setup];
+    
+    _shouldCancelNext = YES;
 }
 
 - (void)didReceiveMemoryWarning

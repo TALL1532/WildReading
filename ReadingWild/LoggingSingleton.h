@@ -24,5 +24,6 @@
 
 - (void)writeBufferToFile;
 
-
++ (NSString*)getCurrentDate;
++ (NSString*)getCurrentTime;
 @end

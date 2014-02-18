@@ -52,9 +52,50 @@
 		4B2818241850530900B98BDA /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2818231850530900B98BDA /* SettingsManager.m */; };
 		4B2818261850562500B98BDA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2818251850562500B98BDA /* Defaults.plist */; };
 		4B3FBD7B18A9E82B008111A9 /* anagram_words.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */; };
-		4B3FBD7D18B1DF34008111A9 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7C18B1DF34008111A9 /* check.png */; };
-		4B3FBD7F18B1E3C4008111A9 /* check.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD7E18B1E3C4008111A9 /* check.svg */; };
-		4B3FBD8118B1E5F3008111A9 /* check2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8018B1E5F3008111A9 /* check2.png */; };
+		4B3FBD8718B329BB008111A9 /* icon40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8218B329BB008111A9 /* icon40.png */; };
+		4B3FBD8818B329BB008111A9 /* icon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8318B329BB008111A9 /* icon72.png */; };
+		4B3FBD8918B329BB008111A9 /* icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8418B329BB008111A9 /* icon76.png */; };
+		4B3FBD8A18B329BB008111A9 /* icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8518B329BB008111A9 /* icon80.png */; };
+		4B3FBD8B18B329BB008111A9 /* icon152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8618B329BB008111A9 /* icon152.png */; };
+		4B3FBDB318B329CC008111A9 /* 101 Word grid.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8D18B329CC008111A9 /* 101 Word grid.txt */; };
+		4B3FBDB418B329CC008111A9 /* 102 Word Grid.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8E18B329CC008111A9 /* 102 Word Grid.txt */; };
+		4B3FBDB518B329CC008111A9 /* 103 Word grid.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD8F18B329CC008111A9 /* 103 Word grid.txt */; };
+		4B3FBDB618B329CC008111A9 /* 105 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9018B329CC008111A9 /* 105 WORDGRID.txt */; };
+		4B3FBDB718B329CC008111A9 /* 106 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9118B329CC008111A9 /* 106 WORDGRID.txt */; };
+		4B3FBDB818B329CC008111A9 /* 107 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9218B329CC008111A9 /* 107 WORDGRID.txt */; };
+		4B3FBDB918B329CC008111A9 /* 108 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9318B329CC008111A9 /* 108 WORDGRID.txt */; };
+		4B3FBDBA18B329CC008111A9 /* 109 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9418B329CC008111A9 /* 109 WORDGRID.txt */; };
+		4B3FBDBB18B329CC008111A9 /* 110 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9518B329CC008111A9 /* 110 WORDGRID.txt */; };
+		4B3FBDBC18B329CC008111A9 /* 111 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9618B329CC008111A9 /* 111 WORDGRID.txt */; };
+		4B3FBDBD18B329CC008111A9 /* 115 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9718B329CC008111A9 /* 115 WORDGRID.txt */; };
+		4B3FBDBE18B329CC008111A9 /* 118 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9818B329CC008111A9 /* 118 WORDGRID.txt */; };
+		4B3FBDBF18B329CC008111A9 /* 119 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9918B329CC008111A9 /* 119 WORDGRID.txt */; };
+		4B3FBDC018B329CC008111A9 /* 122 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9A18B329CC008111A9 /* 122 WORDGRID.txt */; };
+		4B3FBDC118B329CC008111A9 /* 123 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9B18B329CC008111A9 /* 123 WORDGRID.txt */; };
+		4B3FBDC218B329CC008111A9 /* 124 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9C18B329CC008111A9 /* 124 WORDGRID.txt */; };
+		4B3FBDC318B329CC008111A9 /* 125 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9D18B329CC008111A9 /* 125 WORDGRID.txt */; };
+		4B3FBDC418B329CC008111A9 /* 126 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9E18B329CC008111A9 /* 126 WORDGRID.txt */; };
+		4B3FBDC518B329CC008111A9 /* 127 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBD9F18B329CC008111A9 /* 127 WORDGRID.txt */; };
+		4B3FBDC618B329CC008111A9 /* 128 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA018B329CC008111A9 /* 128 WORDGRID.txt */; };
+		4B3FBDC718B329CC008111A9 /* 129 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA118B329CC008111A9 /* 129 WORDGRID.txt */; };
+		4B3FBDC818B329CC008111A9 /* 130 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA218B329CC008111A9 /* 130 WORDGRID.txt */; };
+		4B3FBDC918B329CC008111A9 /* 131 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA318B329CC008111A9 /* 131 WORDGRID.txt */; };
+		4B3FBDCA18B329CC008111A9 /* 133 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA418B329CC008111A9 /* 133 WORDGRID.txt */; };
+		4B3FBDCB18B329CC008111A9 /* 134 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA518B329CC008111A9 /* 134 WORDGRID.txt */; };
+		4B3FBDCC18B329CC008111A9 /* 135 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA618B329CC008111A9 /* 135 WORDGRID.txt */; };
+		4B3FBDCD18B329CC008111A9 /* 136 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA718B329CC008111A9 /* 136 WORDGRID.txt */; };
+		4B3FBDCE18B329CC008111A9 /* 137 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA818B329CC008111A9 /* 137 WORDGRID.txt */; };
+		4B3FBDCF18B329CC008111A9 /* 138 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDA918B329CC008111A9 /* 138 WORDGRID.txt */; };
+		4B3FBDD018B329CC008111A9 /* 139 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAA18B329CC008111A9 /* 139 WORDGRID.txt */; };
+		4B3FBDD118B329CC008111A9 /* 140 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAB18B329CC008111A9 /* 140 WORDGRID.txt */; };
+		4B3FBDD218B329CC008111A9 /* 141 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAC18B329CC008111A9 /* 141 WORDGRID.txt */; };
+		4B3FBDD318B329CC008111A9 /* 142 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAD18B329CC008111A9 /* 142 WORDGRID.txt */; };
+		4B3FBDD418B329CC008111A9 /* 143 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAE18B329CC008111A9 /* 143 WORDGRID.txt */; };
+		4B3FBDD518B329CC008111A9 /* 144 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDAF18B329CC008111A9 /* 144 WORDGRID.txt */; };
+		4B3FBDD618B329CC008111A9 /* 145 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDB018B329CC008111A9 /* 145 WORDGRID.txt */; };
+		4B3FBDD718B329CC008111A9 /* 146 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDB118B329CC008111A9 /* 146 WORDGRID.txt */; };
+		4B3FBDD818B329CC008111A9 /* 147 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDB218B329CC008111A9 /* 147 WORDGRID.txt */; };
+		4B3FBDDA18B32A9D008111A9 /* icon_27479.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FBDD918B32A9D008111A9 /* icon_27479.png */; };
 		4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */; };
 		4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */; };
 		4B4019E8189C75BA003FA1D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4019E7189C75BA003FA1D0 /* AVFoundation.framework */; };
@@ -128,9 +169,50 @@
 		4B2818231850530900B98BDA /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		4B2818251850562500B98BDA /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = anagram_words.csv; sourceTree = SOURCE_ROOT; };
-		4B3FBD7C18B1DF34008111A9 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		4B3FBD7E18B1E3C4008111A9 /* check.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = check.svg; sourceTree = "<group>"; };
-		4B3FBD8018B1E5F3008111A9 /* check2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check2.png; sourceTree = "<group>"; };
+		4B3FBD8218B329BB008111A9 /* icon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon40.png; sourceTree = "<group>"; };
+		4B3FBD8318B329BB008111A9 /* icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon72.png; sourceTree = "<group>"; };
+		4B3FBD8418B329BB008111A9 /* icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon76.png; sourceTree = "<group>"; };
+		4B3FBD8518B329BB008111A9 /* icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80.png; sourceTree = "<group>"; };
+		4B3FBD8618B329BB008111A9 /* icon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon152.png; sourceTree = "<group>"; };
+		4B3FBD8D18B329CC008111A9 /* 101 Word grid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "101 Word grid.txt"; sourceTree = "<group>"; };
+		4B3FBD8E18B329CC008111A9 /* 102 Word Grid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "102 Word Grid.txt"; sourceTree = "<group>"; };
+		4B3FBD8F18B329CC008111A9 /* 103 Word grid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "103 Word grid.txt"; sourceTree = "<group>"; };
+		4B3FBD9018B329CC008111A9 /* 105 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "105 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9118B329CC008111A9 /* 106 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "106 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9218B329CC008111A9 /* 107 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "107 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9318B329CC008111A9 /* 108 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "108 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9418B329CC008111A9 /* 109 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "109 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9518B329CC008111A9 /* 110 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "110 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9618B329CC008111A9 /* 111 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "111 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9718B329CC008111A9 /* 115 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "115 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9818B329CC008111A9 /* 118 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "118 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9918B329CC008111A9 /* 119 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "119 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9A18B329CC008111A9 /* 122 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "122 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9B18B329CC008111A9 /* 123 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "123 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9C18B329CC008111A9 /* 124 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "124 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9D18B329CC008111A9 /* 125 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "125 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9E18B329CC008111A9 /* 126 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "126 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBD9F18B329CC008111A9 /* 127 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "127 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA018B329CC008111A9 /* 128 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "128 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA118B329CC008111A9 /* 129 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "129 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA218B329CC008111A9 /* 130 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "130 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA318B329CC008111A9 /* 131 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "131 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA418B329CC008111A9 /* 133 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "133 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA518B329CC008111A9 /* 134 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "134 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA618B329CC008111A9 /* 135 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "135 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA718B329CC008111A9 /* 136 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "136 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA818B329CC008111A9 /* 137 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "137 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDA918B329CC008111A9 /* 138 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "138 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAA18B329CC008111A9 /* 139 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "139 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAB18B329CC008111A9 /* 140 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "140 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAC18B329CC008111A9 /* 141 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "141 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAD18B329CC008111A9 /* 142 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "142 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAE18B329CC008111A9 /* 143 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "143 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDAF18B329CC008111A9 /* 144 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "144 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDB018B329CC008111A9 /* 145 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "145 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDB118B329CC008111A9 /* 146 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "146 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDB218B329CC008111A9 /* 147 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "147 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B3FBDD918B32A9D008111A9 /* icon_27479.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_27479.png; sourceTree = "<group>"; };
 		4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingTaskPlayerViewController.h; sourceTree = "<group>"; };
 		4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingTaskPlayerViewController.m; sourceTree = "<group>"; };
 		4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluencyViewController.h; sourceTree = "<group>"; };
@@ -257,9 +339,6 @@
 				4B06FF16182B66930025E854 /* wordList3.txt */,
 				4B06FF17182B66930025E854 /* wordList4.txt */,
 				4B06FF18182B66930025E854 /* wordGrid1.txt */,
-				4B3FBD7C18B1DF34008111A9 /* check.png */,
-				4B3FBD8018B1E5F3008111A9 /* check2.png */,
-				4B3FBD7E18B1E3C4008111A9 /* check.svg */,
 				4BB707AE18980C510032F3C4 /* resources */,
 				4B06FF19182B66930025E854 /* wordGrid2.txt */,
 				4B06FF1A182B66940025E854 /* wordGrid3.txt */,
@@ -303,9 +382,61 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4B3FBD8C18B329CC008111A9 /* word_search */ = {
+			isa = PBXGroup;
+			children = (
+				4B3FBD8D18B329CC008111A9 /* 101 Word grid.txt */,
+				4B3FBD8E18B329CC008111A9 /* 102 Word Grid.txt */,
+				4B3FBD8F18B329CC008111A9 /* 103 Word grid.txt */,
+				4B3FBD9018B329CC008111A9 /* 105 WORDGRID.txt */,
+				4B3FBD9118B329CC008111A9 /* 106 WORDGRID.txt */,
+				4B3FBD9218B329CC008111A9 /* 107 WORDGRID.txt */,
+				4B3FBD9318B329CC008111A9 /* 108 WORDGRID.txt */,
+				4B3FBD9418B329CC008111A9 /* 109 WORDGRID.txt */,
+				4B3FBD9518B329CC008111A9 /* 110 WORDGRID.txt */,
+				4B3FBD9618B329CC008111A9 /* 111 WORDGRID.txt */,
+				4B3FBD9718B329CC008111A9 /* 115 WORDGRID.txt */,
+				4B3FBD9818B329CC008111A9 /* 118 WORDGRID.txt */,
+				4B3FBD9918B329CC008111A9 /* 119 WORDGRID.txt */,
+				4B3FBD9A18B329CC008111A9 /* 122 WORDGRID.txt */,
+				4B3FBD9B18B329CC008111A9 /* 123 WORDGRID.txt */,
+				4B3FBD9C18B329CC008111A9 /* 124 WORDGRID.txt */,
+				4B3FBD9D18B329CC008111A9 /* 125 WORDGRID.txt */,
+				4B3FBD9E18B329CC008111A9 /* 126 WORDGRID.txt */,
+				4B3FBD9F18B329CC008111A9 /* 127 WORDGRID.txt */,
+				4B3FBDA018B329CC008111A9 /* 128 WORDGRID.txt */,
+				4B3FBDA118B329CC008111A9 /* 129 WORDGRID.txt */,
+				4B3FBDA218B329CC008111A9 /* 130 WORDGRID.txt */,
+				4B3FBDA318B329CC008111A9 /* 131 WORDGRID.txt */,
+				4B3FBDA418B329CC008111A9 /* 133 WORDGRID.txt */,
+				4B3FBDA518B329CC008111A9 /* 134 WORDGRID.txt */,
+				4B3FBDA618B329CC008111A9 /* 135 WORDGRID.txt */,
+				4B3FBDA718B329CC008111A9 /* 136 WORDGRID.txt */,
+				4B3FBDA818B329CC008111A9 /* 137 WORDGRID.txt */,
+				4B3FBDA918B329CC008111A9 /* 138 WORDGRID.txt */,
+				4B3FBDAA18B329CC008111A9 /* 139 WORDGRID.txt */,
+				4B3FBDAB18B329CC008111A9 /* 140 WORDGRID.txt */,
+				4B3FBDAC18B329CC008111A9 /* 141 WORDGRID.txt */,
+				4B3FBDAD18B329CC008111A9 /* 142 WORDGRID.txt */,
+				4B3FBDAE18B329CC008111A9 /* 143 WORDGRID.txt */,
+				4B3FBDAF18B329CC008111A9 /* 144 WORDGRID.txt */,
+				4B3FBDB018B329CC008111A9 /* 145 WORDGRID.txt */,
+				4B3FBDB118B329CC008111A9 /* 146 WORDGRID.txt */,
+				4B3FBDB218B329CC008111A9 /* 147 WORDGRID.txt */,
+			);
+			path = word_search;
+			sourceTree = "<group>";
+		};
 		4BB707AE18980C510032F3C4 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				4B3FBD8C18B329CC008111A9 /* word_search */,
+				4B3FBD8218B329BB008111A9 /* icon40.png */,
+				4B3FBD8318B329BB008111A9 /* icon72.png */,
+				4B3FBD8418B329BB008111A9 /* icon76.png */,
+				4B3FBD8518B329BB008111A9 /* icon80.png */,
+				4B3FBD8618B329BB008111A9 /* icon152.png */,
+				4B3FBDD918B32A9D008111A9 /* icon_27479.png */,
 				4BB707AF18980C510032F3C4 /* anagram */,
 			);
 			path = resources;
@@ -394,28 +525,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3FBDD818B329CC008111A9 /* 147 WORDGRID.txt in Resources */,
+				4B3FBDC118B329CC008111A9 /* 123 WORDGRID.txt in Resources */,
+				4B3FBDDA18B32A9D008111A9 /* icon_27479.png in Resources */,
+				4B3FBDB318B329CC008111A9 /* 101 Word grid.txt in Resources */,
+				4B3FBDD718B329CC008111A9 /* 146 WORDGRID.txt in Resources */,
 				4B1365911826BA2400C54EC2 /* InfoPlist.strings in Resources */,
+				4B3FBD8918B329BB008111A9 /* icon76.png in Resources */,
+				4B3FBDCF18B329CC008111A9 /* 138 WORDGRID.txt in Resources */,
+				4B3FBDC018B329CC008111A9 /* 122 WORDGRID.txt in Resources */,
 				4B1365991826BA2400C54EC2 /* Default.png in Resources */,
 				4B2818261850562500B98BDA /* Defaults.plist in Resources */,
+				4B3FBDCD18B329CC008111A9 /* 136 WORDGRID.txt in Resources */,
 				4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */,
+				4B3FBDB818B329CC008111A9 /* 107 WORDGRID.txt in Resources */,
 				4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */,
 				4B9732A31834ABD100AFB6A3 /* wordGrids.plist in Resources */,
+				4B3FBDC518B329CC008111A9 /* 127 WORDGRID.txt in Resources */,
+				4B3FBDD618B329CC008111A9 /* 145 WORDGRID.txt in Resources */,
+				4B3FBDBB18B329CC008111A9 /* 110 WORDGRID.txt in Resources */,
 				4B4019EA189C7756003FA1D0 /* fluencycategories.txt in Resources */,
+				4B3FBDCB18B329CC008111A9 /* 134 WORDGRID.txt in Resources */,
+				4B3FBDC718B329CC008111A9 /* 129 WORDGRID.txt in Resources */,
 				4B3FBD7B18A9E82B008111A9 /* anagram_words.csv in Resources */,
+				4B3FBDD318B329CC008111A9 /* 142 WORDGRID.txt in Resources */,
+				4B3FBDC618B329CC008111A9 /* 128 WORDGRID.txt in Resources */,
+				4B3FBDB718B329CC008111A9 /* 106 WORDGRID.txt in Resources */,
+				4B3FBDD418B329CC008111A9 /* 143 WORDGRID.txt in Resources */,
+				4B3FBD8A18B329BB008111A9 /* icon80.png in Resources */,
+				4B3FBDD218B329CC008111A9 /* 141 WORDGRID.txt in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
+				4B3FBDD518B329CC008111A9 /* 144 WORDGRID.txt in Resources */,
 				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B06FF1C182B66940025E854 /* wordList1.txt in Resources */,
+				4B3FBDC418B329CC008111A9 /* 126 WORDGRID.txt in Resources */,
+				4B3FBDB418B329CC008111A9 /* 102 Word Grid.txt in Resources */,
+				4B3FBDC818B329CC008111A9 /* 130 WORDGRID.txt in Resources */,
+				4B3FBDBE18B329CC008111A9 /* 118 WORDGRID.txt in Resources */,
+				4B3FBDB518B329CC008111A9 /* 103 Word grid.txt in Resources */,
+				4B3FBDB918B329CC008111A9 /* 108 WORDGRID.txt in Resources */,
+				4B3FBDC218B329CC008111A9 /* 124 WORDGRID.txt in Resources */,
+				4B3FBDCE18B329CC008111A9 /* 137 WORDGRID.txt in Resources */,
 				4B06FF1E182B66940025E854 /* wordList2.txt in Resources */,
-				4B3FBD8118B1E5F3008111A9 /* check2.png in Resources */,
 				4B06FF20182B66940025E854 /* wordList3.txt in Resources */,
+				4B3FBDD018B329CC008111A9 /* 139 WORDGRID.txt in Resources */,
+				4B3FBDB618B329CC008111A9 /* 105 WORDGRID.txt in Resources */,
 				4B06FF22182B66940025E854 /* wordList4.txt in Resources */,
+				4B3FBD8718B329BB008111A9 /* icon40.png in Resources */,
 				4B4019EC189C8BBE003FA1D0 /* recording.png in Resources */,
 				4B06FF24182B66940025E854 /* wordGrid1.txt in Resources */,
-				4B3FBD7D18B1DF34008111A9 /* check.png in Resources */,
+				4B3FBDC918B329CC008111A9 /* 131 WORDGRID.txt in Resources */,
+				4B3FBDBA18B329CC008111A9 /* 109 WORDGRID.txt in Resources */,
+				4B3FBDD118B329CC008111A9 /* 140 WORDGRID.txt in Resources */,
+				4B3FBD8818B329BB008111A9 /* icon72.png in Resources */,
+				4B3FBDCA18B329CC008111A9 /* 133 WORDGRID.txt in Resources */,
+				4B3FBDBF18B329CC008111A9 /* 119 WORDGRID.txt in Resources */,
+				4B3FBDBC18B329CC008111A9 /* 111 WORDGRID.txt in Resources */,
 				4B06FF26182B66940025E854 /* wordGrid2.txt in Resources */,
-				4B3FBD7F18B1E3C4008111A9 /* check.svg in Resources */,
 				4B06FF28182B66940025E854 /* wordGrid3.txt in Resources */,
 				4B06FF2A182B66940025E854 /* wordGrid4.txt in Resources */,
+				4B3FBD8B18B329BB008111A9 /* icon152.png in Resources */,
+				4B3FBDC318B329CC008111A9 /* 125 WORDGRID.txt in Resources */,
+				4B3FBDBD18B329CC008111A9 /* 115 WORDGRID.txt in Resources */,
+				4B3FBDCC18B329CC008111A9 /* 135 WORDGRID.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

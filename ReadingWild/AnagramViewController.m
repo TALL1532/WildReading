@@ -8,7 +8,8 @@
 
 #import "AnagramViewController.h"
 #import <RubyCocoaString/NSString+RubyCocoaString.h>
-#define BUTTON_WIDTH 65.0
+#define BUTTON_WIDTH 70.0
+#define SUBMIT_BUTTON_WIDTH 130.0
 #define FINAL_INDEX -1
 @interface AnagramViewController ()
 
@@ -40,7 +41,7 @@
         tempButton.shadowColor = [UIColor greenSeaColor];
         tempButton.shadowHeight = 3.0f;
         tempButton.cornerRadius = 6.0f;
-        tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:26];
+        tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:40];
         [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
         [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
         
@@ -48,21 +49,18 @@
         tempButton.tag = [word characterAtIndex:i];
         [buttons addObject:tempButton];
     }
-    FUIButton * finalButton = [[FUIButton alloc] initWithFrame:CGRectMake(0,0,BUTTON_WIDTH,BUTTON_WIDTH)];
+    FUIButton * finalButton = [[FUIButton alloc] initWithFrame:CGRectMake(0,0,SUBMIT_BUTTON_WIDTH,SUBMIT_BUTTON_WIDTH)];
     finalButton.buttonColor = [UIColor wisteriaColor];
     finalButton.shadowColor = [UIColor purpleColor];
-    finalButton.shadowHeight = 3.0f;
-    finalButton.cornerRadius = (BUTTON_WIDTH-1)/2;
-    finalButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    finalButton.shadowHeight = 8.0f;
+    finalButton.cornerRadius = (SUBMIT_BUTTON_WIDTH)/2;
+    finalButton.titleLabel.font = [UIFont boldFlatFontOfSize:SUBMIT_BUTTON_WIDTH*3/4];
     [finalButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [finalButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    NSString * fullPath = [[NSBundle mainBundle] pathForResource:@"check2.png" ofType:@""];
 
-    [finalButton setBackgroundImage:[UIImage imageWithContentsOfFile:fullPath] forState:UIControlStateNormal];
-    [finalButton setBackgroundImage:[UIImage imageWithContentsOfFile:fullPath] forState:UIControlStateHighlighted];
-
-    
-    [finalButton setTitle:@">" forState:UIControlStateNormal];
+    char checkmark[] = "\u2713";
+    NSString * title = [NSString stringWithUTF8String:checkmark];
+    [finalButton setTitle:title forState:UIControlStateNormal];
     finalButton.tag = FINAL_INDEX;
     [buttons addObject:finalButton];
     
@@ -148,7 +146,7 @@
     }
     FUIButton * submit = [buttons lastObject];
     [submit addTarget:self action:@selector(submitWord:) forControlEvents:UIControlEventTouchUpInside];
-    submit.frame = CGRectMake((self.view.frame.size.width - BUTTON_WIDTH)/2, 300 , BUTTON_WIDTH, BUTTON_WIDTH);
+    submit.frame = CGRectMake((self.view.frame.size.width - submit.frame.size.width)/2, 300 , submit.frame.size.width, submit.frame.size.width);
     [self.view addSubview:submit];
     _constructedWord = @"";
     _buttons = buttons;
@@ -157,6 +155,7 @@
 - (void)updateScore {
     [self.scoreDisplay setText:[NSString stringWithFormat:@"Score: %d", _score]];
 }
+
 - (void) disableButton:(FUIButton*)button {
     button.enabled = NO;
     button.buttonColor = [UIColor cloudsColor];
