@@ -29,6 +29,8 @@
     
     
     self.participantNameTextView.text = [[NSUserDefaults standardUserDefaults] valueForKey:PARTICIPANT_NAME];
+    NSNumber * delay =[[NSUserDefaults standardUserDefaults] valueForKey:NEXT_DELAY];
+    self.nextDelayTextView.text = [NSString stringWithFormat:@"%@",delay];
     [super viewDidLoad];
 }
 
@@ -209,6 +211,12 @@
     userSelection.modalPresentationStyle = UIModalPresentationFormSheet;
 
     [self presentViewController:userSelection animated:YES completion:nil];
+}
+
+- (IBAction)delayChanged:(id)sender {
+    UITextView * textBox = sender;
+    NSNumber * number = [NSNumber numberWithInt:[textBox.text integerValue]];
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:NEXT_DELAY];
 }
 
 -(void)presentEmailForUser:(NSString *)username{

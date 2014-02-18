@@ -14,6 +14,8 @@
 #import "WildReadingUserSelectionView.h"
 
 #define PARTICIPANT_NAME @"Username"
+#define NEXT_DELAY @"NextDelay"
+
 
 @interface AdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskCellDelegate, UserSelectionViewDelegate, MFMailComposeViewControllerDelegate> {
     NSMutableArray * _word_search_tasks;
@@ -23,6 +25,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField * participantNameTextView;
+@property (weak, nonatomic) IBOutlet UITextField *nextDelayTextView;
 
 @property (weak, nonatomic) IBOutlet UITableView *wordSearchTaskTable;
 @property (weak, nonatomic) IBOutlet UIButton *wordSearchButton;
@@ -34,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fluencyAddButton;
 
 - (IBAction)nameChanged:(id)sender;
+- (IBAction)delayChanged:(id)sender;
 - (IBAction)emailPressed:(id)sender;
 
 + (NSString*)getParticipantName;
