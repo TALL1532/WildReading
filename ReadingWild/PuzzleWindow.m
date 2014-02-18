@@ -176,17 +176,22 @@
 	x2 = x1;
 	y2 = y1;
     NSLog(@"%d, %d", x1, y1);
+    NSString * letter = [NSString stringWithFormat:@"%s",[self letterAt:x1 :y1]];
+    [delegate puzzleWindowLetterPressed:letter];
 	[self setNeedsDisplay];
 	
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)ev {
 	touchPt = [[touches anyObject] locationInView:self];
-    x2 = ((int)((touchPt.x)/_colWidth));
-	y2 = ((int)((touchPt.y)/_colWidth));
-    NSLog(@"%d, %d", x2, y2);
-
-	//[self getLetters];
+    int tempx = ((int)((touchPt.x)/_colWidth));
+	int tempy = ((int)((touchPt.y)/_colWidth));
+    if( tempx != x2 || tempy != x1){
+        x2 = tempx;
+        y2 = tempy;
+        NSString * letter = [NSString stringWithFormat:@"%s",[self letterAt:x2 :y2]];
+        [delegate puzzleWindowLetterDragged:letter];
+    }
 	[self setNeedsDisplay];
 }
 
@@ -204,11 +209,11 @@
 		if(angleOrient != -1) {
 			NSString *wordHighlighted = [self getHighlightContent];
             NSLog(@"%@", wordHighlighted);
-			BOOL save = [self isAnswer:wordHighlighted];
-			if(save) {
-                [delegate puzzleWindowWordFound:wordHighlighted];
+			BOOL correct = [self isAnswer:wordHighlighted];
+			if(correct) {
 				[self addRectangle:x1*_colWidth + _colWidth/2 yOrigin:y1*_colWidth+ _colWidth/2 length:hypotenuse angle:angle];
 			}
+            [delegate puzzleWindowWordFound:wordHighlighted correct:correct];
 		}
 		else {
 		}

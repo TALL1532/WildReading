@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol PuzzleWindowDelegate
-- (void)puzzleWindowWordFound:(NSString*)word;
+- (void)puzzleWindowWordFound:(NSString*)word correct:(BOOL)correct;
+- (void)puzzleWindowLetterPressed:(NSString*)letter;
+- (void)puzzleWindowLetterDragged:(NSString*)letter;
 @end
 
 @interface PuzzleWindow : UIView {
@@ -59,11 +61,9 @@
 - (float)getHypotenuse;
 - (float)getAngle:(float)hypo;
 - (BOOL)getAngleColoring:(float)angle;
-- (int)getAngleOrientation:(float)angle;
 
 - (void)addRectangle:(int)xOrigin yOrigin:(int)yOrigin length:(float)length angle:(float)angle;
 
-- (NSMutableString *)getLetters:(int)angle hypo:(float)hypotenuse;
 - (BOOL)isAnswer:(NSString *)word;
 
 @end

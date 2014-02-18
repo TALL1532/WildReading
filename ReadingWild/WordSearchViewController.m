@@ -21,11 +21,20 @@
 
 @implementation WordSearchViewController
 
-// Puzzle Window delgate
--(void)puzzleWindowWordFound:(NSString*)word{
-    _numberWordsFoundInSeries ++;
-    [self pushRecordToLog:word];
+#pragma mark Puzzle Window Delegate Mehods
+
+-(void)puzzleWindowWordFound:(NSString*)word correct:(BOOL)correct{
+    if(correct) _numberWordsFoundInSeries ++;
+    [self logWordAnswered:word isCorrect:(correct ? @"YES" : @"NO")];
     _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
+}
+
+- (void)puzzleWindowLetterDragged:(NSString *)letter {
+    [self logLetterDragged:letter];
+}
+
+- (void)puzzleWindowLetterPressed:(NSString *)letter {
+    [self logLetterPressed:letter];
 }
 
 -(void)wildReadingTimerViewTimeUp {
@@ -83,15 +92,46 @@
 
 #pragma mark - Word Search Logging
 
-- (void)pushRecordToLog:(NSString*)word{
+- (void)logLetterPressed:(NSString*)letter {
+    [self pushRecordToLog:letter firstLetter:@"YES" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@""];
+}
+- (void)logLetterDragged:(NSString*)letter {
+    [self pushRecordToLog:letter firstLetter:@"NO" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@""];
+
+}
+- (void)logWordAnswered:(NSString*)word isCorrect:(NSString*)correct {
+    [self pushRecordToLog:@"" firstLetter:@"" word:word action:@"drag" isCorrect:correct nextButtonPressed:@""];
+}
+
+- (void)pushRecordToLog:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next {
     NSString * username = [AdminViewController getParticipantName];
-    NSString * time = @"1.00";//placeholder
-    NSString * puzzleNumber = @"111";
-    NSString * wordPressed = word;
-    NSString * record = [NSString stringWithFormat:@"WORDS_SEARCH,%@,%@,%@,%@\n",username, time, puzzleNumber,wordPressed];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSString * unixTime = [NSString stringWithFormat:@"%f",ti*1000];
+    NSString * conditionId = @"1";
+    NSString * puzzleId = @"111";
+    NSString * wordId = @"###";
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,username
+                         ,datemmddyyyy
+                         ,time
+                         ,unixTime
+                         ,conditionId
+                         ,puzzleId
+                         ,actionid
+                         ,next
+                         ,isStart
+                         ,letter
+                         ,word
+                         ,wordId
+                         ,correct];
     [[LoggingSingleton sharedSingleton] pushRecord:record];
     [[LoggingSingleton sharedSingleton] writeBufferToFile];
 }
+
 
 #pragma mark - Controller Delegate Methods
 
