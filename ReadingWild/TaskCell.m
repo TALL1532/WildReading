@@ -46,8 +46,9 @@
     AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext * context = mainApp.managedObjectContext;
     [context deleteObject:__taskModel];
-    [[self delegate] taskCellChanged:self];
     [context save:nil];
+
+    [[self delegate] taskCellChanged:self];
 }
 - (IBAction)timeChanged:(id)sender{
     UITextView * timeTextView = sender;
