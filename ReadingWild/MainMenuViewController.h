@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <FlatUIKit.h>
-@interface ViewController : UIViewController {
+#import "FUIButton+FUIButtonAdditions.h"
+
+@interface MainMenuViewController : UIViewController {
     FUIButton * fluencyButton;
     FUIButton * anagramButton;
     FUIButton * wordSearchButton;
+    
+    NSInteger numPlayed;
 }
 
 @end
