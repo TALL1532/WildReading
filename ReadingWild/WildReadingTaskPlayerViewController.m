@@ -31,23 +31,33 @@
     NSNumber * delay = [[NSUserDefaults standardUserDefaults] objectForKey:NEXT_DELAY];
     double d = [delay floatValue];
 
-    UIActivityIndicatorView * spinner = [[UIActivityIndicatorView alloc] initWithFrame:_nextButton.frame];
-    [spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [spinner setColor:[UIColor turquoiseColor]];
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
+    _spinner = [[UIActivityIndicatorView alloc] initWithFrame:_nextButton.frame];
+    [_spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [_spinner setColor:[UIColor turquoiseColor]];
+    [self.view addSubview:_spinner];
+    [_spinner startAnimating];
     [_nextButton setHidden:YES];
+    
+    [self disableTask];
     
     _shouldCancelNext = NO;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, d * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         if (_shouldCancelNext) return;
-        [_nextButton setHidden:NO];
-        [spinner removeFromSuperview];
-        [self switchPuzzle:sender];
+        [self stopSpinner];
     });
 }
 
+/**
+ * Shoud be used to stop the next button spinner and return the game to its normal state faster than the timeout does
+ */
+- (void)stopSpinner {
+    _shouldCancelNext = YES;
+    [self enableTask];
+    [_nextButton setHidden:NO];
+    [_spinner removeFromSuperview];
+    [self switchPuzzle:nil];
+}
 
 - (void) switchPuzzle:(id)sender {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
@@ -108,6 +118,20 @@
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
+/**
+ * This method should be overwritten by each subclass to disable the puzzle while the spinner is moving.
+ */
+- (void) disableTask{
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+/**
+ * This method should be overwritten by each subclass to re-enable the puzzle when the spinner stops.
+ */
+- (void)enableTask {
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
 - (void)endSeries {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
@@ -151,7 +175,7 @@
     [self startSeries];
     [self showInstructions:[self getInstructionsForTask:task]];
     
-    _shouldCancelNext = YES;
+    [self stopSpinner];
 }
 
 #pragma mark - Controller Delegate Methods
@@ -168,11 +192,14 @@
     tempButton.shadowColor = [UIColor greenSeaColor];
     tempButton.shadowHeight = 3.0f;
     tempButton.cornerRadius = 10.0f;
-    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:30];
+    tempButton.titleLabel.font = [UIFont boldFlatFontOfSize:50];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [tempButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
-    [tempButton setTitle:@"Next" forState:UIControlStateNormal];
+    char arrow[] = "\u21D2";
+    NSString * title = [NSString stringWithUTF8String:arrow];
+    [tempButton setTitle:title forState:UIControlStateNormal];
+    
     [tempButton addTarget:self action:@selector(nextPressed:) forControlEvents:UIControlEventTouchUpInside];
     _nextButton = tempButton;
     

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller - MainMenu-->
+        <!--Main Menu View Controller - MainMenu-->
         <scene sceneID="4">
             <objects>
-                <viewController title="MainMenu" id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="MainMenu" id="2" customClass="MainMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oVI-C3-P53"/>
                         <viewControllerLayoutGuide type="bottom" id="GNQ-0q-GVd"/>
@@ -45,17 +45,16 @@
                         <viewControllerLayoutGuide type="bottom" id="2ZQ-re-QeY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="C95-M3-XE3">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hiM-Rl-8M6">
-                                <rect key="frame" x="15" y="140" width="720" height="217"/>
+                                <rect key="frame" x="15" y="151" width="720" height="176"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.86550524640000004" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="69" id="mOv-H4-JFn" customClass="TaskCell">
-                                        <rect key="frame" x="0.0" y="86" width="720" height="69"/>
+                                        <rect key="frame" x="0.0" y="22" width="720" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mOv-H4-JFn" id="naS-4A-4Ip">
                                             <rect key="frame" x="0.0" y="0.0" width="720" height="68"/>
@@ -126,7 +125,7 @@
                                 <sections/>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AcL-va-w38">
-                                <rect key="frame" x="11" y="412" width="728" height="238"/>
+                                <rect key="frame" x="11" y="436" width="728" height="176"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.86550524635036497" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -201,21 +200,21 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word Search Task:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY8-YU-ciI">
-                                <rect key="frame" x="20" y="111" width="143" height="21"/>
+                                <rect key="frame" x="20" y="122" width="143" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anagram Task:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHK-Zp-c8F">
-                                <rect key="frame" x="20" y="373" width="114" height="21"/>
+                                <rect key="frame" x="20" y="399" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2o0-wd-tFU">
-                                <rect key="frame" x="11" y="681" width="728" height="293"/>
+                                <rect key="frame" x="11" y="713" width="728" height="176"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.86550524640000004" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -290,7 +289,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fluency Task:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmz-vN-wqH">
-                                <rect key="frame" x="20" y="652" width="104" height="21"/>
+                                <rect key="frame" x="20" y="684" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -362,6 +361,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="anagramAddButton" destination="TVu-3P-bAo" id="Y3x-Pj-zEg"/>
                         <outlet property="anagramTaskTable" destination="AcL-va-w38" id="sr3-AK-Mkn"/>

@@ -41,7 +41,7 @@
 		4B13659B1826BA2400C54EC2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B13659A1826BA2400C54EC2 /* Default@2x.png */; };
 		4B13659D1826BA2500C54EC2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B13659C1826BA2500C54EC2 /* Default-568h@2x.png */; };
 		4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B13659E1826BA2500C54EC2 /* MainStoryboard.storyboard */; };
-		4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1365A21826BA2500C54EC2 /* ViewController.m */; };
+		4B1365A31826BA2500C54EC2 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1365A21826BA2500C54EC2 /* MainMenuViewController.m */; };
 		4B1365AB1826BA2800C54EC2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365AA1826BA2800C54EC2 /* SenTestingKit.framework */; };
 		4B1365AC1826BA2800C54EC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365861826BA2400C54EC2 /* UIKit.framework */; };
 		4B1365AD1826BA2800C54EC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1365881826BA2400C54EC2 /* Foundation.framework */; };
@@ -153,8 +153,8 @@
 		4B13659A1826BA2400C54EC2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4B13659C1826BA2500C54EC2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4B13659F1826BA2500C54EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4B1365A11826BA2500C54EC2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4B1365A21826BA2500C54EC2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4B1365A11826BA2500C54EC2 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		4B1365A21826BA2500C54EC2 /* MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		4B1365A91826BA2800C54EC2 /* ReadingWildTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadingWildTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1365AA1826BA2800C54EC2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B1365B21826BA2900C54EC2 /* ReadingWildTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReadingWildTests-Info.plist"; sourceTree = "<group>"; };
@@ -302,22 +302,22 @@
 		4B13658C1826BA2400C54EC2 /* ReadingWild */ = {
 			isa = PBXGroup;
 			children = (
+				4B13659E1826BA2500C54EC2 /* MainStoryboard.storyboard */,
 				4B1365951826BA2400C54EC2 /* AppDelegate.h */,
 				4B1365961826BA2400C54EC2 /* AppDelegate.m */,
-				4B13659E1826BA2500C54EC2 /* MainStoryboard.storyboard */,
-				4B1365A11826BA2500C54EC2 /* ViewController.h */,
-				4B1365A21826BA2500C54EC2 /* ViewController.m */,
+				4B1365A11826BA2500C54EC2 /* MainMenuViewController.h */,
+				4B1365A21826BA2500C54EC2 /* MainMenuViewController.m */,
+				4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */,
+				4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */,
 				4B06FF0C182B4D6E0025E854 /* AnagramViewController.h */,
 				4B06FF0D182B4D6E0025E854 /* AnagramViewController.m */,
 				4B06FF10182B57700025E854 /* WordSearchViewController.h */,
 				4B06FF11182B57700025E854 /* WordSearchViewController.m */,
-				4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */,
-				4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */,
-				4B4019E1189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.h */,
-				4B4019E2189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m */,
-				4B2818251850562500B98BDA /* Defaults.plist */,
 				4B06FF08182B4B8D0025E854 /* PuzzleWindow.h */,
 				4B06FF09182B4B8D0025E854 /* PuzzleWindow.m */,
+				4B4019E4189C6FC2003FA1D0 /* FluencyViewController.h */,
+				4B4019E5189C6FC2003FA1D0 /* FluencyViewController.m */,
+				4B2818251850562500B98BDA /* Defaults.plist */,
 				4B0051B8184A9BCA009F1D26 /* WildReadingTimerView.h */,
 				4B0051B9184A9BCA009F1D26 /* WildReadingTimerView.m */,
 				4B28181918504A9900B98BDA /* AdminViewController.h */,
@@ -670,7 +670,7 @@
 				4B1365971826BA2400C54EC2 /* AppDelegate.m in Sources */,
 				4B4019E3189C1B04003FA1D0 /* WildReadingTaskPlayerViewController.m in Sources */,
 				4B4019E6189C6FC2003FA1D0 /* FluencyViewController.m in Sources */,
-				4B1365A31826BA2500C54EC2 /* ViewController.m in Sources */,
+				4B1365A31826BA2500C54EC2 /* MainMenuViewController.m in Sources */,
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
 				4B28182118504BC800B98BDA /* TaskCell.m in Sources */,

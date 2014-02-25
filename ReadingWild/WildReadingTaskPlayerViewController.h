@@ -19,6 +19,7 @@
 
 @interface WildReadingTaskPlayerViewController : UIViewController <WildReadingTimerViewDelegate> {
     UIButton * _nextButton;
+    UIActivityIndicatorView * _spinner;
     
     NSInteger _currentSeries;
     NSInteger _currentPuzzle;

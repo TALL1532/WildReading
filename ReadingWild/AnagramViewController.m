@@ -113,6 +113,18 @@
     //nothing to do
 }
 
+UIView * cover;
+- (void) disableTask{
+    cover = [[UIView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 400)];
+    [cover setAlpha:.8];
+    [cover setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:cover];
+}
+
+- (void)enableTask {
+    [cover removeFromSuperview];
+}
+
 - (void)endSeries {
     //nothing to do
 }
@@ -141,12 +153,12 @@
     for( int i=0; i < buttons.count-1; i++){
         FUIButton * button = [buttons objectAtIndex:i];
         [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 200, button.frame.size.width, button.frame.size.height);
+        button.frame = CGRectMake(spacing + (spacing + BUTTON_WIDTH)*i, 300, button.frame.size.width, button.frame.size.height);
         [self.view addSubview:button];
     }
     FUIButton * submit = [buttons lastObject];
     [submit addTarget:self action:@selector(submitWord:) forControlEvents:UIControlEventTouchUpInside];
-    submit.frame = CGRectMake((self.view.frame.size.width - submit.frame.size.width)/2, 300 , submit.frame.size.width, submit.frame.size.width);
+    submit.frame = CGRectMake((self.view.frame.size.width - submit.frame.size.width)/2, 400 , submit.frame.size.width, submit.frame.size.width);
     [self.view addSubview:submit];
     _constructedWord = @"";
     _buttons = buttons;

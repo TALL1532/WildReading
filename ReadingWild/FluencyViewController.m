@@ -59,14 +59,6 @@
     NSString * filename = [NSString stringWithFormat:@"fluency_%@_%@.caf",user,category];
         
     _recorder = [self startRecording:filename];
-    
-    
-    if(_numberPuzzlesInSeries == 0){
-        _nextButton.hidden = YES;
-    }else{
-        _nextButton.hidden = NO;
-        _numberPuzzlesInSeries--;
-    }
 
 }
 
@@ -74,6 +66,15 @@
 //starts a series of puzzle tasks, num == -1 will result in an infinite set
 - (void)startSeries{
     //nothing to do
+}
+
+- (void) disableTask{
+    [_recorder pause];
+    [self.recordingImage setAlpha:0.2f];
+}
+
+- (void)enableTask {
+    [self.recordingImage setAlpha:1.0f];
 }
 
 - (void)endSeries {

@@ -74,6 +74,22 @@
     //do nothing
 }
 
+UIView * cover;
+- (void) disableTask{
+    cover = [[UIView alloc] initWithFrame:_currentPuzzleView.frame];
+    [cover setAlpha:0.1f];
+    [cover setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:cover];
+    [_currentPuzzleView setAlpha:0.3f];
+    
+}
+
+- (void)enableTask {
+    [cover removeFromSuperview];
+    [_currentPuzzleView setAlpha:1.0f];
+
+}
+
 
 - (void)endSeries {
     //do nothing for now
