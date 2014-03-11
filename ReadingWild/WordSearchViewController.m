@@ -23,9 +23,13 @@
 
 #pragma mark Puzzle Window Delegate Mehods
 
--(void)puzzleWindowWordFound:(NSString*)word correct:(BOOL)correct{
-    if(correct) _numberWordsFoundInSeries ++;
-    [self logWordAnswered:word isCorrect:(correct ? @"YES" : @"NO")];
+-(void)puzzleWindowWordFound:(NSString*)word matchingWord:(WordContainer *)match{
+    if(match){
+        _numberWordsFoundInSeries ++;
+        _answerEnded = [NSDate date];
+    }
+    NSString * correct = [NSString stringWithFormat:@"%d",match != nil];
+    [self logWordAnswered:word isCorrect:correct id:match.identifier];
     _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
 }
 
@@ -44,19 +48,105 @@
 - (void)setup{
     _tasks = [Task getTasks:WORDSEARCH_TASK];
     _currentPuzzleIndex = 0;
+    [self loadGrids];
+    [self loadWordsAndCategories];
     [super setup];
 }
 
+- (void)loadWordsAndCategories{
+    static int PUZZLE_ID = 0;
+    static int WORD_ID = 1;
+    static int CATEGORY = 2;
+    static int WORD_CONTENT = 3;
+
+    _words = [[NSMutableArray alloc] init];
+    _categories = [[NSMutableDictionary alloc] init];
+    NSString * fullPath = [[NSBundle mainBundle] pathForResource:@"wordSearchSolutions" ofType:@"csv"];
+    NSString * contents = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:nil];
+    NSArray * rows = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    for(int i = 0; i < [rows count]; i++){
+        NSString * row = [rows objectAtIndex:i];
+        NSArray * elements = [row componentsSeparatedByString:@","];
+        NSString * contents = [elements objectAtIndex:WORD_CONTENT];
+        NSString * stringPuzzleIdentifier = [elements objectAtIndex:PUZZLE_ID];
+        NSInteger identifier = [[elements objectAtIndex:WORD_ID] integerValue];
+        NSInteger puzzleId  = [stringPuzzleIdentifier integerValue];
+        WordContainer * word = [[WordContainer alloc] init:contents identifier:identifier andPuzzleId:puzzleId];
+        [_words addObject:word];
+        
+        NSString * cat = [elements objectAtIndex:CATEGORY];
+        if ([_categories objectForKey:stringPuzzleIdentifier] == nil) {
+            [_categories setObject:cat forKey:stringPuzzleIdentifier];
+        }
+    }
+}
+
+- (void)loadGrids{
+    _gridUrls = [[NSMutableArray alloc] init];
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[NSBundle mainBundle] bundlePath] error:NULL];
+    for (NSString *fileName in files) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        if ([fileName includes:@"WORDGRID.txt"]){
+            [_gridUrls addObject:url];
+        }
+    }
+}
+
+//returns an array of WordContainers
+- (NSMutableArray *)getWordForPuzzleId:(NSInteger)identifier {
+    NSMutableArray * matching = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [_words count]; i++) {
+        WordContainer * word = [_words objectAtIndex:i];
+        if (word.puzzleId == identifier) {
+            [matching addObject:word];
+        }
+    }
+    return matching;
+}
+
+// 
+- (NSString *)getCategoryForPuzzleId:(NSInteger)identifierString {
+    NSString * identifier = [NSString stringWithFormat:@"%d",identifierString];
+    return [_categories objectForKey:identifier];
+}
+
+- (NSString *)gridContentsForPuzzleId:(NSInteger)puzzleId{
+    NSString * filename = [NSString stringWithFormat:@"%d WORDGRID.txt",puzzleId];
+    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
+    NSString * gridContents = [NSString stringWithContentsOfFile:path encoding:NSStringEncodingConversionExternalRepresentation error:nil];
+    return gridContents;
+}
+
+-(NSString *)categoryForPuzzleId:(NSInteger)puzzleId {
+    NSString * title = [self getCategoryForPuzzleId:puzzleId];
+    return title;
+}
+
+-(NSInteger)puzzleIdForIndex:(NSInteger)index {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"word_search_order.txt" ofType:nil];
+    NSString * orderFileContents = [NSString stringWithContentsOfFile:path encoding:NSStringEncodingConversionExternalRepresentation error:nil];
+    NSArray * indicies = [orderFileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    return [[indicies objectAtIndex:(index % [indicies count])] integerValue];
+}
+
 - (void) switchPuzzle:(id)sender{
+    _answeredWords = [[NSSet alloc] init];
     [_currentPuzzleView removeFromSuperview];
-    NSDictionary * properties = [self getGridProperties:_currentPuzzleIndex];
-    _currentPuzzleIndex ++;
     
-    NSString *  gridfile = [properties objectForKey:@"gridfilename"];
-    NSString *  listfile = [properties objectForKey:@"listfilename"];
-    NSString * title = [properties objectForKey:@"Name"];
+    NSString * gridContents = nil;
+    NSInteger puzzleId = -1;
+    do {
+        puzzleId = [self puzzleIdForIndex:_currentPuzzleIndex];
+        gridContents = [self gridContentsForPuzzleId:puzzleId];
+        _currentPuzzleIndex ++;
+    }while (gridContents == nil);
     
-    PuzzleWindow * temp = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - (3*BUTTON_WIDTH), 500, 500) puzzleName:gridfile answerName:listfile];
+    NSMutableArray * answers = [self getWordForPuzzleId:puzzleId];
+    
+    NSString * title = [self categoryForPuzzleId:puzzleId];
+    
+    PuzzleWindow * temp = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - (3*BUTTON_WIDTH), 500, 500) puzzleFileContents:gridContents andAnswerList:[answers copy] ];
     temp.delegate = self;
     temp.title = title;
     [_puzzleViews addObject:temp];
@@ -96,8 +186,10 @@ UIView * cover;
 }
 
 - (NSString*)getInstructionsForTask:(Task*)task {
-    NSString * content = @"In this study, you are going to solve some word puzzles in 12 minutes. The goal is to find as many words as you can from multiple puzzles in 12 minutes. Different puzzles have words in different semantic categories (e.g., animal).  You will see one word puzzle at a time. Once you feel that you cannot find more words in the current puzzle or it is better to try a new puzzle, you can click on the button \"NEXT\" to go to the next puzzle. You will not be able to go back to the previously visited puzzles. Some puzzles are easier than others. However, the program will only present one puzzle at a time in a randomized order. Therefore, you can decide how long you want to spend on each puzzle. There will be a time delay when you visit a new puzzle. Please wait patiently after the next puzzle is loaded completely.   Remember, you are free to switch to a new puzzle anytime you want. The goal is to find as many words as you can in 12 minutes. If you are ready, please press NEXT.";
-    return content;
+    if (![task.isInfinite boolValue]){
+        return [InstructionsHelper instructionsContentWithFile:WORDSEARCH_SINGLE];
+    }
+    return [InstructionsHelper instructionsContentWithFile:WORDSEARCH_MULTIPLE];
 }
 
 - (NSDictionary *)getGridProperties:(NSInteger)i{
@@ -109,28 +201,39 @@ UIView * cover;
 #pragma mark - Word Search Logging
 
 - (void)logLetterPressed:(NSString*)letter {
-    [self pushRecordToLog:letter firstLetter:@"YES" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@""];
+    _answerStarted = [NSDate date];
+    [self pushRecordToBuffer:letter firstLetter:@"1" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@"" wordId:@""];
 }
 - (void)logLetterDragged:(NSString*)letter {
-    [self pushRecordToLog:letter firstLetter:@"NO" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@""];
-
+    //do nothing for now
 }
-- (void)logWordAnswered:(NSString*)word isCorrect:(NSString*)correct {
-    [self pushRecordToLog:@"" firstLetter:@"" word:word action:@"drag" isCorrect:correct nextButtonPressed:@""];
+- (void)logWordAnswered:(NSString*)word isCorrect:(NSString*)correct id:(NSInteger)identifier{
+    [self pushRecordToBuffer:@"" firstLetter:@"" word:word action:@"release_touch" isCorrect:correct nextButtonPressed:@"" wordId:[NSString stringWithFormat:@"%d",identifier]];
+    [self pushBufferToLog];
 }
 
-- (void)pushRecordToLog:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next {
+- (void)pushRecordToBuffer:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next wordId:(NSString*)wordId{
+    
     NSString * username = [AdminViewController getParticipantName];
     NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
     NSString * time = [LoggingSingleton getCurrentTime];
     NSDate *date = [NSDate date];
     NSTimeInterval ti = [date timeIntervalSince1970];
-    NSString * unixTime = [NSString stringWithFormat:@"%f",ti*1000];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
     NSString * conditionId = @"1";
-    NSString * puzzleId = @"111";
-    NSString * wordId = @"###";
+    NSString * puzzleId = [NSString stringWithFormat:@"%d",_currentPuzzleId];
     
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+    NSString * duration = @"";
+    if(_answerStarted != nil && [correct isEqualToString:@"1"]){
+        NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
+        duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
+        _previousCorrectAnswerSarted = _answerStarted;
+        _answerStarted = nil; //want to reset answer started
+    }
+    
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
                          ,username
                          ,datemmddyyyy
                          ,time
@@ -143,11 +246,15 @@ UIView * cover;
                          ,letter
                          ,word
                          ,wordId
-                         ,correct];
+                         ,correct
+                         ,duration];
+    
     [[LoggingSingleton sharedSingleton] pushRecord:record];
-    [[LoggingSingleton sharedSingleton] writeBufferToFile];
 }
 
+- (void)pushBufferToLog {
+    [[LoggingSingleton sharedSingleton] writeBufferToFile:@"wordsearch"];
+}
 
 #pragma mark - Controller Delegate Methods
 

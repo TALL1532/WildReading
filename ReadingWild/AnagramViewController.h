@@ -10,7 +10,7 @@
 #import <FlatUIKit.h>
 
 #import "WildReadingTaskPlayerViewController.h"
-
+#import "InstructionsHelper.h"
 
 @interface AnagramViewController : WildReadingTaskPlayerViewController {
     IBOutlet UILabel * _mainWordlabel;
@@ -27,6 +27,8 @@
     
     
     NSInteger _score;
+    
+    NSMutableArray * _answeredWords;
 }
 
 @property (nonatomic, retain) NSString * currentWord;

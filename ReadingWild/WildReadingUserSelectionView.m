@@ -36,17 +36,18 @@
 - (void)viewDidLoad {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    users = [[NSMutableArray alloc] init];
+    NSMutableSet * temp = [[NSMutableSet alloc] init];
     NSString *directory = [self getDocumentsDirectory];
     NSArray * files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
     
     for(NSString *file in files){
         NSInteger logLocation = [file rangeOfString:@"-log.csv"].location;
         if(logLocation != NSNotFound){
-            NSString * name = [file substringWithRange:NSMakeRange(0, logLocation)];
-            [users addObject:name];
+            NSString * name = [[file componentsSeparatedByString:@"-"] firstObject];
+            [temp addObject:name];
         }
     }
+    users =  [NSMutableArray arrayWithArray:[temp allObjects]];
 }
 
 #pragma mark helper methods

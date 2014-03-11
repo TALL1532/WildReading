@@ -13,6 +13,9 @@
 
 - (void)setup{
     _currentSeries = 0;
+    if ([_tasks count] < 1){
+        return;
+    }
     Task * task = [_tasks objectAtIndex:_currentSeries];
     BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
@@ -28,6 +31,7 @@
 }
 
 - (void)nextPressed:(id)sender {
+    
     NSNumber * delay = [[NSUserDefaults standardUserDefaults] objectForKey:NEXT_DELAY];
     double d = [delay floatValue];
 
@@ -41,6 +45,7 @@
     [self disableTask];
     
     _shouldCancelNext = NO;
+    [self logNextButtonPressed];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, d * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         if (_shouldCancelNext) return;
@@ -56,6 +61,8 @@
     [self enableTask];
     [_nextButton setHidden:NO];
     [_spinner removeFromSuperview];
+    
+    _previousCorrectAnswerSarted = [NSDate date];
     [self switchPuzzle:nil];
 }
 
@@ -85,9 +92,12 @@
     
     UITextView * contentTextView = [[UITextView alloc] init];
     contentTextView.frame = CGRectMake(padding, padding, instructions.view.frame.size.width - 2*padding, instructions.view.frame.size.height - 3*padding - button_height);
-    contentTextView.font = [UIFont systemFontOfSize:20];
+    contentTextView.font = [UIFont systemFontOfSize:25];
     [instructions.view addSubview:contentTextView];
     contentTextView.text = content;
+    [contentTextView setEditable:NO];
+    //[contentTextView setUserInteractionEnabled:NO];
+    
     [accept addTarget:self action:@selector(instructionsClosed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -143,8 +153,48 @@
 
 #pragma mark - Logging
 
-- (void)pushRecordToLog:(NSString*)word{
+- (void)pushBufferToLog {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+- (void)logNextButtonPressed{
+    
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
+    NSString * conditionId = @"1";
+    NSString * puzzleId = @"";
+    NSString * action = @"next_button_pressed";
+    NSString * next = @"1";
+    NSString * duration = @"";
+    if(_answerEnded != nil){
+        NSInteger miliSecondsSinceAnswer = [date timeIntervalSinceDate:_answerEnded]*1000;
+        duration = [NSString stringWithFormat:@"%d", miliSecondsSinceAnswer];
+        _answerEnded = nil;
+    }
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,username
+                         ,datemmddyyyy
+                         ,time
+                         ,unixTime
+                         ,conditionId
+                         ,puzzleId
+                         ,action
+                         ,next
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,duration];
+    
+    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [self pushBufferToLog];
 }
 
 #pragma mark - Controller Delegate Methods
@@ -161,6 +211,8 @@
 #pragma mark timer view delegate methods
 
 -(void)wildReadingTimerViewTimeUp {
+    [self pushBufferToLog];
+
     [self endSeries];
     NSLog(@"Next series");
     _currentSeries ++;
@@ -176,6 +228,7 @@
     [self showInstructions:[self getInstructionsForTask:task]];
     
     [self stopSpinner];
+    
 }
 
 #pragma mark - Controller Delegate Methods
@@ -184,6 +237,10 @@
 // initialize subviews
 - (void)viewDidLoad
 {
+    _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.  
+    _answerStarted = nil;
+    _answerEnded = nil;
+    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -201,6 +258,7 @@
     [tempButton setTitle:title forState:UIControlStateNormal];
     
     [tempButton addTarget:self action:@selector(nextPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [tempButton setHidden:YES];
     _nextButton = tempButton;
     
     [self.view addSubview:tempButton];

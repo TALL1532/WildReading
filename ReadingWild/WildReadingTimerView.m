@@ -26,7 +26,7 @@
         timerDisplay.text = @"";
         timerDisplay.textColor = [UIColor whiteColor];
         [self addSubview:timerDisplay];
-        self.backgroundColor = [UIColor belizeHoleColor];
+        self.backgroundColor = [UIColor silverColor];
     }
     return self;
 }
@@ -55,13 +55,14 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     _timeLeft = time;
     [bar setFrame:CGRectMake(0,0,_barWidth, bar.frame.size.height)];
-    [UIView animateWithDuration:time animations:^
-    {
-        bar.frame = CGRectMake(0, 0, 0, bar.frame.size.height);
-    } completion:^(BOOL finished)
-    {
-        [self pause];
-    }];
+    
+    [UIView animateWithDuration:time delay:0.0 options:(UIViewAnimationOptionCurveLinear) animations:^
+     {
+         bar.frame = CGRectMake(0, 0, 0, bar.frame.size.height);
+     } completion:^(BOOL finished)
+     {
+         [self pause];
+     }];
 }
 
 - (void)pause {

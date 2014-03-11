@@ -25,7 +25,6 @@
 }
 
 - (void) start:(NSTimeInterval)time;
-- (void) resume;
 - (void) pause;
 
 @property (nonatomic) id <WildReadingTimerViewDelegate> delegate;

@@ -11,6 +11,8 @@
 #import "WildReadingTimerView.h"
 #import "LoggingSingleton.h"
 #import "WildReadingTaskPlayerViewController.h"
+#import "WordContainer.h"
+#import "InstructionsHelper.h"
 
 @interface WordSearchViewController : WildReadingTaskPlayerViewController <PuzzleWindowDelegate> {
     IBOutlet UILabel * category;
@@ -19,6 +21,13 @@
     NSMutableArray * _buttons;
     
     NSInteger _currentPuzzleIndex;
+    NSInteger _currentPuzzleId;
+    
+    NSMutableArray * _words;
+    NSMutableArray * _gridUrls;
+    NSMutableDictionary * _categories;
+    
+    NSSet * _answeredWords;
 }
 
 - (void)setup;

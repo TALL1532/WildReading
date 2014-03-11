@@ -7,7 +7,7 @@
 //
 
 #import "PuzzleWindow.h"
-
+#import <RubyCocoaString/NSString+RubyCocoaString.h>
 
 #define FONT_SIZE 30.0f
 #define PADDING 5.0f
@@ -22,36 +22,45 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame puzzleName:(NSString*)filename answerName:(NSString *)answerfilename{
+- (id)initWithFrame:(CGRect)frame puzzleFileContents:(NSString*)gridContents andAnswerList:(NSArray *)answers {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code.
         
-        self.title = filename;
         
         _width = frame.size.width;
         _height = frame.size.height;
-		
-		NSString * gridPath = [[NSBundle mainBundle] pathForResource:filename ofType:@""];
-        
-		NSString * gridContents = [NSString stringWithContentsOfFile:gridPath
-															  encoding:NSUTF8StringEncoding
-																 error:nil];	
+		      
+        _words = answers;
+        _foundWords = [[NSMutableArray alloc] init];
 
-        NSString *wordlistPath = [[NSBundle mainBundle] pathForResource:answerfilename ofType:@""];
-        
-		NSString *wordlistContent = [NSString stringWithContentsOfFile:wordlistPath
-															  encoding:NSUTF8StringEncoding
-																 error:nil];
-        _words = [wordlistContent componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-
+        //legacy shit
 		letterGridArray = [gridContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-		letterArray = [gridContents componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		
-        _colWidth = ( _width ) / [letterGridArray count];
+		letterArray = [gridContents componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        //------------------------
         
-        _numRow = letterGridArray.count;
-        _numCol = [[letterGridArray objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].count;
+        _grid = [[NSMutableArray alloc] init];
+        NSArray * rows = [gridContents componentsSeparatedByString:@"\r\n"];
+        if ([rows count] < 2){
+            rows = [gridContents componentsSeparatedByString:@"\n"];
+
+        }
+        for (NSString * row in rows){
+            if([row isEmpty]) continue;
+            NSString * cleanRow = [row rstrip];
+            NSArray * letterSet = [cleanRow componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            [_grid addObject:letterSet];
+        }
+        
+        
+       
+        
+        _numRow = _grid.count;
+        _numCol = [[_grid objectAtIndex:0] count];
+        
+         _colWidth = ( _width ) / (float)_numCol;
+        
+        NSLog(@"%f",_colWidth);
         
 		x1 = -50.0;
 		y1 = -50.0;
@@ -91,17 +100,12 @@
 	
 	//for loop to draw all lines of text
     
-	int i;
-    
-	for (i=0; i<letterGridArray.count; i++){
-	
-        //set text to be drawn
-        NSArray * text = [[letterGridArray objectAtIndex:(i)] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        for(int j = 0; j < text.count; j++){
-            const char * c = [[text objectAtIndex:(j)] UTF8String];
-            
+	for (int i=0; i<_numRow; i++){
+        for (int j=0; j<_numCol; j++){
+            //set text to be drawn
+            NSString * character = [[_grid objectAtIndex:(i)] objectAtIndex:j];
             CGRect rect = CGRectMake(j*(_colWidth), (i)*(_colWidth), _colWidth, _colWidth);
-            [[NSString stringWithFormat:@"%c",*c] drawInRect:rect withFont:[UIFont systemFontOfSize:24.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+            [character drawInRect:rect withFont:[UIFont systemFontOfSize:24.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
             
         }
 	}
@@ -176,20 +180,23 @@
 	x2 = x1;
 	y2 = y1;
     NSLog(@"%d, %d", x1, y1);
-    NSString * letter = [NSString stringWithFormat:@"%s",[self letterAt:x1 :y1]];
+    NSString * letter = [self letterAtX:x2 Y:y2];
+    NSLog(@"%@",letter);
     [delegate puzzleWindowLetterPressed:letter];
 	[self setNeedsDisplay];
 	
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)ev {
+    NSLog(@"DRAGGED!");
 	touchPt = [[touches anyObject] locationInView:self];
     int tempx = ((int)((touchPt.x)/_colWidth));
 	int tempy = ((int)((touchPt.y)/_colWidth));
-    if( tempx != x2 || tempy != x1){
+    if( tempx != x2 || tempy != y2){
         x2 = tempx;
         y2 = tempy;
-        NSString * letter = [NSString stringWithFormat:@"%s",[self letterAt:x2 :y2]];
+        NSString * letter = [self letterAtX:x2 Y:y2];
+        NSLog(@"%@",letter);
         [delegate puzzleWindowLetterDragged:letter];
     }
 	[self setNeedsDisplay];
@@ -209,11 +216,12 @@
 		if(angleOrient != -1) {
 			NSString *wordHighlighted = [self getHighlightContent];
             NSLog(@"%@", wordHighlighted);
-			BOOL correct = [self isAnswer:wordHighlighted];
-			if(correct) {
+			WordContainer * word = [self isAnswer:wordHighlighted];
+			if(word) {
 				[self addRectangle:x1*_colWidth + _colWidth/2 yOrigin:y1*_colWidth+ _colWidth/2 length:hypotenuse angle:angle];
 			}
-            [delegate puzzleWindowWordFound:wordHighlighted correct:correct];
+            [delegate puzzleWindowWordFound:wordHighlighted matchingWord:word];
+
 		}
 		else {
 		}
@@ -306,10 +314,15 @@
 }
 
 /////////////////// HANDLING WORD SELECTION //////////////////////////////
-- (const char *)letterAt:(int)i :(int)j{
-    NSArray * text = [[letterGridArray objectAtIndex:(i)] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    const char * c = [[text objectAtIndex:(j)] UTF8String];
-    return c;
+- (NSString *)letterAtX:(int)x Y:(int)y{
+    NSInteger size = [_grid count]-1;
+    if(x < 0) x = 0;
+    if(y < 0) y = 0;
+    if(x > size) x = size;
+    if(y > size) y = size;
+    NSArray * row = [_grid objectAtIndex:y];
+    NSString * character = [row objectAtIndex:x];
+    return character;
 }
 - (NSMutableString *)getHighlightContent{
 	//first, initialize the string for the word to be input
@@ -325,7 +338,7 @@
     int ity = y1;
     for(int i = 0; i < length; i++){
         if((itx*12+ity) < _numCol * _numRow) {
-			[theWord appendString:[letterArray objectAtIndex:(ity*_numCol+itx)]];
+			[theWord appendString:[self letterAtX:itx Y:ity]];
 		}
         switch (orientation) {
             case 0:
@@ -377,14 +390,20 @@
 	[rectAngles addObject:a];
 }
 
--(BOOL)isAnswer:(NSString*) word{
-    for(int i = 0; i < _words.count; i++){
-        NSString * temp = (NSString*)[_words objectAtIndex:i];
-        if( [temp isEqualToString:word] ){
-            return true;
+- (WordContainer *)isAnswer:(NSString*) word{
+    for(NSString * found in _foundWords){
+        if([word isEqual:found]){
+            return nil;
         }
     }
-    return false;
+    for(int i = 0; i < _words.count; i++){
+        [_foundWords addObject:word];
+        WordContainer * temp = [_words objectAtIndex:i];
+        if( [temp.word caseInsensitiveCompare:word] == NSOrderedSame ){
+            return temp;
+        }
+    }
+    return nil;
 }
 
 @end

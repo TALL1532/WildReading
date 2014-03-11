@@ -79,26 +79,62 @@
 - (void) buttonPressed:(id)caller{
     if([(FUIButton*)caller tag] != -1){
         NSLog(@"yo %@", [NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]]);
-        _constructedWord = [_constructedWord concat:[NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]]];
+        
+        NSString * newCharacter =[NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]];
+        _constructedWord = [_constructedWord concat:newCharacter];
         [self disableButton:caller];
         _mainWordlabel.text = _constructedWord;
         NSLog(@"asd %@",_constructedWord);
+        
+        //push to log
+        BOOL firstLetter = ([_constructedWord length] == 1);
+        if(firstLetter){
+            _answerStarted = [NSDate date];
+        }
+        NSString * isFirstLetter = [NSString stringWithFormat:@"%d", firstLetter];
+        NSString * action = (firstLetter ? @"first_letter" : @"letter_enter");
+        [self pushRecordToBuffer:newCharacter firstLetter:isFirstLetter word:@"" action:action isCorrect:@"" nextButtonPressed:@"0" wordId:@""];
+        [self pushBufferToLog];
     }
 }
 
 
 - (void) submitWord:(id)caller {
-    NSLog(@"Submitted...");
-    for(NSString * word in _realWords){
-        if( [_constructedWord caseInsensitiveCompare:word] == NSOrderedSame){
-            NSLog(@"yes!");
-            _score ++;
-            [self updateScore];
-            [_realWords removeObject:word];
-            break;
+    BOOL correct = NO;
+    NSInteger realWordIndex = 999;
+    BOOL alreadyFound = NO;
+    for(NSString * found in _answeredWords){
+        if ([found caseInsensitiveCompare:_constructedWord] == NSOrderedSame) {
+            alreadyFound = YES;
+        }
+    }
+    if (!alreadyFound) {
+        for(int i = 0; i < [_realWords count]; i++){
+            NSString * word = [_realWords objectAtIndex:i];
+            if( [_constructedWord caseInsensitiveCompare:word] == NSOrderedSame){
+                //used for word id logging
+                realWordIndex = i+1;
+                //set the answer to correct
+                correct = YES;
+                //set the time of the last correct answer being found so that we can log duration until the next button is pressed
+                _answerEnded = [NSDate date];
+                //increase the score
+                _score ++;
+                [self updateScore];
+                //make sure we cant select the same word wtice
+                [_answeredWords addObject:word];
+                break;
+            }
         }
     }
     _mainWordlabel.text = self.currentWord;
+    
+    //push log stuff
+    NSString * correct_string = [NSString stringWithFormat:@"%d",correct];
+    NSString * wordId = [NSString stringWithFormat:@"%d",realWordIndex];
+    [self pushRecordToBuffer:@"" firstLetter:@"0" word:_constructedWord action:@"submit" isCorrect:correct_string nextButtonPressed:@"0" wordId:wordId];
+    
+    //reset stuff
     _constructedWord = @"";
     for(int i = 0; i< _buttons.count-1; i++){
         FUIButton * b = [_buttons objectAtIndex:i];
@@ -106,6 +142,7 @@
         b.buttonColor = [UIColor turquoiseColor];
         b.shadowColor = [UIColor greenSeaColor];
     }
+    
 }
 
 #pragma mark implement abstract methods
@@ -130,14 +167,57 @@ UIView * cover;
 }
 
 - (NSString*)getInstructionsForTask:(Task*)task {
-    return @"anagram task instructions";
+    if (![task.isInfinite boolValue]){
+        return [InstructionsHelper instructionsContentWithFile:ANAGRAM_SINGLE];
+    }
+    return [InstructionsHelper instructionsContentWithFile:ANAGRAM_MULTIPLE];
 }
 
-- (void)pushRecordToLog:(NSString*)word{
-    //TODO: push log
+- (void)pushRecordToBuffer:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next wordId:(NSString*)wordId{
+    
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
+    NSString * conditionId = @"1";
+    NSString * anagramId = [NSString stringWithFormat:@"%d",_currentCategoryIndex];
+    
+    NSString * duration = @"";
+    if(_answerStarted != nil && [correct isEqualToString:@"1"]){
+        NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
+        duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
+        _previousCorrectAnswerSarted = _answerStarted;
+        _answerStarted = nil; //want to reset answer started
+    }
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,username
+                         ,datemmddyyyy
+                         ,time
+                         ,unixTime
+                         ,conditionId
+                         ,anagramId
+                         ,actionid
+                         ,next
+                         ,isStart
+                         ,letter
+                         ,word
+                         ,wordId
+                         ,correct
+                         ,duration];
+    
+    [[LoggingSingleton sharedSingleton] pushRecord:record];
+}
+
+- (void)pushBufferToLog {
+    [[LoggingSingleton sharedSingleton] writeBufferToFile:@"anagram"];
 }
 
 - (void) switchPuzzle:(id)sender{
+    _answeredWords = [[NSMutableArray alloc] init];
     if (_buttons != nil) {
         for (FUIButton * button in _buttons){
             [button removeFromSuperview];

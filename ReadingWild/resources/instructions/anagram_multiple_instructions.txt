@@ -1,0 +1,5 @@
+Next, you are going to solve some more anagram puzzles, but this time there are a lot of puzzles available, and you can switch from anagram to anagram. The goal is to generate as many words as you can from these puzzles within a time limit. Just as in the last task, you will receive one point for every word you create and there is a counter that will show you how many words you have accumulated.
+
+You will see one anagram puzzle at a time. Work on that puzzle for as long as you want, and when you are ready for a new one, press the arrow button (→) to go to a new puzzle. Once you leave a puzzle, you will not be able to go back. Some puzzles may be easier than others. Words from the different puzzles are all worth one point, and your goal is to earn as many points as possible across all the puzzles. 
+
+When you are ready to start, please press Start. 

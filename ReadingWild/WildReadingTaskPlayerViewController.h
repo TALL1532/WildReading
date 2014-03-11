@@ -13,7 +13,6 @@
 #import "AdminViewController.h"
 
 #define NEXT_BUTTON_WIDTH 100.0
-#define INFINITE -1
 
 #define padding 5.0
 
@@ -31,6 +30,10 @@
     BOOL _seriesIsInfinte;
     
     BOOL _shouldCancelNext;
+    
+    NSDate * _previousCorrectAnswerSarted;
+    NSDate * _answerStarted;
+    NSDate * _answerEnded;
 }
 
 - (void)setup;
@@ -42,8 +45,6 @@
 
 - (void)showInstructions:(NSString*)content;
 - (void)instructionsClosed:(id)sender;
-
-- (void)pushRecordToLog:(NSString*)word;
 
 - (void)wildReadingTimerViewTimeUp;
 

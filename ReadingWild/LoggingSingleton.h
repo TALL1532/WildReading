@@ -22,7 +22,7 @@
 
 - (void) pushRecord:(NSString*)record;
 
-- (void)writeBufferToFile;
+- (void)writeBufferToFile:(NSString*)filename;
 
 + (NSString*)getCurrentDate;
 + (NSString*)getCurrentTime;

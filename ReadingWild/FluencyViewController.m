@@ -84,7 +84,10 @@
 }
 
 - (NSString*)getInstructionsForTask:(Task*)task {
-    return @"fluency instructions";
+    if (![task.isInfinite boolValue]){
+        return [InstructionsHelper instructionsContentWithFile:FLUENCY_SINGLE];
+    }
+    return [InstructionsHelper instructionsContentWithFile:FLUENCY_MULTIPLE];
 }
 
 - (NSString*)getCategory:(NSInteger)index {
@@ -104,14 +107,39 @@
 
 #pragma mark - Fluency Logging
 
-- (void)pushRecordToLog:(NSString*)word{
+- (void)pushBufferToLog {
+    [[LoggingSingleton sharedSingleton] writeBufferToFile:@"fluency"];
+}
+
+//Override the WildReadingTaskPlayer
+//We need less fields for this task
+- (void)logNextButtonPressed{
+    
     NSString * username = [AdminViewController getParticipantName];
-    NSString * time = @"1.00";//placeholder
-    NSString * puzzleNumber = @"111";
-    NSString * wordPressed = word;
-    NSString * record = [NSString stringWithFormat:@"FLUENCY,%@,%@,%@,%@\n",username, time, puzzleNumber,wordPressed];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
+    NSString * conditionId = @"1";
+    NSString * puzzleId = [self getCategory:_currentCategory];
+    NSString * action = @"next_button_pressed";
+    NSString * next = @"1";
+    
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,username
+                         ,datemmddyyyy
+                         ,time
+                         ,unixTime
+                         ,conditionId
+                         ,puzzleId
+                         ,action
+                         ,next];
+    
     [[LoggingSingleton sharedSingleton] pushRecord:record];
-    [[LoggingSingleton sharedSingleton] writeBufferToFile];
+    [self pushBufferToLog];
 }
 
 #pragma mark - Controller Delegate Methods

@@ -24,23 +24,6 @@
     return self;
 }
 
-- (void) taskTypeChanged:(UISegmentedControl*)sender {
-    if(sender.selectedSegmentIndex==0){
-        //single
-        __taskModel.isInfinite = [NSNumber numberWithBool:NO];
-    }else{
-        //infinite
-        __taskModel.isInfinite = [NSNumber numberWithBool:YES];
-    }
-}
-
-- (void) timeLimitChanged:(UITextField*)sender {
-    
-}
-
-- (void) logNameChanged:(UITextField*)sender {
-    
-}
 
 - (IBAction)deletePressed:(id)sender{
     AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
@@ -55,21 +38,31 @@
     NSInteger seconds = [timeTextView.text integerValue];
     NSLog(@"changing time to: %d", seconds);
     __taskModel.taskDurationSeconds = [NSNumber numberWithInt:seconds];
+    [self saveContext];
+    
 }
 - (IBAction)nameChanged:(id)sender{
     UITextView * nameTextView = sender;
     __taskModel.taskLoggingName = nameTextView.text;
+    [self saveContext];
 }
 - (IBAction)segmentChanged:(id)sender{
     UISegmentedControl * segment = sender;
     BOOL isInfinite = [segment selectedSegmentIndex] == 1;
     NSLog(@"%d",isInfinite);
     __taskModel.isInfinite = [NSNumber numberWithBool:isInfinite];
+    [self saveContext];
 }
 
 
 - (void) setTaskModel: (Task *)task {
     __taskModel = task;
+}
+
+- (void) saveContext {
+    AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext * context = mainApp.managedObjectContext;
+    [context save:nil];
 }
 
 

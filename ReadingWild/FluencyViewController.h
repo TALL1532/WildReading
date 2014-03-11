@@ -10,6 +10,7 @@
 #import <RubyCocoaString/NSString+RubyCocoaString.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AdminViewController.h"
+#import "InstructionsHelper.h"
 
 @interface FluencyViewController : WildReadingTaskPlayerViewController <AVAudioRecorderDelegate>{
     NSInteger _currentCategory;

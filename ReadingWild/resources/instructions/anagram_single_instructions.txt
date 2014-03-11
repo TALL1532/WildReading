@@ -1,0 +1,3 @@
+This task is an anagram puzzle. You will see a word and your goal is to generate as many smaller words as you can from the letters in the larger word. For example, if the larger word were TABLET, you might create TAB, LET, BET, TEA, BE, and so forth. To create a new word, select the letters in the larger word. The first one is for practice. You will receive one point for every word you find, and you will see a counter that will track this for you. 
+When you are ready to start, please press Start. 
+

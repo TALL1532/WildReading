@@ -76,16 +76,16 @@
     }else{
         acc_content = @"N/A";
     }
-
-    NSString* nextLine = [NSString stringWithFormat:@"%@,%@,%d,%@,%d,%d,%@,%@,%@,%d,%d,%@ \n",name, task, sessionNum, date, trialNum, block, s,  (isInCat ? @"YES" : @"NO") ,category, reactionTime ,spanLevel,acc_content];
+    
+    NSString * inCategory = [NSString stringWithFormat:@"%d",isInCat];
+    NSString* nextLine = [NSString stringWithFormat:@"%@,%@,%d,%@,%d,%d,%@,%@,%@,%d,%d,%@ \n",name, task, sessionNum, date, trialNum, block, s,  inCategory ,category, reactionTime ,spanLevel,acc_content];
     NSLog(@"%@",nextLine);
     self.loggingStringWriteBuffer = [self.loggingStringWriteBuffer stringByAppendingString:nextLine];
 }
 
--(void)writeBufferToFile{
+-(void)writeBufferToFile:(NSString*)name{
     //NSLog(@"writing buffer to file: %@ \n",self.recordsStringWriteBuffer);
-    NSString * username = [AdminViewController getParticipantName];
-    NSString * filename = [username concat:@"-log.csv"];
+    NSString * filename = [NSString stringWithFormat:@"%@-%@-log.csv",[AdminViewController getParticipantName],name];
     [self writeToEndOfFile:self.recordsStringWriteBuffer withFilename:filename];
     self.recordsStringWriteBuffer = @"";
     
@@ -96,7 +96,7 @@
     // NSFileHandle won't create the file for us, so we need to check to make sure it exists
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString* path = [NSString stringWithFormat:@"%@/%@",[self applicationDocumentsDirectory],filename];
-    NSLog(@"%@",path);
+    //NSLog(@"%@",path);
     if (![fileManager fileExistsAtPath:path]) {
         
         // the file doesn't exist yet, so we can just write out the text using the
@@ -147,7 +147,7 @@
     NSDate *date = [NSDate date];
     
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm:SSSS"];// here set format which you want...
+    [dateFormatter setDateFormat:@"HH:mm:ss:SSSS"];// here set format which you want...
     
     NSString *convertedString = [dateFormatter stringFromDate:date];
     

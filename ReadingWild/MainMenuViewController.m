@@ -15,6 +15,7 @@
 #define BUTTON_HEIGHT 120.0
 #define SPACING 100.0
 #define BUTTON_FONT_SIZE 26.0
+
 @interface MainMenuViewController ()
 
 @end
@@ -23,6 +24,9 @@
 
 - (void)viewDidLoad
 {
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSLog(@"%f",ti);
     numPlayed = -1;
     
     [super viewDidLoad];
@@ -37,7 +41,7 @@
 
     [wordSearchButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [wordSearchButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    [wordSearchButton setTitle:@"Word Search Task" forState:UIControlStateNormal];
+    [wordSearchButton setTitle:@"Word Search Puzzle" forState:UIControlStateNormal];
     [wordSearchButton addTarget:self action:@selector(startWordSearch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wordSearchButton];
     
@@ -49,7 +53,7 @@
     anagramButton.titleLabel.font = [UIFont boldFlatFontOfSize:BUTTON_FONT_SIZE];
     [anagramButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [anagramButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    [anagramButton setTitle:@"Anagram Task" forState:UIControlStateNormal];
+    [anagramButton setTitle:@"Anagram Puzzle" forState:UIControlStateNormal];
     [anagramButton addTarget:self action:@selector(startAnagram:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:anagramButton];
     
@@ -62,9 +66,11 @@
     fluencyButton.titleLabel.font = [UIFont boldFlatFontOfSize:BUTTON_FONT_SIZE];
     [fluencyButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [fluencyButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    [fluencyButton setTitle:@"Fluency Task" forState:UIControlStateNormal];
+    [fluencyButton setTitle:@"Category Puzzle" forState:UIControlStateNormal];
     [fluencyButton addTarget:self action:@selector(startFluency:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:fluencyButton];
+    
+    [self nextTask];
 }
 
 - (void)disableButtons{
@@ -85,6 +91,7 @@
     UIStoryboard * sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     FluencyViewController * tempViewController = [sb instantiateViewControllerWithIdentifier:@"Fluency"];
     [self.navigationController pushViewController:tempViewController animated:YES];
+    [self nextTask];
     
 }
 
@@ -92,17 +99,16 @@
     UIStoryboard * sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     AnagramViewController * tempViewController = [sb instantiateViewControllerWithIdentifier:@"Anagram"];
     [self.navigationController pushViewController:tempViewController animated:YES];
+    [self nextTask];
 }
 
 - (void)startWordSearch:(id)sender{
     UIStoryboard * sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     WordSearchViewController * tempViewController = [sb instantiateViewControllerWithIdentifier:@"WordSearch"];
     [self.navigationController pushViewController:tempViewController animated:YES];
-}
-
--(void)viewDidAppear:(BOOL)animated{
     [self nextTask];
 }
+
 
 - (void)didReceiveMemoryWarning
 {

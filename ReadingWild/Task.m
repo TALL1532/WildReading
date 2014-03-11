@@ -29,12 +29,15 @@
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
 
     NSError * error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
     NSArray *sortedArray;
     sortedArray = [fetchedObjects sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        if(a == nil || b == nil)
+            NSLog(@"asdf");
         NSNumber *first = [(Task*)a taskPosition];
         NSNumber *second = [(Task*)b taskPosition];
         return [first compare:second];

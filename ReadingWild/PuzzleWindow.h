@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordContainer.h"
 
 @protocol PuzzleWindowDelegate
-- (void)puzzleWindowWordFound:(NSString*)word correct:(BOOL)correct;
+- (void)puzzleWindowWordFound:(NSString*)word matchingWord:(WordContainer* )match;
 - (void)puzzleWindowLetterPressed:(NSString*)letter;
 - (void)puzzleWindowLetterDragged:(NSString*)letter;
 @end
@@ -51,19 +52,22 @@
     
     CGFloat _colWidth;
     NSArray * _words;
+    NSMutableArray * _foundWords;
+    
+    NSMutableArray * _grid;
 }
 
 @property (retain)  id <PuzzleWindowDelegate> delegate;
 
 @property (nonatomic, retain) NSString * title;
 
-- (id)initWithFrame:(CGRect)frame puzzleName:(NSString*)filename answerName:(NSString *)answerfilename;
+- (id)initWithFrame:(CGRect)frame puzzleFileContents:(NSString*)filename andAnswerList:(NSString *)answerfilename;
 - (float)getHypotenuse;
 - (float)getAngle:(float)hypo;
 - (BOOL)getAngleColoring:(float)angle;
 
 - (void)addRectangle:(int)xOrigin yOrigin:(int)yOrigin length:(float)length angle:(float)angle;
 
-- (BOOL)isAnswer:(NSString *)word;
+- (WordContainer *)isAnswer:(NSString *)word;
 
 @end

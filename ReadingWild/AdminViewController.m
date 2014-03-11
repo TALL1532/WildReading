@@ -50,12 +50,13 @@
     }else if (tableView == self.anagramTaskTable) {
         currentTask = ANAGRAM_TASK;
     }
-    else if (tableView == self.fluencyTaskTable) { //TODO
+    else if (tableView == self.fluencyTaskTable) {
         currentTask = FLUENCY_TASK;
     }
     return [[Task getTasks:currentTask] count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
     static NSString * cellid = @"TaskCell";
     NSString * currentTask;
     if (tableView == self.wordSearchTaskTable){
@@ -63,14 +64,17 @@
     }else if (tableView == self.anagramTaskTable) {
         currentTask = ANAGRAM_TASK;
     }
-    else if (tableView == self.fluencyTaskTable) { //TODO
+    else if (tableView == self.fluencyTaskTable) {
         currentTask = FLUENCY_TASK;
     }
     NSArray * tasks = [Task getTasks:currentTask];
     
-    Task * task = [tasks objectAtIndex:indexPath.row];
+    Task * task = [tasks objectAtIndex:row];
+    
+    
     
     TaskCell * taskCell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    [taskCell setBackgroundColor:(row % 2 ? [UIColor colorWithWhite:.92f alpha:1.0f] : [UIColor whiteColor])];
     if(taskCell == nil){
         taskCell = [[TaskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
@@ -112,6 +116,8 @@
     }
     
     [self.wordSearchTaskTable reloadData];
+    [self tableView:self.wordSearchTaskTable scrollToBottomAnimated:YES];
+
 }
 
 -(void)addAnagramTask:(id)sender {
@@ -144,6 +150,8 @@
     }
     
     [self.anagramTaskTable reloadData];
+    [self tableView:self.anagramTaskTable scrollToBottomAnimated:YES];
+
 }
 
 
@@ -172,10 +180,12 @@
     }
     
     [self.fluencyTaskTable reloadData];
+    [self tableView:self.fluencyTaskTable scrollToBottomAnimated:YES];
 }
 
 
 
+#pragma mark table helper methods
 
 -(void)refreshTable {
     [self.wordSearchTaskTable reloadData];
@@ -183,6 +193,12 @@
     [self.anagramTaskTable reloadData];
 }
 
+- (void)tableView:(UITableView*)tableView scrollToBottomAnimated:(BOOL)animated {
+    NSInteger numberOfRows = [tableView numberOfRowsInSection:0];
+    if (numberOfRows) {
+        [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:numberOfRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    }
+}
 - (void) saveTasks {
     AppDelegate * mainApp = [[UIApplication sharedApplication] delegate];
     [mainApp saveContext];
@@ -238,11 +254,14 @@
 	// Set up recipients
 	NSArray *toRecipients = [NSArray arrayWithObject:@"AdultLearningLab.ipad@gmail.com"];
 	[picker setToRecipients:toRecipients];
-    
+
 	// Attach data to the email
     for(NSString * file in filesToMail){
-        NSString * filePath = [[self getDocumentsDirectory] concat:file];
+        NSString * filePath = [[[self getDocumentsDirectory] concat:@"/"] concat:file]  ;
         NSData *data = [NSData dataWithContentsOfFile:filePath];
+        if(!data){
+            NSLog(@"No data");
+        }
         [picker addAttachmentData:data mimeType:[self mimeTypeForFile:file] fileName:file];
     }
     

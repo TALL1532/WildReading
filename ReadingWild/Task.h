@@ -18,11 +18,11 @@
 
 @interface Task : NSManagedObject
 
-@property (nonatomic, retain) NSString * taskLoggingName;
-@property (nonatomic, retain) NSString * taskType;
-@property (nonatomic, retain) NSNumber * taskDurationSeconds;
-@property (nonatomic, retain) NSNumber * taskPosition;
-@property (nonatomic, retain) NSNumber * isInfinite;
+@property (atomic, retain) NSString * taskLoggingName;
+@property (atomic, retain) NSString * taskType;
+@property (atomic, retain) NSNumber * taskDurationSeconds;
+@property (atomic, retain) NSNumber * taskPosition;
+@property (atomic, retain) NSNumber * isInfinite;
 
 + (NSArray*)getTasks:(NSString*)type;
 
