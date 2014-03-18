@@ -82,6 +82,7 @@
     NSInteger time = [task.taskDurationSeconds integerValue];
     taskCell.timeTextField.text = [NSString stringWithFormat:@"%d", time];
     taskCell.lengthSegmentedControl.selectedSegmentIndex = [task.isInfinite boolValue] ? 1 : 0;
+    taskCell.logNameTextField.text = task.taskLoggingName;
     taskCell.delegate = self;
     [taskCell setTaskModel:task];
     return taskCell;

@@ -163,7 +163,7 @@ UIView * cover;
 }
 
 - (void)endSeries {
-    //nothing to do
+    [self updateScore];
 }
 
 - (NSString*)getInstructionsForTask:(Task*)task {

@@ -24,10 +24,12 @@
     NSInteger _currentPuzzle;
     NSInteger _numberPuzzlesInSeries;
     NSInteger _numberWordsFoundInSeries;
+    
     WildReadingTimerView * _timer;
     NSArray * _tasks;
     NSInteger _series_time;
     BOOL _seriesIsInfinte;
+    NSString * _series_name;
     
     BOOL _shouldCancelNext;
     

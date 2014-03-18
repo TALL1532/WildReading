@@ -20,6 +20,8 @@
     BOOL isInfinite = [task.isInfinite boolValue];
     _series_time = [task.taskDurationSeconds integerValue];
     _seriesIsInfinte = isInfinite;
+    _series_name = task.taskLoggingName;
+    
     [self startSeries];
     [self showInstructions:[self getInstructionsForTask:task]];
     NSLog(@"time: %d %d", _series_time, isInfinite);
@@ -50,6 +52,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         if (_shouldCancelNext) return;
         [self stopSpinner];
+        [self switchPuzzle:nil];
     });
 }
 
@@ -63,7 +66,6 @@
     [_spinner removeFromSuperview];
     
     _previousCorrectAnswerSarted = [NSDate date];
-    [self switchPuzzle:nil];
 }
 
 - (void) switchPuzzle:(id)sender {
@@ -197,6 +199,45 @@
     [self pushBufferToLog];
 }
 
+- (void)logSeriesScore:(NSInteger)score {
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
+    NSString * conditionId = @"1";
+    NSString * action = @"series_end";
+    NSString * duration = @"";
+    NSString * score_string = [NSString stringWithFormat:@"%@:%d",_series_name,score];
+    if(_answerEnded != nil){
+        NSInteger miliSecondsSinceAnswer = [date timeIntervalSinceDate:_answerEnded]*1000;
+        duration = [NSString stringWithFormat:@"%d", miliSecondsSinceAnswer];
+        _answerEnded = nil;
+    }
+    
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,username
+                         ,datemmddyyyy
+                         ,time
+                         ,unixTime
+                         ,conditionId
+                         ,@""
+                         ,action
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,@""
+                         ,score_string];
+    
+    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [self pushBufferToLog];
+}
+
 #pragma mark - Controller Delegate Methods
 
 
@@ -208,13 +249,16 @@
     }
     return self;
 }
-#pragma mark timer view delegate methods
 
+#pragma mark timer view delegate methods
 -(void)wildReadingTimerViewTimeUp {
-    [self pushBufferToLog];
+    [self logSeriesScore:_numberWordsFoundInSeries];
+    [self pushBufferToLog];    
+    _numberWordsFoundInSeries = 0;
 
     [self endSeries];
-    NSLog(@"Next series");
+    
+    //load next set
     _currentSeries ++;
     if(_currentSeries > [_tasks count]-1){
         NSLog(@"done!");
@@ -224,11 +268,13 @@
     Task * task = [_tasks objectAtIndex:_currentSeries];
     _series_time = [task.taskDurationSeconds integerValue];
     _seriesIsInfinte = [task.isInfinite boolValue];
+    _series_name = task.taskLoggingName;
+    //reset score
+    NSLog(@"RESET SCORE");
     [self startSeries];
     [self showInstructions:[self getInstructionsForTask:task]];
     
     [self stopSpinner];
-    
 }
 
 #pragma mark - Controller Delegate Methods
@@ -265,6 +311,8 @@
     [self setup];
     
     _shouldCancelNext = YES;
+    _numberWordsFoundInSeries = 90;
+
 }
 
 - (void)didReceiveMemoryWarning

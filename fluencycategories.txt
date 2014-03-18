@@ -10,7 +10,7 @@ article of furtniture
 an insect
 a sport
 a flower
-a vegetble
+a vegetable
 military title
 precious stone
 fruit
@@ -32,7 +32,7 @@ body part
 type of fabric
 a bird
 a toy
-an occupation or profession
+an occupation
 car brand
 animal
 a part of building
@@ -41,7 +41,7 @@ a state
 a female first name
 an herb
 a kind of money
-a substance for flavoring food
+food flavor
 color
 a type of ship/boat
 a tree

@@ -1,3 +1,0 @@
-This task is a word search puzzle. You will see a grid of letters and your goal is to find as many words as you can within a time limit. To select a word, swipe your finger from the first to the last letter of the word. Each puzzle has words from one category. The first one is for practice. You will receive one point for every word you find, and you will see a counter that will track this for you. 
-When you are ready to start, please press the arrow button (→). 
-

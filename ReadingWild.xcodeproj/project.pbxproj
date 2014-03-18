@@ -109,7 +109,6 @@
 		4B69072518C6881F0086BCDE /* 147 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B6906F618C6881F0086BCDE /* 147 WORDGRID.txt */; };
 		4B7CEB0418A6F22500493FC7 /* WildReadingUserSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */; };
 		4B7CEB0618A703D000493FC7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7CEB0518A703D000493FC7 /* MessageUI.framework */; };
-		4BB707B118980C510032F3C4 /* magical.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4BB707B018980C510032F3C4 /* magical.txt */; };
 		4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */; };
 /* End PBXBuildFile section */
 
@@ -243,7 +242,6 @@
 		4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingUserSelectionView.m; sourceTree = "<group>"; };
 		4B7CEB0518A703D000493FC7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4B7EC9EF189621A6006A0E9D /* TaskDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
-		4BB707B018980C510032F3C4 /* magical.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magical.txt; sourceTree = "<group>"; };
 		4BCAEB121896057A006C639E /* TaskDataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel2.xcdatamodel; sourceTree = "<group>"; };
 		4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingSingleton.h; sourceTree = "<group>"; };
 		4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingSingleton.m; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				4B3FBD7A18A9E82B008111A9 /* anagram_words.csv */,
-				4BB707B018980C510032F3C4 /* magical.txt */,
 			);
 			path = anagram;
 			sourceTree = "<group>";
@@ -628,7 +625,6 @@
 				4B69070C18C6881F0086BCDE /* 122 WORDGRID.txt in Resources */,
 				4B1365A01826BA2500C54EC2 /* MainStoryboard.storyboard in Resources */,
 				4B69070718C6881F0086BCDE /* 117 WORDGRID.txt in Resources */,
-				4BB707B118980C510032F3C4 /* magical.txt in Resources */,
 				4B69072318C6881F0086BCDE /* 145 WORDGRID.txt in Resources */,
 				4B69070418C6881F0086BCDE /* 114 WORDGRID.txt in Resources */,
 				4B1F6F1118BD1B570007A596 /* wordsearch_multiple_instructions.txt in Resources */,

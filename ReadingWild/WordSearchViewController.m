@@ -182,7 +182,7 @@ UIView * cover;
 
 
 - (void)endSeries {
-    //do nothing for now
+    _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
 }
 
 - (NSString*)getInstructionsForTask:(Task*)task {
