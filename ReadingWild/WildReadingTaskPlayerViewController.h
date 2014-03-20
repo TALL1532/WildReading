@@ -10,6 +10,7 @@
 #import "WildReadingTimerView.h"
 #import "Task.h"
 #import "LoggingSingleton.h"
+#import "LogRow.h"
 #import "AdminViewController.h"
 
 #define NEXT_BUTTON_WIDTH 100.0
@@ -34,6 +35,7 @@
     BOOL _shouldCancelNext;
     
     NSDate * _previousCorrectAnswerSarted;
+    NSDate * _previousCorrectAnswerEnded;
     NSDate * _answerStarted;
     NSDate * _answerEnded;
 }

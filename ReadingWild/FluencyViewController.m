@@ -122,7 +122,7 @@
     NSTimeInterval ti = [date timeIntervalSince1970];
     NSInteger secondsSinceEpoch = ti;
     NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
-    NSString * conditionId = @"1";
+    NSString * conditionId = _series_name;
     NSString * puzzleId = [self getCategory:_currentCategory];
     NSString * action = @"next_button_pressed";
     NSString * next = @"1";

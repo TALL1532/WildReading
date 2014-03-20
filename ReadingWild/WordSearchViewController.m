@@ -214,30 +214,31 @@ UIView * cover;
 
 - (void)pushRecordToBuffer:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next wordId:(NSString*)wordId{
     
-    NSString * username = [AdminViewController getParticipantName];
-    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
-    NSString * time = [LoggingSingleton getCurrentTime];
-    NSDate *date = [NSDate date];
-    NSTimeInterval ti = [date timeIntervalSince1970];
-    NSInteger secondsSinceEpoch = ti;
-    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
-    NSString * conditionId = @"1";
+    NSString * time_columns = [LoggingSingleton getLogStandardTimeColumns];
+    
+    NSString * conditionId = _series_name;
     NSString * puzzleId = [NSString stringWithFormat:@"%d",_currentPuzzleId];
     
-    NSString * duration = @"";
+    NSString * from_previous_valid_start_touch_duration = @"";
+    NSString * swipe_duration = @"";
+    NSString * search_duration = @"";
+    
+    
     if(_answerStarted != nil && [correct isEqualToString:@"1"]){
         NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
-        duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
+        NSInteger milisecondsSinceStartSwipe = -[_answerStarted timeIntervalSinceNow]*1000;
+        NSInteger milisecondsSincePreviousAnswerEnded = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
+        from_previous_valid_start_touch_duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
+        swipe_duration = [NSString stringWithFormat:@"%d",milisecondsSinceStartSwipe];
+        search_duration = [NSString stringWithFormat:@"%d",milisecondsSincePreviousAnswerEnded];
         _previousCorrectAnswerSarted = _answerStarted;
+        _previousCorrectAnswerEnded = [NSDate date];
         _answerStarted = nil; //want to reset answer started
     }
     
     
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,username
-                         ,datemmddyyyy
-                         ,time
-                         ,unixTime
+    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
+                         ,time_columns
                          ,conditionId
                          ,puzzleId
                          ,actionid
@@ -247,7 +248,9 @@ UIView * cover;
                          ,word
                          ,wordId
                          ,correct
-                         ,duration];
+                         ,from_previous_valid_start_touch_duration
+                         ,swipe_duration
+                         ,search_duration];
     
     [[LoggingSingleton sharedSingleton] pushRecord:record];
 }

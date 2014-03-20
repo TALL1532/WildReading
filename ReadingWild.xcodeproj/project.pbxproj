@@ -107,6 +107,7 @@
 		4B69072318C6881F0086BCDE /* 145 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B6906F418C6881F0086BCDE /* 145 WORDGRID.txt */; };
 		4B69072418C6881F0086BCDE /* 146 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B6906F518C6881F0086BCDE /* 146 WORDGRID.txt */; };
 		4B69072518C6881F0086BCDE /* 147 WORDGRID.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B6906F618C6881F0086BCDE /* 147 WORDGRID.txt */; };
+		4B78F0F918DB874F001D7494 /* LogRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B78F0F818DB874F001D7494 /* LogRow.m */; };
 		4B7CEB0418A6F22500493FC7 /* WildReadingUserSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */; };
 		4B7CEB0618A703D000493FC7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7CEB0518A703D000493FC7 /* MessageUI.framework */; };
 		4BD8A96718973EAA004CAC63 /* LoggingSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */; };
@@ -238,6 +239,8 @@
 		4B6906F418C6881F0086BCDE /* 145 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "145 WORDGRID.txt"; sourceTree = "<group>"; };
 		4B6906F518C6881F0086BCDE /* 146 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "146 WORDGRID.txt"; sourceTree = "<group>"; };
 		4B6906F618C6881F0086BCDE /* 147 WORDGRID.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "147 WORDGRID.txt"; sourceTree = "<group>"; };
+		4B78F0F718DB874F001D7494 /* LogRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogRow.h; sourceTree = "<group>"; };
+		4B78F0F818DB874F001D7494 /* LogRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogRow.m; sourceTree = "<group>"; };
 		4B7CEB0218A6F22500493FC7 /* WildReadingUserSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildReadingUserSelectionView.h; sourceTree = "<group>"; };
 		4B7CEB0318A6F22500493FC7 /* WildReadingUserSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildReadingUserSelectionView.m; sourceTree = "<group>"; };
 		4B7CEB0518A703D000493FC7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -346,6 +349,8 @@
 				4B2818231850530900B98BDA /* SettingsManager.m */,
 				4BD8A96518973EAA004CAC63 /* LoggingSingleton.h */,
 				4BD8A96618973EAA004CAC63 /* LoggingSingleton.m */,
+				4B78F0F718DB874F001D7494 /* LogRow.h */,
+				4B78F0F818DB874F001D7494 /* LogRow.m */,
 				4B1F6F1318BD1BBA0007A596 /* InstructionsHelper.h */,
 				4B1F6F1418BD1BBA0007A596 /* InstructionsHelper.m */,
 				4B601D5A1895ED840083A7ED /* TaskDataModel.xcdatamodeld */,
@@ -726,6 +731,7 @@
 				4B0051BA184A9BCA009F1D26 /* WildReadingTimerView.m in Sources */,
 				4B06FF0A182B4B8D0025E854 /* PuzzleWindow.m in Sources */,
 				4B28182118504BC800B98BDA /* TaskCell.m in Sources */,
+				4B78F0F918DB874F001D7494 /* LogRow.m in Sources */,
 				4B1F6EEE18BC7EDF0007A596 /* WordContainer.m in Sources */,
 				4B06FF0E182B4D6E0025E854 /* AnagramViewController.m in Sources */,
 				4B06FF12182B57700025E854 /* WordSearchViewController.m in Sources */,

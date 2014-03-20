@@ -26,4 +26,7 @@
 
 + (NSString*)getCurrentDate;
 + (NSString*)getCurrentTime;
++ (NSInteger)getUnixTime;
+
++ (NSString*)getLogStandardTimeColumns;
 @end

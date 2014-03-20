@@ -7,6 +7,7 @@
 //
 
 #import "WildReadingTaskPlayerViewController.h"
+#import "LoggingSingleton.h"
 
 @implementation WildReadingTaskPlayerViewController
 
@@ -65,7 +66,9 @@
     [_nextButton setHidden:NO];
     [_spinner removeFromSuperview];
     
+    //reset the search timers
     _previousCorrectAnswerSarted = [NSDate date];
+    _previousCorrectAnswerEnded = [NSDate date];
 }
 
 - (void) switchPuzzle:(id)sender {
@@ -156,85 +159,41 @@
 #pragma mark - Logging
 
 - (void)pushBufferToLog {
+    //send the log to write to a specific file
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 - (void)logNextButtonPressed{
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"next_button_pressed";
+    row.round_name = _series_name;
+    row.next_pressed = YES;
     
-    NSString * username = [AdminViewController getParticipantName];
-    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
-    NSString * time = [LoggingSingleton getCurrentTime];
-    NSDate *date = [NSDate date];
-    NSTimeInterval ti = [date timeIntervalSince1970];
-    NSInteger secondsSinceEpoch = ti;
-    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
-    NSString * conditionId = @"1";
-    NSString * puzzleId = @"";
-    NSString * action = @"next_button_pressed";
-    NSString * next = @"1";
-    NSString * duration = @"";
+    
     if(_answerEnded != nil){
-        NSInteger miliSecondsSinceAnswer = [date timeIntervalSinceDate:_answerEnded]*1000;
-        duration = [NSString stringWithFormat:@"%d", miliSecondsSinceAnswer];
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_answerEnded]*1000;
+        row.period_time = miliSecondsSinceAnswer;
         _answerEnded = nil;
     }
+   
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
     
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,username
-                         ,datemmddyyyy
-                         ,time
-                         ,unixTime
-                         ,conditionId
-                         ,puzzleId
-                         ,action
-                         ,next
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,duration];
-    
-    [[LoggingSingleton sharedSingleton] pushRecord:record];
     [self pushBufferToLog];
 }
 
 - (void)logSeriesScore:(NSInteger)score {
-    NSString * username = [AdminViewController getParticipantName];
-    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
-    NSString * time = [LoggingSingleton getCurrentTime];
-    NSDate *date = [NSDate date];
-    NSTimeInterval ti = [date timeIntervalSince1970];
-    NSInteger secondsSinceEpoch = ti;
-    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
-    NSString * conditionId = @"1";
-    NSString * action = @"series_end";
-    NSString * duration = @"";
-    NSString * score_string = [NSString stringWithFormat:@"%@:%d",_series_name,score];
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"series_end";
+    row.round_name = _series_name;
+    row.round_score = score;
+    
     if(_answerEnded != nil){
-        NSInteger miliSecondsSinceAnswer = [date timeIntervalSinceDate:_answerEnded]*1000;
-        duration = [NSString stringWithFormat:@"%d", miliSecondsSinceAnswer];
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_answerEnded]*1000;
+        row.period_time = miliSecondsSinceAnswer;
         _answerEnded = nil;
     }
     
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,username
-                         ,datemmddyyyy
-                         ,time
-                         ,unixTime
-                         ,conditionId
-                         ,@""
-                         ,action
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,@""
-                         ,score_string];
-    
-    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
     [self pushBufferToLog];
 }
 
@@ -283,7 +242,9 @@
 // initialize subviews
 - (void)viewDidLoad
 {
-    _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.  
+    _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.
+    
+    _previousCorrectAnswerEnded = [NSDate date];
     _answerStarted = nil;
     _answerEnded = nil;
     
@@ -311,7 +272,7 @@
     [self setup];
     
     _shouldCancelNext = YES;
-    _numberWordsFoundInSeries = 90;
+    _numberWordsFoundInSeries = 0;
 
 }
 

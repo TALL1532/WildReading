@@ -8,6 +8,8 @@
 
 
 #import "LoggingSingleton.h"
+#import "LogRow.h"
+
 
 @implementation LoggingSingleton
 
@@ -84,7 +86,6 @@
 }
 
 -(void)writeBufferToFile:(NSString*)name{
-    //NSLog(@"writing buffer to file: %@ \n",self.recordsStringWriteBuffer);
     NSString * filename = [NSString stringWithFormat:@"%@-%@-log.csv",[AdminViewController getParticipantName],name];
     [self writeToEndOfFile:self.recordsStringWriteBuffer withFilename:filename];
     self.recordsStringWriteBuffer = @"";
@@ -106,7 +107,8 @@
         if([filename isEqualToString:@"control_logs.csv"]){
             string = [NSString stringWithFormat:@"%@%@",@"something?\n",string];
         }
-        BOOL success = [string writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        NSString * to_append = [k_header concat:string];
+        BOOL success = [to_append writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
         if (!success) {
             // handle the error
             NSLog(@"%@", error);
@@ -152,6 +154,24 @@
     NSString *convertedString = [dateFormatter stringFromDate:date];
     
     return convertedString;
+}
+
++ (NSInteger)getUnixTime {
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    return secondsSinceEpoch;
+}
+
++ (NSString*)getLogStandardTimeColumns{
+    NSString * username = [AdminViewController getParticipantName];
+    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
+    NSString * time = [LoggingSingleton getCurrentTime];
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSInteger secondsSinceEpoch = ti;
+    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
+    return [NSString stringWithFormat:@"%@,%@,%@,%@", username, datemmddyyyy, time, unixTime];
 }
 
 - (NSString *)applicationDocumentsDirectory

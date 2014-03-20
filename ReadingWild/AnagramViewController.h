@@ -25,9 +25,6 @@
     
     NSMutableArray * _categories;
     
-    
-    NSInteger _score;
-    
     NSMutableArray * _answeredWords;
 }
 
