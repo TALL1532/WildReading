@@ -170,10 +170,10 @@
     row.next_pressed = YES;
     
     
-    if(_answerEnded != nil){
-        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_answerEnded]*1000;
+    if(_previousCorrectAnswerEnded != nil){
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
         row.period_time = miliSecondsSinceAnswer;
-        _answerEnded = nil;
+        _previousCorrectAnswerEnded = nil;
     }
    
     [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];

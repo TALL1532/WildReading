@@ -28,8 +28,7 @@
         _numberWordsFoundInSeries ++;
         _answerEnded = [NSDate date];
     }
-    NSString * correct = [NSString stringWithFormat:@"%d",match != nil];
-    [self logWordAnswered:word isCorrect:correct id:match.identifier];
+    [self logWordAnswered:word isCorrect:match != nil id:match.identifier];
     _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
 }
 
@@ -202,57 +201,37 @@ UIView * cover;
 
 - (void)logLetterPressed:(NSString*)letter {
     _answerStarted = [NSDate date];
-    [self pushRecordToBuffer:letter firstLetter:@"1" word:@"" action:@"start_touch" isCorrect:@"" nextButtonPressed:@"" wordId:@""];
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"start_touch";
+    row.first_character = YES;
+    row.letter = letter;
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
 }
+
 - (void)logLetterDragged:(NSString*)letter {
     //do nothing for now
 }
-- (void)logWordAnswered:(NSString*)word isCorrect:(NSString*)correct id:(NSInteger)identifier{
-    [self pushRecordToBuffer:@"" firstLetter:@"" word:word action:@"release_touch" isCorrect:correct nextButtonPressed:@"" wordId:[NSString stringWithFormat:@"%d",identifier]];
-    [self pushBufferToLog];
-}
-
-- (void)pushRecordToBuffer:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next wordId:(NSString*)wordId{
+- (void)logWordAnswered:(NSString*)word isCorrect:(BOOL)correct id:(NSInteger)identifier{
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"release_touch";
+    row.selected_word = word;
+    row.selected_word_id = [NSString stringWithFormat:@"%d",identifier];
     
-    NSString * time_columns = [LoggingSingleton getLogStandardTimeColumns];
-    
-    NSString * conditionId = _series_name;
-    NSString * puzzleId = [NSString stringWithFormat:@"%d",_currentPuzzleId];
-    
-    NSString * from_previous_valid_start_touch_duration = @"";
-    NSString * swipe_duration = @"";
-    NSString * search_duration = @"";
-    
-    
-    if(_answerStarted != nil && [correct isEqualToString:@"1"]){
+    if(_answerStarted != nil && correct){
         NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
         NSInteger milisecondsSinceStartSwipe = -[_answerStarted timeIntervalSinceNow]*1000;
         NSInteger milisecondsSincePreviousAnswerEnded = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
-        from_previous_valid_start_touch_duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
-        swipe_duration = [NSString stringWithFormat:@"%d",milisecondsSinceStartSwipe];
-        search_duration = [NSString stringWithFormat:@"%d",milisecondsSincePreviousAnswerEnded];
+        row.period_time = miliSecondsSinceAnswerStartedToPreviousAnswer;
+        row.swipe_time = milisecondsSinceStartSwipe;
+        row.search_time = milisecondsSincePreviousAnswerEnded;
+        
         _previousCorrectAnswerSarted = _answerStarted;
         _previousCorrectAnswerEnded = [NSDate date];
         _answerStarted = nil; //want to reset answer started
     }
     
-    
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,time_columns
-                         ,conditionId
-                         ,puzzleId
-                         ,actionid
-                         ,next
-                         ,isStart
-                         ,letter
-                         ,word
-                         ,wordId
-                         ,correct
-                         ,from_previous_valid_start_touch_duration
-                         ,swipe_duration
-                         ,search_duration];
-    
-    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
+    [self pushBufferToLog];
 }
 
 - (void)pushBufferToLog {

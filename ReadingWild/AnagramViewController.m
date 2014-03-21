@@ -7,7 +7,9 @@
 //
 
 #import "AnagramViewController.h"
+#import "LogRow.h"
 #import <RubyCocoaString/NSString+RubyCocoaString.h>
+
 #define BUTTON_WIDTH 70.0
 #define SUBMIT_BUTTON_WIDTH 130.0
 #define FINAL_INDEX -1
@@ -77,23 +79,25 @@
 
 - (void) buttonPressed:(id)caller{
     if([(FUIButton*)caller tag] != -1){
-        NSLog(@"yo %@", [NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]]);
+        NSString * new_character =[NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]];
+        _constructedWord = [_constructedWord concat:new_character];
+        BOOL first_letter = ([_constructedWord length] == 1);
+        NSString * action = (first_letter ? @"first_letter" : @"letter_enter");
+
+        LogRow * row = [[LogRow alloc] init];
+        row.action = action;
+        row.first_character = first_letter;
+        row.round_name = _series_name;
+        row.letter = new_character;
         
-        NSString * newCharacter =[NSString stringWithFormat:@"%c", [(FUIButton*)caller tag]];
-        _constructedWord = [_constructedWord concat:newCharacter];
         [self disableButton:caller];
         _mainWordlabel.text = _constructedWord;
-        NSLog(@"asd %@",_constructedWord);
         
-        //push to log
-        BOOL firstLetter = ([_constructedWord length] == 1);
-        if(firstLetter){
+        if(first_letter){
             _answerStarted = [NSDate date];
         }
-        NSString * isFirstLetter = [NSString stringWithFormat:@"%d", firstLetter];
-        NSString * action = (firstLetter ? @"first_letter" : @"letter_enter");
-        [self pushRecordToBuffer:newCharacter firstLetter:isFirstLetter word:@"" action:action isCorrect:@"" nextButtonPressed:@"0" wordId:@""];
-        [self pushBufferToLog];
+        
+        [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
     }
 }
 
@@ -129,9 +133,29 @@
     _mainWordlabel.text = self.currentWord;
     
     //push log stuff
-    NSString * correct_string = [NSString stringWithFormat:@"%d",correct];
     NSString * wordId = [NSString stringWithFormat:@"%d",realWordIndex];
-    [self pushRecordToBuffer:@"" firstLetter:@"0" word:_constructedWord action:@"submit" isCorrect:correct_string nextButtonPressed:@"0" wordId:wordId];
+    
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"submit";
+    row.correct = correct;
+    row.selected_word = _constructedWord;
+    row.selected_word_id = wordId;
+    
+    if(_answerStarted != nil && correct){
+        NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
+        NSInteger milisecondsSinceStartSwipe = -[_answerStarted timeIntervalSinceNow]*1000;
+        NSInteger milisecondsSincePreviousAnswerEnded = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
+        row.period_time = miliSecondsSinceAnswerStartedToPreviousAnswer;
+        row.swipe_time = milisecondsSinceStartSwipe;
+        row.search_time = milisecondsSincePreviousAnswerEnded;
+        _previousCorrectAnswerSarted = _answerStarted;
+        _previousCorrectAnswerEnded = [NSDate date];
+        _answerStarted = nil; //want to reset answer started
+    }
+    
+
+    
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
     
     //reset stuff
     _constructedWord = @"";
@@ -170,48 +194,6 @@ UIView * cover;
         return [InstructionsHelper instructionsContentWithFile:ANAGRAM_SINGLE];
     }
     return [InstructionsHelper instructionsContentWithFile:ANAGRAM_MULTIPLE];
-}
-
-- (void)pushRecordToBuffer:(NSString*)letter firstLetter:(NSString*)isStart word:(NSString*)word action:(NSString*)actionid isCorrect:(NSString*)correct nextButtonPressed:(NSString*)next wordId:(NSString*)wordId{
-    
-    NSString * time_columns = [LoggingSingleton getLogStandardTimeColumns];
-    NSString * conditionId = _series_name;
-    
-    
-    NSString * anagramId = [NSString stringWithFormat:@"%d",_currentCategoryIndex];
-    
-    NSString * from_previous_valid_start_touch_duration = @"";
-    NSString * swipe_duration = @"";
-    NSString * search_duration = @"";
-    if(_answerStarted != nil && [correct isEqualToString:@"1"]){
-        NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
-        NSInteger milisecondsSinceStartSwipe = -[_answerStarted timeIntervalSinceNow]*1000;
-        NSInteger milisecondsSincePreviousAnswerEnded = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
-        from_previous_valid_start_touch_duration = [NSString stringWithFormat:@"%d",miliSecondsSinceAnswerStartedToPreviousAnswer];
-        swipe_duration = [NSString stringWithFormat:@"%d",milisecondsSinceStartSwipe];
-        search_duration = [NSString stringWithFormat:@"%d",milisecondsSincePreviousAnswerEnded];
-        _previousCorrectAnswerSarted = _answerStarted;
-        _previousCorrectAnswerEnded = [NSDate date];
-        _answerStarted = nil; //want to reset answer started
-    }
-    
-    
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,time_columns
-                         ,conditionId
-                         ,anagramId
-                         ,actionid
-                         ,next
-                         ,isStart
-                         ,letter
-                         ,word
-                         ,wordId
-                         ,correct
-                         ,from_previous_valid_start_touch_duration
-                         ,swipe_duration
-                         ,search_duration];
-    
-    [[LoggingSingleton sharedSingleton] pushRecord:record];
 }
 
 - (void)pushBufferToLog {

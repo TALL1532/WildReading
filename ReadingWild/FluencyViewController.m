@@ -114,31 +114,19 @@
 //Override the WildReadingTaskPlayer
 //We need less fields for this task
 - (void)logNextButtonPressed{
+    LogRow * row = [[LogRow alloc] init];
+    row.action = @"next_button_pressed";
+    row.round_name = _series_name;
+    row.next_pressed = YES;
+    row.puzzle_id = [self getCategory:_currentCategory];
     
-    NSString * username = [AdminViewController getParticipantName];
-    NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
-    NSString * time = [LoggingSingleton getCurrentTime];
-    NSDate *date = [NSDate date];
-    NSTimeInterval ti = [date timeIntervalSince1970];
-    NSInteger secondsSinceEpoch = ti;
-    NSString * unixTime = [NSString stringWithFormat:@"%d",secondsSinceEpoch];
-    NSString * conditionId = _series_name;
-    NSString * puzzleId = [self getCategory:_currentCategory];
-    NSString * action = @"next_button_pressed";
-    NSString * next = @"1";
+    if(_previousCorrectAnswerEnded != nil){
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
+        row.period_time = miliSecondsSinceAnswer;
+        _previousCorrectAnswerEnded = nil;
+    }
     
-    
-    NSString * record = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@\n"
-                         ,username
-                         ,datemmddyyyy
-                         ,time
-                         ,unixTime
-                         ,conditionId
-                         ,puzzleId
-                         ,action
-                         ,next];
-    
-    [[LoggingSingleton sharedSingleton] pushRecord:record];
+    [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
     [self pushBufferToLog];
 }
 
