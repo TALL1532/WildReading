@@ -105,7 +105,7 @@
             //set text to be drawn
             NSString * character = [[_grid objectAtIndex:(i)] objectAtIndex:j];
             CGFloat font_offset = (_colWidth - FONT_SIZE)/2;
-            CGRect rect = CGRectMake(j*(_colWidth) + font_offset, (i)*(_colWidth) + font_offset, _colWidth, _colWidth);
+            CGRect rect = CGRectMake(j*(_colWidth) + font_offset - 12, (i)*(_colWidth) + font_offset, _colWidth, _colWidth);
             [character drawInRect:rect withFont:[UIFont systemFontOfSize:FONT_SIZE] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
             
         }
@@ -160,7 +160,7 @@
 	}
 	
 	//check to make sure swipe is inside bounds
-	if((touchPt.x > -10) && (touchPt.x < 710) && (touchPt.y > -10) && (touchPt.y < 610)) {
+	if([self validateTouchPoint:touchPt]) {
 		//draw line swipe
 		CGContextFillRect(ctx, CGRectMake(-_colWidth/2, -_colWidth/2 + PADDING,lineLength+_colWidth, _colWidth-PADDING));
 	}
@@ -170,6 +170,11 @@
 }
 
 //////////////////// TOUCHES ////////////////////////////////////////////
+
+- (BOOL)validateTouchPoint:(CGPoint)point{
+    if((point.x > 0) && (point.x < self.frame.size.width) && (point.y > 0) && (point.y < self.frame.size.height)) return YES;
+    return NO;
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)ev {
 		
@@ -189,26 +194,29 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)ev {
-    NSLog(@"DRAGGED!");
 	touchPt = [[touches anyObject] locationInView:self];
+    if(![self validateTouchPoint:touchPt]){
+        return;
+    }
     int tempx = ((int)((touchPt.x)/_colWidth));
 	int tempy = ((int)((touchPt.y)/_colWidth));
     if( tempx != x2 || tempy != y2){
         x2 = tempx;
         y2 = tempy;
         NSString * letter = [self letterAtX:x2 Y:y2];
-        NSLog(@"%@",letter);
+        NSLog(@"(%d, %d) %@", tempx, tempy, letter);
         [delegate puzzleWindowLetterDragged:letter];
+        [self setNeedsDisplay];
     }
-	[self setNeedsDisplay];
+	
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)ev {
-	
+	NSLog(@"finger lifted");
 	touchPt = [[touches anyObject] locationInView:self];
 	
 	//make sure we've swiped in bounds
-	if((touchPt.x > -10) && (touchPt.x < 710) && (touchPt.y > -10) && (touchPt.y < 610)) {
+	//if([self validateTouchPoint:touchPt]) {
 	
 		float hypotenuse = [self getHypotenuse];
 		float angle = [self getAngle:hypotenuse];
@@ -224,12 +232,6 @@
             [delegate puzzleWindowWordFound:wordHighlighted matchingWord:word];
 
 		}
-		else {
-		}
-	}		
-	
-	else {
-	}
 	
 	//move the points back out of bounds so nothing is highlighted
 	x1 = -50.0;
@@ -314,7 +316,6 @@
     return MAX(abs(y2-y1), abs(x2-x1))+1;
 }
 
-/////////////////// HANDLING WORD SELECTION //////////////////////////////
 - (NSString *)letterAtX:(int)x Y:(int)y{
     NSInteger size = [_grid count]-1;
     if(x < 0) x = 0;

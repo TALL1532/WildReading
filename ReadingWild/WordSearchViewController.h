@@ -12,6 +12,7 @@
 #import "LoggingSingleton.h"
 #import "WildReadingTaskPlayerViewController.h"
 #import "WordContainer.h"
+#import "WildReadingFeedbackView.h"
 #import "InstructionsHelper.h"
 
 @interface WordSearchViewController : WildReadingTaskPlayerViewController <PuzzleWindowDelegate> {
@@ -33,5 +34,6 @@
 - (void)setup;
 
 @property (retain) IBOutlet UILabel * wordsFound;
+@property (weak, nonatomic) IBOutlet WildReadingFeedbackView *feedbackView;
 
 @end

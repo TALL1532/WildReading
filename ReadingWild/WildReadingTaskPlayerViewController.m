@@ -22,7 +22,7 @@
     _series_time = [task.taskDurationSeconds integerValue];
     _seriesIsInfinte = isInfinite;
     _series_name = task.taskLoggingName;
-    
+    [LoggingSingleton sharedSingleton].currentTaskName = _series_name;
     [self startSeries];
     [self showInstructions:[self getInstructionsForTask:task]];
     NSLog(@"time: %d %d", _series_time, isInfinite);
@@ -69,6 +69,9 @@
     //reset the search timers
     _previousCorrectAnswerSarted = [NSDate date];
     _previousCorrectAnswerEnded = [NSDate date];
+    
+    [[LoggingSingleton sharedSingleton] setSeriesStartTime];
+
 }
 
 - (void) switchPuzzle:(id)sender {
@@ -116,6 +119,11 @@
 -(void)beginTesting{
     _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.
     _previousCorrectAnswerEnded = [NSDate date];
+    
+    [[LoggingSingleton sharedSingleton] setSeriesStartTime];
+    LogRow * instructionsClosedEventRow = [[LogRow alloc] init];
+    instructionsClosedEventRow.action = @"instruction closed";
+    [[LoggingSingleton sharedSingleton] pushRecord:[instructionsClosedEventRow toString]];
     
     _currentPuzzle = 0;
     NSLog(@"Begin Testing");
@@ -171,10 +179,9 @@
     row.action = @"next_button_pressed";
     row.round_name = _series_name;
     row.next_pressed = YES;
-    
-    
+    row.series_time = [LoggingSingleton getSeriesRunningTime];
     if(_previousCorrectAnswerEnded != nil){
-        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
         row.period_time = miliSecondsSinceAnswer;
         _previousCorrectAnswerEnded = nil;
     }
@@ -189,9 +196,10 @@
     row.action = @"series_end";
     row.round_name = _series_name;
     row.round_score = score;
+    row.series_time = [LoggingSingleton getSeriesRunningTime];
     
     if(_answerEnded != nil){
-        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_answerEnded]*1000;
+        NSInteger miliSecondsSinceAnswer = [[NSDate date] timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
         row.period_time = miliSecondsSinceAnswer;
         _answerEnded = nil;
     }
@@ -215,7 +223,7 @@
 #pragma mark timer view delegate methods
 -(void)wildReadingTimerViewTimeUp {
     [self logSeriesScore:_numberWordsFoundInSeries];
-    [self pushBufferToLog];    
+    [self pushBufferToLog];
     _numberWordsFoundInSeries = 0;
 
     [self endSeries];
@@ -231,6 +239,7 @@
     _series_time = [task.taskDurationSeconds integerValue];
     _seriesIsInfinte = [task.isInfinite boolValue];
     _series_name = task.taskLoggingName;
+    [LoggingSingleton sharedSingleton].currentTaskName = _series_name;
     //reset score
     NSLog(@"RESET SCORE");
     [self startSeries];

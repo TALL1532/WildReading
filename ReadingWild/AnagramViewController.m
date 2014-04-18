@@ -149,12 +149,19 @@
         NSInteger milisecondsSincePreviousAnswerEnded = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerEnded]*1000;
         row.period_time = miliSecondsSinceAnswerStartedToPreviousAnswer;
         row.swipe_time = milisecondsSinceStartSwipe;
+        row.series_time = [LoggingSingleton getSeriesRunningTime] - milisecondsSinceStartSwipe;
         row.search_time = milisecondsSincePreviousAnswerEnded;
         _previousCorrectAnswerSarted = _answerStarted;
         _previousCorrectAnswerEnded = [NSDate date];
         _answerStarted = nil; //want to reset answer started
     }
     
+    if(correct){
+        [_feedbackView showPositiveFeedback];
+    }
+    else{
+        [_feedbackView showNegativeFeedback];
+    }
 
     
     [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];

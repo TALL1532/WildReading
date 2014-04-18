@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WildReadingTaskPlayerViewController.h"
 
-#define k_header @"Subject, Date, Time, UNIX Time, Round Name, Puzzle ID, Action, Next Pressed, First Letter, Letter, Selected Word, Selected Word ID, Correct, Period Time(ms), Swipe Time(ms), Search Time(ms), Round Score\n"
+#define k_header @"Subject, Date, Time, UNIX Time, Task Running Time, Round Name, Puzzle ID, Action, Next Pressed, First Letter, Letter, Selected Word, Selected Word ID, Correct, Period Time(ms), Swipe Time(ms), Search Time(ms), Round Score\n"
 
 @interface LogRow : NSObject
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * date;
 @property (nonatomic, retain) NSString * time;
 @property (nonatomic, assign) NSInteger unix_time;
+@property (nonatomic, assign) NSInteger series_time;
 @property (nonatomic, retain) NSString * round_name;
 @property (nonatomic, retain) NSString * puzzle_id;
 @property (nonatomic, retain) NSString * action;
