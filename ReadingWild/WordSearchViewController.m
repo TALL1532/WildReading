@@ -145,7 +145,8 @@
     
     NSString * title = [self categoryForPuzzleId:puzzleId];
     
-    PuzzleWindow * temp = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 500)/2, self.view.frame.size.height - 500 - (3*BUTTON_WIDTH), 500, 500) puzzleFileContents:gridContents andAnswerList:[answers copy] ];
+    CGFloat windowSize = 650;
+    PuzzleWindow * temp = [[PuzzleWindow alloc] initWithFrame:CGRectMake((self.view.frame.size.width - windowSize)/2, self.view.frame.size.height - windowSize - 1.5 * BUTTON_WIDTH - 10.0f, windowSize, windowSize) puzzleFileContents:gridContents andAnswerList:[answers copy] ];
     temp.delegate = self;
     temp.title = title;
     [_puzzleViews addObject:temp];
@@ -205,6 +206,7 @@ UIView * cover;
     row.action = @"start_touch";
     row.first_character = YES;
     row.letter = letter;
+    row.puzzle_id = [NSString stringWithFormat:@"%d",_currentPuzzleId];
     [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
 }
 
@@ -215,7 +217,8 @@ UIView * cover;
     LogRow * row = [[LogRow alloc] init];
     row.action = @"release_touch";
     row.selected_word = word;
-    row.selected_word_id = [NSString stringWithFormat:@"%d",identifier];
+    row.selected_word_id = [NSString stringWithFormat:@"%ld",(long)identifier];
+    row.puzzle_id = [NSString stringWithFormat:@"%d",_currentPuzzleId];
     
     if(_answerStarted != nil && correct){
         NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;

@@ -104,8 +104,9 @@
         for (int j=0; j<_numCol; j++){
             //set text to be drawn
             NSString * character = [[_grid objectAtIndex:(i)] objectAtIndex:j];
-            CGRect rect = CGRectMake(j*(_colWidth), (i)*(_colWidth), _colWidth, _colWidth);
-            [character drawInRect:rect withFont:[UIFont systemFontOfSize:24.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+            CGFloat font_offset = (_colWidth - FONT_SIZE)/2;
+            CGRect rect = CGRectMake(j*(_colWidth) + font_offset, (i)*(_colWidth) + font_offset, _colWidth, _colWidth);
+            [character drawInRect:rect withFont:[UIFont systemFontOfSize:FONT_SIZE] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
             
         }
 	}

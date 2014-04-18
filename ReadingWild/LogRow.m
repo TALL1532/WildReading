@@ -44,11 +44,11 @@ NSInteger * search_time;
     NSString * next_pressed = self.next_pressed ? @"1" : @"";
     NSString * first_character = self.first_character ? @"1" : @"";
     NSString * correct = self.correct ? @"1" : @"";
-    return [NSString stringWithFormat:@"%@,%@,%@,%d,%@,%@,%@,%@,%@,%@,%@,%@,%@,%d,%d,%d,%d\n",
+    return [NSString stringWithFormat:@"%@,%@,%@,%ld,%@,%@,%@,%@,%@,%@,%@,%@,%@,%ld,%ld,%ld,%ld\n",
             self.subject_name,
             self.date,
             self.time,
-            self.unix_time,
+            (long)self.unix_time,
             self.round_name,
             self.puzzle_id,
             self.action,
@@ -58,10 +58,10 @@ NSInteger * search_time;
             self.selected_word,
             self.selected_word_id,
             correct,
-            self.period_time,
-            self.swipe_time,
-            self.search_time,
-            self.round_score];
+            (long)self.period_time,
+            (long)self.swipe_time,
+            (long)self.search_time,
+            (long)self.round_score];
 }
 
 

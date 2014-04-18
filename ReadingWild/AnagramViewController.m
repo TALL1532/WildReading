@@ -89,7 +89,8 @@
         row.first_character = first_letter;
         row.round_name = _series_name;
         row.letter = new_character;
-        
+        row.puzzle_id = [NSString stringWithFormat:@"%d",_currentCategoryIndex];
+
         [self disableButton:caller];
         _mainWordlabel.text = _constructedWord;
         
@@ -140,6 +141,7 @@
     row.correct = correct;
     row.selected_word = _constructedWord;
     row.selected_word_id = wordId;
+    row.puzzle_id = [NSString stringWithFormat:@"%d",_currentCategoryIndex];
     
     if(_answerStarted != nil && correct){
         NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;

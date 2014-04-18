@@ -114,6 +114,9 @@
 }
 
 -(void)beginTesting{
+    _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.
+    _previousCorrectAnswerEnded = [NSDate date];
+    
     _currentPuzzle = 0;
     NSLog(@"Begin Testing");
     if(!_timer){
@@ -242,16 +245,13 @@
 // initialize subviews
 - (void)viewDidLoad
 {
-    _previousCorrectAnswerSarted = [NSDate date]; // Used to caluculate the time to find a correct answer so we need to initialize it.
-    
-    _previousCorrectAnswerEnded = [NSDate date];
     _answerStarted = nil;
     _answerEnded = nil;
     
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - NEXT_BUTTON_WIDTH)/2, self.view.frame.size.height - 2*NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH)];
+    FUIButton * tempButton = [[FUIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - NEXT_BUTTON_WIDTH)/2, self.view.frame.size.height - 1.5*NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH, NEXT_BUTTON_WIDTH)];
     tempButton.buttonColor = [UIColor turquoiseColor];
     tempButton.shadowColor = [UIColor greenSeaColor];
     tempButton.shadowHeight = 3.0f;
