@@ -13,7 +13,7 @@ a flower
 a vegetable
 military title
 precious stone
-fruit
+a type of ship/boat
 a type of music
 metal
 kitchen utensil
@@ -43,5 +43,5 @@ an herb
 a kind of money
 food flavor
 color
-a type of ship/boat
+fruit
 a tree

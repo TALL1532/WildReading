@@ -48,12 +48,13 @@ NSInteger * search_time;
     NSString * first_character = self.first_character ? @"1" : @"";
     NSString * correct = self.correct ? @"1" : @"";
     NSLog(@"series time: %d", _series_time);
-    return [NSString stringWithFormat:@"%@,%@,%@,%ld,%d,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
+    NSString * series_time = _series_time > 0 ? [NSString stringWithFormat:@"%d", _series_time] : @"";
+    return [NSString stringWithFormat:@"%@,%@,%@,%ld,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
             self.subject_name,
             self.date,
             self.time,
             (long)self.unix_time,
-            self.series_time,
+            series_time,
             self.round_name,
             self.puzzle_id,
             self.action,
