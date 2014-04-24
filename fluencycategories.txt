@@ -24,7 +24,7 @@ a disease
 country
 a type of dance
 a type of human dwelling
-a city
+a tree
 electronic device
 weapon
 a science
@@ -44,4 +44,4 @@ a kind of money
 food flavor
 color
 fruit
-a tree
+a city
