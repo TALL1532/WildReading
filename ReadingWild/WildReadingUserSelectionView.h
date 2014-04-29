@@ -8,6 +8,7 @@
 @class WildReadingUserSelectionView;
 @protocol UserSelectionViewDelegate <NSObject>
 - (void)selectionView:(WildReadingUserSelectionView*)selectionView selectedUser:(NSString *)user;
+- (void)selectionView:(WildReadingUserSelectionView *)selectionView deleteUser:(NSString *)user;
 @end
 
 #import <UIKit/UIKit.h>

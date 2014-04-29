@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define WORD_SEARCH_TASKS_ARRAY @"k_word_search_task_array"
-
+#define SHOW_BACK_BUTTON @"k_show_back_button"
 @interface SettingsManager : NSObject {
     
 }
@@ -25,6 +25,9 @@
 
 + (void)setString:(NSString*)value withKey:(NSString*)key;
 + (NSString*)getStringWithKey:(NSString*)key;
+
++ (void)setBoolean:(BOOL)value withKey:(NSString*)key;
++ (BOOL)getBooleanWithKey:(NSString*)key;
 
 + (void) syncronize;
 

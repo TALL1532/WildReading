@@ -282,7 +282,8 @@
     
     _shouldCancelNext = YES;
     _numberWordsFoundInSeries = 0;
-
+    
+    self.navigationItem.hidesBackButton = ![SettingsManager getBooleanWithKey:SHOW_BACK_BUTTON];
 }
 
 - (void)didReceiveMemoryWarning

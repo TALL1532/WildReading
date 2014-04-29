@@ -24,6 +24,8 @@
 
 }
 
+@property (weak, nonatomic) IBOutlet UISwitch *backbuttonSwitch;
+
 @property (weak, nonatomic) IBOutlet UITextField * participantNameTextView;
 @property (weak, nonatomic) IBOutlet UITextField *nextDelayTextView;
 
@@ -39,6 +41,8 @@
 - (IBAction)nameChanged:(id)sender;
 - (IBAction)delayChanged:(id)sender;
 - (IBAction)emailPressed:(id)sender;
+- (IBAction)deletePressed:(id)sender;
+- (IBAction)switchPressed:(UISwitch *)sender;
 
 + (NSString*)getParticipantName;
 

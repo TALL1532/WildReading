@@ -36,4 +36,5 @@
 + (NSInteger)getSeriesRunningTime;
 
 + (NSString*)getLogStandardTimeColumns;
+
 @end
