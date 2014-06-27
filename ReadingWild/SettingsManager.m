@@ -48,6 +48,21 @@
 }
 
 
++ (void)setBoolean:(BOOL)value withKey:(NSString*)key {
+    NSNumber* number = [NSNumber numberWithBool:value];
+    [SettingsManager setObject:number withKey:key];
+}
+
++ (BOOL)getBooleanWithKey:(NSString*)key {
+    NSNumber* number = (NSNumber*)[SettingsManager getObjectWithKey:key];
+    if(number ==  nil)
+    {
+        return NO;
+    }
+    return [number boolValue];
+}
+
+
 + (void)setString:(NSString*)value withKey:(NSString*)key{
     [SettingsManager setObject:value withKey:key];
 }
@@ -57,6 +72,8 @@
     if(string == nil) string = @"";
     return string;
 }
+
+
 
 + (void) syncronize{
     [[NSUserDefaults standardUserDefaults] synchronize];

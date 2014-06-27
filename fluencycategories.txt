@@ -13,7 +13,7 @@ a flower
 a vegetable
 military title
 precious stone
-fruit
+a type of ship/boat
 a type of music
 metal
 kitchen utensil
@@ -24,7 +24,7 @@ a disease
 country
 a type of dance
 a type of human dwelling
-a city
+a tree
 electronic device
 weapon
 a science
@@ -43,5 +43,5 @@ an herb
 a kind of money
 food flavor
 color
-a type of ship/boat
-a tree
+fruit
+a city

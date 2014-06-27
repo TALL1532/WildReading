@@ -10,7 +10,7 @@
 #import "LoggingSingleton.h"
 #import "AdminViewController.h"
 
-static NSString * standardHeader = @"Subject, Date, Time, UNIX Time, Round Name, Puzzle ID, Action, Next Pressed, First Letter, Letter, Selected Word, Selected Word ID, Correct, Period Time(ms), Swipe Time(ms), Search Time(ms), Round Score\n";
+static NSString * standardHeader = @"Subject, Date, Time, UNIX Time, Task Running Time, Round Name, Puzzle ID, Action, Next Pressed, First Letter, Letter, Selected Word, Selected Word ID, Correct, Period Time(ms), Swipe Time(ms), Search Time(ms), Round Score\n";
 @implementation LogRow
 
 
@@ -23,7 +23,7 @@ NSInteger * search_time;
         self.date = [LoggingSingleton getCurrentDate];
         self.time = [LoggingSingleton getCurrentTime];
         self.unix_time = [LoggingSingleton getUnixTime];
-        self.round_name = @"";
+        self.round_name = [LoggingSingleton sharedSingleton].currentTaskName;
         self.puzzle_id = @"";
         self.action = @"";
         self.next_pressed = NO;
@@ -35,7 +35,10 @@ NSInteger * search_time;
         self.period_time = 0;
         self.swipe_time = 0;
         self.search_time = 0;
+        self.series_time = 0;
         self.round_score = 0;
+        
+        NSLog(@"series time 2: %d", self.series_time);
     }
     return self;
 }
@@ -44,11 +47,14 @@ NSInteger * search_time;
     NSString * next_pressed = self.next_pressed ? @"1" : @"";
     NSString * first_character = self.first_character ? @"1" : @"";
     NSString * correct = self.correct ? @"1" : @"";
-    return [NSString stringWithFormat:@"%@,%@,%@,%ld,%@,%@,%@,%@,%@,%@,%@,%@,%@,%ld,%ld,%ld,%ld\n",
+    NSLog(@"series time: %d", _series_time);
+    NSString * series_time = _series_time > 0 ? [NSString stringWithFormat:@"%d", _series_time] : @"";
+    return [NSString stringWithFormat:@"%@,%@,%@,%ld,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
             self.subject_name,
             self.date,
             self.time,
             (long)self.unix_time,
+            series_time,
             self.round_name,
             self.puzzle_id,
             self.action,
@@ -58,10 +64,10 @@ NSInteger * search_time;
             self.selected_word,
             self.selected_word_id,
             correct,
-            (long)self.period_time,
-            (long)self.swipe_time,
-            (long)self.search_time,
-            (long)self.round_score];
+            (_period_time == 0 ? @"" : [NSString stringWithFormat:@"%d",_period_time]),
+            (_swipe_time == 0 ? @"" : [NSString stringWithFormat:@"%d",_swipe_time]),
+            (_search_time == 0 ? @"" : [NSString stringWithFormat:@"%d",_search_time]),
+            (_round_score == 0 ? @"" : [NSString stringWithFormat:@"%d",_round_score])];
 }
 
 

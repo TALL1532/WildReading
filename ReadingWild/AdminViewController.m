@@ -31,6 +31,8 @@
     self.participantNameTextView.text = [[NSUserDefaults standardUserDefaults] valueForKey:PARTICIPANT_NAME];
     NSNumber * delay =[[NSUserDefaults standardUserDefaults] valueForKey:NEXT_DELAY];
     self.nextDelayTextView.text = [NSString stringWithFormat:@"%@",delay];
+    
+    [_backbuttonSwitch setOn:[SettingsManager getBooleanWithKey:SHOW_BACK_BUTTON]];
     [super viewDidLoad];
 }
 
@@ -230,6 +232,22 @@
     [self presentViewController:userSelection animated:YES completion:nil];
 }
 
+- (IBAction)deletePressed:(id)sender {
+    WildReadingUserSelectionView * userSelection = [[WildReadingUserSelectionView alloc] init];
+    userSelection.delegate = self;
+    userSelection.modalInPopover = YES;
+    userSelection.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:userSelection animated:YES completion:^{
+        [userSelection.tableView setEditing:YES animated:YES];
+    }];
+}
+
+- (IBAction)switchPressed:(UISwitch *)sender {
+    BOOL backButtonsOn = sender.on;
+    [SettingsManager setBoolean:backButtonsOn withKey:SHOW_BACK_BUTTON];
+}
+
 - (IBAction)delayChanged:(id)sender {
     UITextView * textBox = sender;
     NSNumber * number = [NSNumber numberWithInt:[textBox.text integerValue]];
@@ -240,14 +258,7 @@
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 	picker.mailComposeDelegate = self;
     
-    NSString *documentsDirectory = [self getDocumentsDirectory];
-    NSArray * files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    NSMutableArray * filesToMail = [[NSMutableArray alloc] init];
-    for(NSString * file in files){
-        if([file rangeOfString:username].location != NSNotFound){
-            [filesToMail addObject:file];
-        }
-    }
+    NSMutableArray * filesToMail = [self getFilesAssociatedWithUser:username];
     
     // Set subject line
 	[picker setSubject:@"Adult Learning Lab iPad Log File"];
@@ -272,6 +283,18 @@
 	if (picker != nil) {
         [self presentViewController:picker animated:YES completion:nil];
 	}
+}
+
+- (NSMutableArray * )getFilesAssociatedWithUser:(NSString*)user {
+    NSString *documentsDirectory = [self getDocumentsDirectory];
+    NSArray * files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    NSMutableArray * filesToMail = [[NSMutableArray alloc] init];
+    for(NSString * file in files){
+        if([file rangeOfString:user].location != NSNotFound){
+            [filesToMail addObject:file];
+        }
+    }
+    return filesToMail;
 }
 
 #pragma mark MFMailComposeViewControllerDelegate methods
@@ -324,6 +347,27 @@
     [selectionView dismissViewControllerAnimated:YES completion:^(void){
         [self presentEmailForUser:user];
     }];
+}
+
+- (void)selectionView:(WildReadingUserSelectionView *)selectionView deleteUser:(NSString *)user {
+    NSMutableArray * filesToDelete = [self getFilesAssociatedWithUser:user];
+    
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    for(NSString * file in filesToDelete){
+        NSString * filePath = [[[self getDocumentsDirectory] concat:@"/"] concat:file];
+        NSError *error;
+        BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+        if (success) {
+            NSLog(@"sucessfully delted : %@", filePath);
+        }
+        else
+        {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
+    }
+    [selectionView dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

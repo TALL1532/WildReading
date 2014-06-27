@@ -8,6 +8,8 @@
 
 #import "WildReadingUserSelectionView.h"
 
+#define topBarHeight 40.0f
+
 @implementation WildReadingUserSelectionView
 
 #pragma mark UITableView delegate methods
@@ -31,9 +33,29 @@
     [self.delegate selectionView:self selectedUser:username];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger row = indexPath.row;
+    NSString * user =[users objectAtIndex:row];
+    [users removeObjectAtIndex:row];
+    [self.delegate selectionView:self deleteUser:user];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 #pragma mark UIViewController delegate methods
 
 - (void)viewDidLoad {
+    //[self.tableView setFrame:CGRectMake(0, topBarHeight, self.tableView.frame.size.width, self.tableView.frame.size.height - topBarHeight)];
+    UIButton * editButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, 50, topBarHeight)];
+    editButton.titleLabel.text = @"Edit";
+    [self.tableView addSubview:editButton];
+    [editButton addTarget:self action:@selector(editPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view bringSubviewToFront:editButton];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     NSMutableSet * temp = [[NSMutableSet alloc] init];
@@ -48,6 +70,10 @@
         }
     }
     users =  [NSMutableArray arrayWithArray:[temp allObjects]];
+}
+
+- (void)editPressed:(id)sender {
+    [self.tableView setEditing:YES animated:NO];
 }
 
 #pragma mark helper methods

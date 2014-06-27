@@ -163,6 +163,13 @@
     return secondsSinceEpoch;
 }
 
+- (NSDate*)getSeriesStartDate{
+    return series_start_time;
+}
+- (void)setSeriesStartTime{
+    series_start_time = [NSDate date];
+}
+
 + (NSString*)getLogStandardTimeColumns{
     NSString * username = [AdminViewController getParticipantName];
     NSString * datemmddyyyy = [LoggingSingleton getCurrentDate];
@@ -174,8 +181,23 @@
     return [NSString stringWithFormat:@"%@,%@,%@,%@", username, datemmddyyyy, time, unixTime];
 }
 
+/**
+ *    Returns the running time if the current task in ms
+ *
+ *    @return <#return value description#>
+ */
++ (NSInteger)getSeriesRunningTime{
+    NSDate * series_start_time = [[LoggingSingleton sharedSingleton] getSeriesStartDate];
+    NSTimeInterval runningTime = [series_start_time timeIntervalSinceNow];
+    NSLog(@"run time %f", runningTime);
+    NSInteger run_time_ms = (NSInteger)(-runningTime * 1000);
+    NSLog(@"run time ms %d", run_time_ms);
+
+    return run_time_ms;
+}
 - (NSString *)applicationDocumentsDirectory
 {
 	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
+
 @end

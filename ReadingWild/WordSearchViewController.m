@@ -27,6 +27,10 @@
     if(match){
         _numberWordsFoundInSeries ++;
         _answerEnded = [NSDate date];
+        [_feedbackView showPositiveFeedback];
+    }
+    else{
+        [_feedbackView showNegativeFeedback];
     }
     [self logWordAnswered:word isCorrect:match != nil id:match.identifier];
     _wordsFound.text = [NSString stringWithFormat:@"Score: %d",_numberWordsFoundInSeries];
@@ -206,7 +210,6 @@ UIView * cover;
     row.action = @"start_touch";
     row.first_character = YES;
     row.letter = letter;
-    row.puzzle_id = [NSString stringWithFormat:@"%d",_currentPuzzleId];
     [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];
 }
 
@@ -218,8 +221,7 @@ UIView * cover;
     row.action = @"release_touch";
     row.selected_word = word;
     row.selected_word_id = [NSString stringWithFormat:@"%ld",(long)identifier];
-    row.puzzle_id = [NSString stringWithFormat:@"%d",_currentPuzzleId];
-    
+    row.correct = correct;
     if(_answerStarted != nil && correct){
         NSInteger miliSecondsSinceAnswerStartedToPreviousAnswer = [_answerStarted timeIntervalSinceDate:_previousCorrectAnswerSarted]*1000;
         NSInteger milisecondsSinceStartSwipe = -[_answerStarted timeIntervalSinceNow]*1000;
@@ -227,10 +229,15 @@ UIView * cover;
         row.period_time = miliSecondsSinceAnswerStartedToPreviousAnswer;
         row.swipe_time = milisecondsSinceStartSwipe;
         row.search_time = milisecondsSincePreviousAnswerEnded;
-        
+        row.series_time = [LoggingSingleton getSeriesRunningTime] - milisecondsSinceStartSwipe;
+
         _previousCorrectAnswerSarted = _answerStarted;
         _previousCorrectAnswerEnded = [NSDate date];
         _answerStarted = nil; //want to reset answer started
+    }
+    
+    if(correct){
+        row.puzzle_id = [row.selected_word_id substringToIndex:3];
     }
     
     [[LoggingSingleton sharedSingleton] pushRecord:[row toString]];

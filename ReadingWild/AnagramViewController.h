@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <FlatUIKit.h>
+#import <RubyCocoaString/NSString+RubyCocoaString.h>
 
 #import "WildReadingTaskPlayerViewController.h"
 #import "InstructionsHelper.h"
+#import "WildReadingFeedbackView.h"
 
 @interface AnagramViewController : WildReadingTaskPlayerViewController {
     IBOutlet UILabel * _mainWordlabel;
@@ -31,6 +33,7 @@
 @property (nonatomic, retain) NSString * currentWord;
 //@property (nonatomic, retain) UITextField * entryField;
 @property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
+@property (weak, nonatomic) IBOutlet WildReadingFeedbackView *feedbackView;
 
 @end
 
