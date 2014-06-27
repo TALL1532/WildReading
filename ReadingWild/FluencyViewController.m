@@ -55,9 +55,12 @@
     [_categoryLabel setText:category];
     _currentCategory ++;
     
+    category = [category stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    category = [category stringByReplacingOccurrencesOfString:@"." withString:@""];
+    
     NSString * user = [AdminViewController getParticipantName];
     NSString * filename = [NSString stringWithFormat:@"fluency_%@_%@.caf",user,category];
-        
+    
     _recorder = [self startRecording:filename];
 
 }
