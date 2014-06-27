@@ -1,0 +1,13 @@
+PODS:
+  - FlatUIKit (1.2)
+  - RubyCocoaString (0.0.2)
+
+DEPENDENCIES:
+  - FlatUIKit
+  - RubyCocoaString
+
+SPEC CHECKSUMS:
+  FlatUIKit: 43b2acaa6f4ef57539b51b00e4ce62d506e33e11
+  RubyCocoaString: 815051756ba670b3bdf6d7028f47c497c51ad380
+
+COCOAPODS: 0.28.0
