@@ -1,0 +1,1 @@
+../../RubyCocoaString/RubyCocoaString/NSString+RubyCocoaString.h
