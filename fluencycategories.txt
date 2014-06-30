@@ -34,7 +34,7 @@ a bird
 a toy
 an occupation
 car brand
-animal
+color
 a part of building
 a type of sweet
 a state
@@ -42,6 +42,6 @@ a female first name
 an herb
 a kind of money
 food flavor
-color
+animal
 fruit
 a city
